@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pinkoutsa.com/sitemap.xml
