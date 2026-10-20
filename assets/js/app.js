@@ -110,6 +110,7 @@
       button.querySelector('[data-save-label]').textContent = t(saved ? 'Saved world' : 'Save world');
       button.querySelector('.save-symbol').classList.toggle('is-saved', saved);
     });
+    document.dispatchEvent(new CustomEvent('pinkout:saved-change'));
   }
   document.querySelectorAll('[data-save-interest]').forEach(button => button.addEventListener('click', () => {
     const interests = getInterests(); const id = Number(button.dataset.saveInterest); const index = interests.indexOf(id);

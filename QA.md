@@ -33,3 +33,37 @@ Event anchors use immediate native navigation: a long browser smooth scroll can 
 Reviewed the local HTTP preview at 390 × 844, 890 × 912 and 1440 × 900, including Arabic/English, catalogue, FAQ expansion, interest dialog, stage and device scenes. Browser measurements found no section/device horizontal overflow after the tablet frame adjustment. No browser errors were reported during this review. Verified the desktop hero photo transition visually. This is browser preview testing, not physical-device or frame-rate testing.
 
 Stage selection now follows scrolling without pointer-hover overrides, with a shorter travel range and a progress line. Paused motion removes the extra stage travel. Cards use modest one-time vertical entrances. The vision action opens event details; the interest form is explicitly a preview. Input text now contrasts with its white background. Shared asset versions were updated so browsers request the revised files.
+
+
+## Interaction review — 20 October 2026
+
+Reviewed the old PinkOut site, Museum of Ice Cream and SWSH in the browser before implementing the new interactions.
+
+- Added the flower cursor, contextual hints, bounded card tilt and short flower click feedback. Verified the native cursor style and pointer-driven tilt in the local browser.
+- Added a bilingual mood picker with four routes, a surprise action that always changes the mood, and synchronized saved-world controls. Verified route changes, saving/removing and the saved collection links.
+- Added a native photo dialog to world thumbnails, story photos and mood cards. Verified next/previous wrapping, arrow keys, Escape and focus returning to the opener.
+- Made hero world chips real links; verified a direct pointer click reaches the matching world.
+- Corrected the creative-workshop news card and reduced the catalogue entrance displacement.
+- Moved the stage deep-link target onto its non-sticky wrapper. A fresh direct link starts at the first world; scrolling advances the choices.
+- Checked layouts at 390 × 844, 890 × 900, 1280 × 720 and 1440 × 900, including Arabic and English. Checked phone visibility on mobile and stage text boundaries on tablet.
+- Motion pause disables the cursor and decorative effects, removes extended stage travel, and leaves mood selection usable. Restored motion after testing.
+- Checked interest-form empty-field errors, desktop navigation opening/Escape, local file references, anchors and duplicate IDs. No broken loaded images or JavaScript console errors observed during these checks.
+
+The registration endpoint remains unconfigured: the existing form is a clearly labelled preview, not a live booking or submission flow.
+
+- Final mobile-menu review caught white links on the white menu panel; fixed the shared menu link colour and rechecked the menu visually.
+
+
+## Flat cinema mosaic — 20 October 2026
+
+Replaced the five overlapping cinema elements with nine flush grid tiles, with a large centre image and fully occupied surrounding cells. Images use cover sizing, and the wide tiles request appropriately sized responsive assets. Removed floating rotations and individual side entrances; the scroll reveal now opens the entire mosaic together. The two photo-switch buttons crossfade within their fixed cells.
+
+Verified in the local browser at 1440 × 900 and 390 × 844: all nine tiles fill their cells, no horizontal overflow or broken images, and a pointer click changes the photo without moving its tile. Desktop uses a four-column mosaic; mobile uses two columns with a full-width lead image. No console errors observed.
+
+
+## Navigation, hero and news refinement — 20 October 2026
+
+- Added a floating glass navbar with blur, translucent background, visible borders, clear active controls and a solid fallback. The video now extends behind the navbar; the cinematic scroll start follows the new full-height canvas.
+- Removed the world-signatures markup. Kept the video pause button accessible in its own corner. Reduced the hero invitation from its previous 920px maximum width to a content-sized panel capped at 600px, with smaller text and padding.
+- Rebuilt all six news cards with large images, category labels, descriptions and consistent action rows. Added Arabic/English descriptions and matched the clay idea to the pottery photograph. Three columns on desktop, two on tablet, one on mobile.
+- Browser checks at 1440 × 900 and 390 × 844 covered the hero, glass menu, news layouts and card navigation; also reviewed the 890px tablet breakpoint. Confirmed removed signatures, loaded news images, no horizontal overflow and no observed console errors.
