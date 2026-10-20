@@ -67,3 +67,19 @@ Verified in the local browser at 1440 × 900 and 390 × 844: all nine tiles fill
 - Removed the world-signatures markup. Kept the video pause button accessible in its own corner. Reduced the hero invitation from its previous 920px maximum width to a content-sized panel capped at 600px, with smaller text and padding.
 - Rebuilt all six news cards with large images, category labels, descriptions and consistent action rows. Added Arabic/English descriptions and matched the clay idea to the pottery photograph. Three columns on desktop, two on tablet, one on mobile.
 - Browser checks at 1440 × 900 and 390 × 844 covered the hero, glass menu, news layouts and card navigation; also reviewed the 890px tablet breakpoint. Confirmed removed signatures, loaded news images, no horizontal overflow and no observed console errors.
+
+
+## Centre-tile video loop — 20 October 2026
+
+The centre mosaic cell now contains a 22-second H.264 montage of four stock clips: pottery, café conversation, dancing and the existing night-out footage. Half-second crossfades include the loop boundary. A matching poster remains underneath the video, and a bilingual play/pause button is available. Sources and edit points are recorded in `assets/video/cinema-moments.sources.json`; Pexels creators are linked from the credits page.
+
+Verified locally in the browser: the video has no source attached before the desktop scene is revealed; it autoplays muted when visible; play time wrapped from 21.9 seconds to the next cycle; manual pause/resume works; leaving the scene pauses it while the hero resumes; global motion pause stops it. At 390 × 844 the video and tile rectangles match, playback and the control work, and the page has no horizontal overflow. No browser console errors observed. The montage is 1280 × 720, 24fps, approximately 6.1MB, with no audio stream.
+
+
+## All-video mosaic — 20 October 2026
+
+Replaced the eight surrounding photo cells and photo-stack controls with eight independent looping stock videos. The centre montage remains, giving nine video cells in the original flat mosaic. Added art, fragrance, shopping and yoga clips with creator links in credits.html, and recorded all outer-video sources in cinema-wall.sources.json. The eight outer videos total approximately 4.9MB. Each has a matching poster and a soft loop transition.
+
+One bilingual centre control now pauses or resumes the entire wall. Every tile loads only when visible, plays muted inline, and pauses outside the viewport or while the page is hidden. The global motion setting applies to all nine.
+
+Local browser checks: no sources attached to the nine videos before the desktop scene is revealed; all nine play without media errors in the visible scene; all nine pause/resume together; scrolling back to the hero pauses the full wall; mobile motion pause stops all nine while they remain visible; restoring motion resumes playback. Reviewed desktop and 390 × 844 mobile framing, including uncropped faces in the landscape café/dance mobile tiles and the portrait desktop crops. No horizontal overflow or console errors observed. All eight outer MP4 files passed a full decode check.

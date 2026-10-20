@@ -57,3 +57,17 @@ Shared styles: `assets/css/theme.css` and `hero.css`. Motion: `assets/js/experie
 ## Browser return-state repair
 
 Same-document history and full-page restoration both reconcile hero progress with the real scroll position. Top/bottom boundary frames settle immediately. Expanding photo masks use symmetric CSS variables. Interrupted video play promises remain resumable after intentional pauses.
+
+
+### Centre mosaic film
+
+`assets/video/cinema-moments.mp4` combines four six-second clips with half-second crossfades into a seamless 22-second loop (1280×720, 24fps, H.264, no audio, approximately 6.1MB). Three Pexels clips join the existing user-supplied Mixkit night-out clip. Credits and edit points are recorded in `assets/video/cinema-moments.sources.json` and `credits.html`. The closing crossfade returns into the opening clip; trimming the opening half-second aligns the native loop boundary.
+
+`assets/js/cinema-video.js` owns lazy loading, muted inline looping, manual play/pause, motion/data preferences, offscreen/hidden-tab pausing and page restoration. The poster stays available for blocked or failed video playback. The centre film keeps the existing mosaic dimensions on every screen.
+
+
+### Full video mosaic
+
+All eight outer cells now play separate, seamless H.264 loops, alongside the centre montage. The outer loops add approximately 4.9MB combined. Smaller landscape clips use 640×360; art, café and dance use 960×540 for flexible framing; the shopping portrait uses 384×640. Every clip is muted, uses 24fps, has no audio stream, and has a matching poster fallback. `assets/video/cinema-wall.sources.json` records the stock creators, source links and edit durations.
+
+The centre play/pause button now controls the entire wall. `assets/js/cinema-video.js` uses one playback owner and visibility observer for all nine videos; each visible cell loads its own source lazily and pauses when offscreen. Staggered starting positions keep the loops varied. Page visibility, restored pages, motion preferences and data saving apply to the whole wall.

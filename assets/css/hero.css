@@ -63,3 +63,22 @@ html[dir=ltr] .has-hero-video .hero-core h1{font-size:clamp(36px,6.4vw,52px);lin
 .cinematic-active .memory-heading{z-index:8;text-shadow:0 2px 20px #fff}
 /* Reserve enough room for the invitation in standard laptop-height sticky frames. */
 .cinematic-active .has-hero-video{grid-template-rows:minmax(160px,1fr) auto auto;row-gap:18px;padding-block:28px 18px}
+
+/* Centre-tile film stays inside the same grid cell as its poster. */
+.memory-scene .cinema-video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity .3s;pointer-events:none}
+.memory-scene .cinema-video.is-ready{opacity:1}
+.cinema-video-toggle{position:absolute;right:14px;bottom:14px;z-index:5;display:grid;place-items:center;width:44px;height:44px;border:1px solid #ffffffd9;border-radius:50%;padding:0;background:#fff5f8e6;color:#a0003b;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 3px 14px #390e2420}
+.cinema-video-toggle:hover{background:#fff}
+.cinema-video-toggle:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.cinema-control-icon{font:17px/1 Arial,sans-serif}
+@media(max-width:800px){.cinema-video-toggle{right:10px;bottom:10px}}
+
+/* Art stays framed on the wide top tile; the shopping portrait keeps its height. */
+.memory-scene .cs-5 :is(.cinema-video,.cinema-poster){object-position:center 25%}
+.memory-scene .cs-6 :is(.cinema-video,.cinema-poster){object-position:center 35%}
+@media(max-width:800px){
+  .memory-scene :is(.ps-one,.ps-two) :is(.cinema-video,.cinema-poster){object-position:center 20%}
+  .memory-scene .cs-6 :is(.cinema-video,.cinema-poster){object-position:center 18%}
+}
+
+@media(min-width:801px){.memory-scene .ps-one :is(.cinema-video,.cinema-poster){object-position:90% center}.memory-scene .ps-two :is(.cinema-video,.cinema-poster){object-position:38% center}}

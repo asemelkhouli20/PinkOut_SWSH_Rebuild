@@ -1,0 +1,134 @@
+{
+  "transitionSeconds": 0.5,
+  "audio": false,
+  "clips": [
+    {
+      "tile": "cafe",
+      "file": "assets/video/cinema-cafe.mp4",
+      "poster": "assets/images/cinema-cafe-poster.jpg",
+      "dimensions": [
+        960,
+        540
+      ],
+      "fps": 24,
+      "duration": 7.5,
+      "sourceStart": 1,
+      "creator": "RDNE Stock project",
+      "source": "https://www.pexels.com/video/women-having-coffee-inside-a-cafe-5529080/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 887311
+    },
+    {
+      "tile": "dance",
+      "file": "assets/video/cinema-dance.mp4",
+      "poster": "assets/images/cinema-dance-poster.jpg",
+      "dimensions": [
+        960,
+        540
+      ],
+      "fps": 24,
+      "duration": 7.5,
+      "sourceStart": 1,
+      "creator": "ANTONI SHKRABA production",
+      "source": "https://www.pexels.com/video/women-dancing-in-a-party-8039279/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 982865
+    },
+    {
+      "tile": "beauty",
+      "file": "assets/video/cinema-beauty.mp4",
+      "poster": "assets/images/cinema-beauty-poster.jpg",
+      "dimensions": [
+        640,
+        360
+      ],
+      "fps": 24,
+      "duration": 4.916666666666667,
+      "sourceStart": 0.3,
+      "creator": "SHVETS production",
+      "source": "https://www.pexels.com/video/woman-smelling-a-perfume-7192338/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 251020
+    },
+    {
+      "tile": "night",
+      "file": "assets/video/cinema-night.mp4",
+      "poster": "assets/images/cinema-night-poster.jpg",
+      "dimensions": [
+        640,
+        360
+      ],
+      "fps": 24,
+      "duration": 7.5,
+      "sourceStart": 1,
+      "creator": "User-supplied Mixkit asset",
+      "source": "mixkit-pair-of-female-friends-having-fun-on-a-night-out-42299-hd-ready.mp4",
+      "license": "User-supplied project asset",
+      "bytes": 960461
+    },
+    {
+      "tile": "art",
+      "file": "assets/video/cinema-art.mp4",
+      "poster": "assets/images/cinema-art-poster.jpg",
+      "dimensions": [
+        960,
+        540
+      ],
+      "fps": 24,
+      "duration": 7.375,
+      "sourceStart": 1,
+      "creator": "Pavel Danilyuk",
+      "source": "https://www.pexels.com/video/women-painting-at-a-table-6911856/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 776161
+    },
+    {
+      "tile": "shopping",
+      "file": "assets/video/cinema-shopping.mp4",
+      "poster": "assets/images/cinema-shopping-poster.jpg",
+      "dimensions": [
+        384,
+        640
+      ],
+      "fps": 24,
+      "duration": 7.5,
+      "sourceStart": 2,
+      "creator": "Ron Lach",
+      "source": "https://www.pexels.com/video/women-looking-at-clothes-in-a-store-8308000/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 398796
+    },
+    {
+      "tile": "yoga",
+      "file": "assets/video/cinema-yoga.mp4",
+      "poster": "assets/images/cinema-yoga-poster.jpg",
+      "dimensions": [
+        640,
+        360
+      ],
+      "fps": 24,
+      "duration": 7.5,
+      "sourceStart": 1,
+      "creator": "Yan Krukau",
+      "source": "https://www.pexels.com/video/women-talking-at-a-yoga-class-8480737/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 308095
+    },
+    {
+      "tile": "pottery",
+      "file": "assets/video/cinema-pottery.mp4",
+      "poster": "assets/images/cinema-pottery-poster.jpg",
+      "dimensions": [
+        640,
+        360
+      ],
+      "fps": 24,
+      "duration": 7.5,
+      "sourceStart": 3,
+      "creator": "Mikhail Nilov",
+      "source": "https://www.pexels.com/video/women-making-a-pot-while-looking-at-each-other-9363335/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 319683
+    }
+  ]
+}

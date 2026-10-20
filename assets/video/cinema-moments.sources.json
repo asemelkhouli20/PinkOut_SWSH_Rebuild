@@ -1,0 +1,43 @@
+{
+  "output": "cinema-moments.mp4",
+  "duration": 22,
+  "dimensions": "1280x720",
+  "fps": 24,
+  "audio": false,
+  "transitionSeconds": 0.5,
+  "loop": "Last clip crossfades back into the opening pottery clip; opening half-second removed to match the loop boundary.",
+  "sources": [
+    {
+      "scene": "Creative pottery",
+      "creator": "Mikhail Nilov",
+      "source": "https://www.pexels.com/video/women-making-a-pot-while-looking-at-each-other-9363335/",
+      "license": "https://www.pexels.com/license/",
+      "sourceStart": 2,
+      "seconds": 6
+    },
+    {
+      "scene": "Coffee and conversation",
+      "creator": "RDNE Stock project",
+      "source": "https://www.pexels.com/video/women-having-coffee-inside-a-cafe-5529080/",
+      "license": "https://www.pexels.com/license/",
+      "sourceStart": 1,
+      "seconds": 6
+    },
+    {
+      "scene": "Dancing together",
+      "creator": "ANTONI SHKRABA production",
+      "source": "https://www.pexels.com/video/women-dancing-in-a-party-8039279/",
+      "license": "https://www.pexels.com/license/",
+      "sourceStart": 2,
+      "seconds": 6
+    },
+    {
+      "scene": "Night out",
+      "creator": "User-supplied Mixkit asset",
+      "source": "mixkit-pair-of-female-friends-having-fun-on-a-night-out-42299-hd-ready.mp4",
+      "bundledSource": "assets/video/hero-night-out.mp4",
+      "sourceStart": 1,
+      "seconds": 6
+    }
+  ]
+}
