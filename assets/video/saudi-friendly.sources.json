@@ -164,5 +164,47 @@
         "crop": "404:720:450:0"
       }
     ]
+  },
+  "hero": {
+    "date": "2026-10-21",
+    "files": {
+      "desktop": "assets/video/hero-pinkout-beach.mp4",
+      "mobile": "assets/video/hero-pinkout-beach-mobile.mp4",
+      "poster": "assets/images/hero-pinkout-beach-poster.jpg",
+      "mobilePoster": "assets/images/hero-pinkout-beach-mobile-poster.jpg"
+    },
+    "duration": 20.5,
+    "fps": 29.97,
+    "transitionSeconds": 0.5,
+    "audio": false,
+    "note": "Replaces hero-sa-moments. Picnic clip 8995555 from the same shoot deliberately excluded (stemmed glasses read as wine).",
+    "creator": "PNW Production",
+    "license": "https://www.pexels.com/license/",
+    "clips": [
+      {
+        "source": "https://www.pexels.com/video/women-wearing-hijab-walking-on-the-beach-8995491/",
+        "start": 5,
+        "duration": 5.5,
+        "mobileCrop": "608:1080:656:0"
+      },
+      {
+        "source": "https://www.pexels.com/video/friends-group-portraits-smiles-8995528/",
+        "start": 1,
+        "duration": 5.5,
+        "mobileCrop": "608:1080:760:0"
+      },
+      {
+        "source": "https://www.pexels.com/video/beautiful-women-laughing-8995543/",
+        "start": 2,
+        "duration": 5.5,
+        "mobileCrop": "608:1080:1050:0"
+      },
+      {
+        "source": "https://www.pexels.com/video/muslim-women-walking-in-the-beach-8995499/",
+        "start": 0,
+        "duration": 5.5,
+        "mobileCrop": "608:1080:656:0"
+      }
+    ]
   }
 }
