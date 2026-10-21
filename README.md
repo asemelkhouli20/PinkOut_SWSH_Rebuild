@@ -34,7 +34,7 @@ Configure HTTPS for the actual server/domain before public launch. Keep existing
 
 ### Animated brand typography
 
-The homepage starts with `PINK OUT`, opens the space for `STEP`, hides that word and closes back to `PINK OUT`, then repeats for `HANG`, `TRY`, `WORK`, `CHILL`, `BRANCH`, and `STAND`. Each word has a four-second cycle. Both brand words retain the same text; inserted words use cherry `#c60046` without a box. `THE WORLD IS OUT THERE.` stays below the heading. The panel width stays constant while the words move apart and together. The sequence starts automatically, independently of scroll or click.
+The homepage starts with `PINK OUT`, opens the space for `STEP`, hides that word and closes back to `PINK OUT`, then repeats for `HANG`, `TRY`, `WORK`, `CHILL`, `BRANCH`, and `STAND`. Each word has a 5.2-second cycle. Both brand words retain the same text. A rounded soft-pink background grows from the centre and pushes the brand words apart; the inserted cherry word stays centred with a matching line icon on each side. The word fades gently without sliding or bouncing, and the closing movement brings the brand back together. `THE WORLD IS OUT THERE.` stays below the heading. The panel width stays constant while the words move apart and together. The sequence starts automatically, independently of scroll or click.
 
 `assets/css/brand-typography.css` and `assets/js/hero-series.js` are shared with the standalone `brand-typography.html` iframe document:
 

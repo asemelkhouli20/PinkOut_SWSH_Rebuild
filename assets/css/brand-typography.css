@@ -13,25 +13,46 @@ html[dir] .has-hero-video .hero-core.brand-typography #hero-title {
 #hero-title .out-series-line {
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
+  gap: .1em;
   direction: ltr;
   white-space: nowrap;
-  padding-block: .05em;
+  padding-block: .1em;
 }
+#hero-title .out-series-line > span { flex-shrink: 0; }
 #hero-title .out-series-slot {
-  display: inline-block;
+  position: relative;
+  display: block;
   flex: 0 0 auto;
   width: 0;
+  height: 1.48em;
+  border-radius: .28em;
+  background: #ffd5e5;
   overflow: hidden;
 }
 #hero-title .out-series-word {
-  display: block;
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .24em;
   width: max-content;
-  padding-inline: .2em;
+  padding-inline: .42em;
+  font-size: .78em;
+  line-height: 1;
+  letter-spacing: -.025em;
   color: #c60046;
   opacity: 0;
 }
-#hero-title .out-series-out { margin-inline-start: .2em; }
+#hero-title .out-series-icon {
+  display: block;
+  flex: 0 0 auto;
+  width: .85em;
+  height: .85em;
+}
+#hero-title .out-series-icon:first-child { transform: scaleX(-1); }
 .brand-typography .brand-tagline {
   margin: 12px 0 0;
   color: #7d163f;
