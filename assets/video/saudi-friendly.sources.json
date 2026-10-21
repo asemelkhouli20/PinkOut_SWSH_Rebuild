@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-21",
+  "note": "Audience-appropriate illustrative stock. Only the Kingdom Centre clip is specifically identified as Riyadh; no nationality or filming location is claimed for the models in other clips.",
+  "audio": false,
+  "fps": 24,
+  "transitionSeconds": 0.5,
+  "clips": [
+    {
+      "tile": "cafe",
+      "file": "assets/video/cinema-sa-cafe.mp4",
+      "poster": "assets/images/cinema-sa-cafe-poster.jpg",
+      "dimensions": [
+        960,
+        540
+      ],
+      "duration": 7.5,
+      "sourceStart": 1,
+      "creator": "Pavel Danilyuk",
+      "source": "https://www.pexels.com/video/young-women-having-a-conversation-over-coffee-at-a-cafe-8639270/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 918566
+    },
+    {
+      "tile": "riyadh",
+      "file": "assets/video/cinema-sa-riyadh.mp4",
+      "poster": "assets/images/cinema-sa-riyadh-poster.jpg",
+      "dimensions": [
+        384,
+        640
+      ],
+      "duration": 7.5,
+      "sourceStart": 1,
+      "creator": "Grbr Snts",
+      "source": "https://www.pexels.com/video/kingdom-tower-illuminated-at-night-in-riyadh-34505476/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 326750
+    },
+    {
+      "tile": "coffee",
+      "file": "assets/video/cinema-sa-coffee.mp4",
+      "poster": "assets/images/cinema-sa-coffee-poster.jpg",
+      "dimensions": [
+        640,
+        360
+      ],
+      "duration": 7.5,
+      "sourceStart": 1,
+      "creator": "Ibrahim Bennett",
+      "source": "https://www.pexels.com/video/person-pouring-coffee-into-dallah-6358277/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 461009
+    },
+    {
+      "tile": "walk",
+      "file": "assets/video/cinema-sa-walk.mp4",
+      "poster": "assets/images/cinema-sa-walk-poster.jpg",
+      "dimensions": [
+        640,
+        360
+      ],
+      "duration": 7.5,
+      "sourceStart": 3.5,
+      "creator": "MART PRODUCTION",
+      "source": "https://www.pexels.com/video/a-women-wearing-hijab-while-walking-8120357/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 513901
+    },
+    {
+      "tile": "shopping",
+      "file": "assets/video/cinema-sa-shopping.mp4",
+      "poster": "assets/images/cinema-sa-shopping-poster.jpg",
+      "dimensions": [
+        960,
+        540
+      ],
+      "duration": 7.5,
+      "sourceStart": 0.5,
+      "creator": "Werner Pfennig",
+      "source": "https://www.pexels.com/video/muslim-women-posing-on-camera-6482999/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 351764
+    },
+    {
+      "tile": "create",
+      "file": "assets/video/cinema-sa-create.mp4",
+      "poster": "assets/images/cinema-sa-create-poster.jpg",
+      "dimensions": [
+        960,
+        540
+      ],
+      "duration": 6.5,
+      "sourceStart": 0.25,
+      "creator": "Pavel Danilyuk",
+      "source": "https://www.pexels.com/video/women-working-together-in-a-coffee-shop-8639106/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 1462073
+    },
+    {
+      "tile": "craft",
+      "file": "assets/video/cinema-sa-craft.mp4",
+      "poster": "assets/images/cinema-sa-craft-poster.jpg",
+      "dimensions": [
+        960,
+        270
+      ],
+      "duration": 6.5,
+      "sourceStart": 0.3,
+      "sourceCrop": "960:270:160:440; hands and art materials only",
+      "creator": "Pavel Danilyuk",
+      "source": "https://www.pexels.com/video/women-painting-at-a-table-6911856/",
+      "license": "https://www.pexels.com/license/",
+      "bytes": 349939
+    }
+  ],
+  "montages": {
+    "cinema-sa-moments.mp4": [
+      "cafe",
+      "pottery",
+      "shopping",
+      "create"
+    ],
+    "hero-sa-moments.mp4": [
+      "cafe",
+      "coffee",
+      "pottery",
+      "shopping"
+    ]
+  },
+  "retainedCreativeClips": [
+    "cinema-pottery.mp4"
+  ],
+  "retainedCreativeSource": {
+    "creator": "Mikhail Nilov",
+    "source": "https://www.pexels.com/video/women-making-a-pot-while-looking-at-each-other-9363335/",
+    "license": "https://www.pexels.com/license/"
+  },
+  "mobileHero": {
+    "file": "assets/video/hero-sa-moments-mobile.mp4",
+    "poster": "assets/images/hero-sa-moments-mobile-poster.jpg",
+    "duration": 22,
+    "dimensions": [
+      540,
+      960
+    ],
+    "crops": [
+      {
+        "source": "pinkout-ksa-cafe-source.mp4",
+        "start": 7,
+        "crop": "404:720:90:0"
+      },
+      {
+        "source": "pinkout-ksa-gahwa-source.mp4",
+        "start": 1,
+        "crop": "404:720:436:0"
+      },
+      {
+        "source": "pinkout-pottery-source.mp4",
+        "start": 10,
+        "crop": "404:720:438:0"
+      },
+      {
+        "source": "pinkout-ksa-shopping-source.mp4",
+        "start": 1,
+        "crop": "404:720:450:0"
+      }
+    ]
+  }
+}

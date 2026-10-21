@@ -48,7 +48,7 @@ See QA.md for verification and device-testing limits.
 
 ## Hero background film
 
-User-supplied Mixkit clip: `mixkit-pair-of-female-friends-having-fun-on-a-night-out-42299-hd-ready.mp4`. Bundled as `assets/video/hero-night-out.mp4` with a matching still poster. Illustrative footage, not a past PinkOut event. Muted looping inline playback, a bilingual play/pause control, offscreen/hidden-tab pausing, and poster fallback for reduced motion, data saving or blocked autoplay. No third-party player or external video request.
+Archived earlier version — user-supplied Mixkit clip: `mixkit-pair-of-female-friends-having-fun-on-a-night-out-42299-hd-ready.mp4`. Bundled as `assets/video/hero-night-out.mp4` with a matching still poster. Illustrative footage, not a past PinkOut event. Muted looping inline playback, a bilingual play/pause control, offscreen/hidden-tab pausing, and poster fallback for reduced motion, data saving or blocked autoplay. No third-party player or external video request.
 
 ## Current bright revision
 
@@ -61,7 +61,7 @@ Same-document history and full-page restoration both reconcile hero progress wit
 
 ### Centre mosaic film
 
-`assets/video/cinema-moments.mp4` combines four six-second clips with half-second crossfades into a seamless 22-second loop (1280×720, 24fps, H.264, no audio, approximately 6.1MB). Three Pexels clips join the existing user-supplied Mixkit night-out clip. Credits and edit points are recorded in `assets/video/cinema-moments.sources.json` and `credits.html`. The closing crossfade returns into the opening clip; trimming the opening half-second aligns the native loop boundary.
+Archived earlier version — `assets/video/cinema-moments.mp4` combines four six-second clips with half-second crossfades into a seamless 22-second loop (1280×720, 24fps, H.264, no audio, approximately 6.1MB). Three Pexels clips join the existing user-supplied Mixkit night-out clip. Credits and edit points are recorded in `assets/video/cinema-moments.sources.json` and `credits.html`. The closing crossfade returns into the opening clip; trimming the opening half-second aligns the native loop boundary.
 
 `assets/js/cinema-video.js` owns lazy loading, muted inline looping, manual play/pause, motion/data preferences, offscreen/hidden-tab pausing and page restoration. The poster stays available for blocked or failed video playback. The centre film keeps the existing mosaic dimensions on every screen.
 
@@ -71,3 +71,12 @@ Same-document history and full-page restoration both reconcile hero progress wit
 All eight outer cells now play separate, seamless H.264 loops, alongside the centre montage. The outer loops add approximately 4.9MB combined. Smaller landscape clips use 640×360; art, café and dance use 960×540 for flexible framing; the shopping portrait uses 384×640. Every clip is muted, uses 24fps, has no audio stream, and has a matching poster fallback. `assets/video/cinema-wall.sources.json` records the stock creators, source links and edit durations.
 
 The centre play/pause button now controls the entire wall. `assets/js/cinema-video.js` uses one playback owner and visibility observer for all nine videos; each visible cell loads its own source lazily and pauses when offscreen. Staggered starting positions keep the loops varied. Page visibility, restored pages, motion preferences and data saving apply to the whole wall.
+
+
+### Saudi audience video selection — 21 October 2026
+
+The active hero now uses `hero-sa-moments.mp4`, a 22-second montage of modest café gatherings, Arabic coffee, pottery and shopping. The nine-cell wall uses `cinema-sa-moments.mp4` plus café, Riyadh’s Kingdom Centre, coffee, walking friends, hands-only crafts, shopping, creative collaboration and the retained pottery loop. These replace the earlier nightlife, dance and yoga selections in the hero and mosaic. All footage remains illustrative stock; model nationality and filming location are not implied. The landmark source specifically identifies Riyadh.
+
+Both montages and each outer loop are silent H.264, 24fps, with crossfades at the loop boundary and matching local JPG posters. Responsive framing keeps people and the tower arch visible. Existing lazy loading, shared wall pause, offscreen pausing and reduced-motion fallbacks remain in use. Current source credits and edit information are in `assets/video/saudi-friendly.sources.json` and `credits.html`; older source manifests describe archived revisions.
+
+The phone hero has its own 540×960 edit, with scene-specific crops and a matching poster. Video sources switch at 800px, including live viewport changes; desktop keeps the full landscape montage.

@@ -8,6 +8,16 @@
   if (!api || !video || !button) return;
   let inView = true, pageActive = true, requested = null, attached = false, pending = false, frame = 0, attempt = 0, blocked = false;
   video.muted = true; video.defaultMuted = true;
+  const mobileFrame = matchMedia('(max-width:800px)');
+  const desktopPoster = video.poster;
+  function updatePoster() { video.poster = mobileFrame.matches ? video.dataset.mobilePoster || desktopPoster : desktopPoster; }
+  mobileFrame.addEventListener('change', () => {
+    updatePoster();
+    if (!attached) return;
+    ++attempt; pending = false; blocked = false;
+    video.pause(); video.classList.remove('is-ready'); video.load(); sync();
+  });
+  updatePoster();
   const connection = navigator.connection;
   function wantsPlayback() {
     const permitted = requested === true || (requested !== false && !api.motionPaused && !connection?.saveData);

@@ -83,3 +83,12 @@ Replaced the eight surrounding photo cells and photo-stack controls with eight i
 One bilingual centre control now pauses or resumes the entire wall. Every tile loads only when visible, plays muted inline, and pauses outside the viewport or while the page is hidden. The global motion setting applies to all nine.
 
 Local browser checks: no sources attached to the nine videos before the desktop scene is revealed; all nine play without media errors in the visible scene; all nine pause/resume together; scrolling back to the hero pauses the full wall; mobile motion pause stops all nine while they remain visible; restoring motion resumes playback. Reviewed desktop and 390 × 844 mobile framing, including uncropped faces in the landscape café/dance mobile tiles and the portrait desktop crops. No horizontal overflow or console errors observed. All eight outer MP4 files passed a full decode check.
+
+
+## Saudi audience footage — 21 October 2026
+
+Replaced the active hero and eight mosaic selections with modest café gatherings, shopping friends, walking, creative collaboration, hands-only crafts, Arabic coffee and the Kingdom Centre in Riyadh. Retained the hands-on pottery loop. New centre and hero montages run 22 seconds, with silent 24fps H.264 playback and half-second crossfades including the loop boundary. Credits and crop/edit information are in `assets/video/saudi-friendly.sources.json`. All people footage is illustrative stock; no model nationality or filming location is implied.
+
+A separate 540×960 portrait hero uses scene-specific crops. Its source and poster switch at 800px, including live viewport changes. Verified landscape → portrait → landscape in the local browser, with the correct source and active playback each time.
+
+Browser review at 1280×720 and 390×844 confirmed all nine mosaic cells play muted without media errors, shared pause/resume works, and the layouts have no horizontal overflow. The covered desktop hero pauses behind the wall. Reviewed the mobile tower arch and people framing and saved desktop/phone previews. No console errors observed. All ten new MP4s passed a full decode check; the active media paths exist and the updated hero controller passes JavaScript syntax validation. These checks use the local browser, not physical-device Safari testing.
