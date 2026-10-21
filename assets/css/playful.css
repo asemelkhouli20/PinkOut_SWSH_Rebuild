@@ -65,7 +65,7 @@ body[data-page="home"] .mobile-menu{top:68px;right:0}
   align-self:end;
   width:min(780px,100%);
   max-width:780px;
-  padding:clamp(28px,3vw,42px) clamp(20px,4vw,56px);
+  padding:clamp(16px,1.5vw,22px) clamp(20px,4vw,56px);
   border:1px solid #ffffffd9;
   border-radius:32px;
   background:linear-gradient(145deg,#fffafcf7,#fff3f8ed);
@@ -80,11 +80,11 @@ body[data-page="home"] .mobile-menu{top:68px;right:0}
 .has-hero-video .hero-video-toggle{border-color:#ffffffc9;background:#fff8f2e6;box-shadow:0 4px 18px #57102f14}
 @media(max-width:800px){
   .has-hero-video:has(.invitation-copy--title-only){grid-template-rows:minmax(220px,1fr) auto;padding:88px 20px 88px}
-  .has-hero-video .hero-core.invitation-copy--title-only{padding:30px 22px;border-radius:26px}
+  .has-hero-video .hero-core.invitation-copy--title-only{padding:16px 22px;border-radius:26px}
 }
 @media(max-width:374px){
   .has-hero-video:has(.invitation-copy--title-only){padding-inline:14px}
-  .has-hero-video .hero-core.invitation-copy--title-only{padding:26px 16px;border-radius:22px}
+  .has-hero-video .hero-core.invitation-copy--title-only{padding:14px 16px;border-radius:22px}
 }
 @media(max-height:600px) and (min-width:801px){
   .has-hero-video:has(.invitation-copy--title-only){min-height:600px;padding-bottom:80px}
