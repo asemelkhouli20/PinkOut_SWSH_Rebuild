@@ -55,3 +55,9 @@ body[data-page="home"] .mobile-menu{top:68px;right:0}
 @media(max-width:600px){.news.section-shell{padding-inline:16px}.news .news-grid{grid-template-columns:minmax(0,1fr);gap:22px;margin-top:32px}.news .news-card-content{padding:20px}.news .news-card h3{font-size:23px}.news .news-description{font-size:14px}.news .news-card-footer{padding-top:20px}.has-hero-video .hero-core.invitation-copy{width:100%;padding:18px 16px 20px}.has-hero-video .hero-core.invitation-copy .announcement{font-size:10px;gap:4px 8px}.has-hero-video .hero-core.invitation-copy .hero-actions{margin-top:15px}}
 .motion-paused .news .news-card:hover{translate:none}.motion-paused .news .news-card:hover img{scale:1}
 @media(prefers-reduced-motion:reduce){.news .news-card:hover{translate:none}.news .news-card:hover img{scale:1}}
+
+/* Title-only hero invitation, aligned with the lower edge of the film. */
+.has-hero-video:has(.invitation-copy--title-only){padding-bottom:22px}
+.has-hero-video .hero-core.invitation-copy--title-only{align-self:end;padding-block:16px}
+.has-hero-video .invitation-copy--title-only #hero-title{margin:0}
+@media(max-width:800px){.has-hero-video:has(.invitation-copy--title-only){padding-bottom:78px}}

@@ -13,7 +13,7 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const style = document.createElement('style');
   style.textContent = `
-    #hero-title .out-series-line{display:flex;justify-content:center;align-items:baseline;gap:.22em;direction:ltr;font-family:Arial,sans-serif;font-weight:900;font-size:clamp(22px,5.4vw,66px);line-height:1.17;letter-spacing:-.04em;white-space:nowrap}
+    #hero-title .out-series-line{display:flex;justify-content:center;align-items:baseline;gap:.22em;direction:ltr;font-family:Arial,sans-serif;font-weight:900;font-size:inherit;line-height:1.17;letter-spacing:-.04em;white-space:nowrap}
     #hero-title .out-series-word{display:inline-block;color:#c60046}
   `;
   document.head.append(style);
@@ -23,8 +23,6 @@
   const first = title.querySelector('[data-copy="heroFirst"]');
   const second = title.querySelector('[data-copy="heroSecond"]');
   if (!first || !second) { style.remove(); delete title.dataset.outSeriesReady; return; }
-  const originalHeight = title.getBoundingClientRect().height;
-  if (originalHeight) title.style.minHeight = originalHeight + 'px';
   first.removeAttribute('data-copy');
   second.removeAttribute('data-copy');
   first.classList.add('out-series-line');
