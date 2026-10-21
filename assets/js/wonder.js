@@ -111,9 +111,9 @@
       part('.ms-text').textContent = story.querySelector('.world-story-description').textContent;
       sticker.src = `assets/images/stickers/${stageStickers[index]}.webp`;
       if (!animateIn || api.motionPaused || !sticker.animate) return;
-      const spring = 'cubic-bezier(.3,1.4,.5,1)';
-      sticker.animate([{ transform: 'scale(.2) rotate(-50deg)', opacity: 0 }, { transform: 'scale(1.12) rotate(8deg)', opacity: 1, offset: .6 }, { transform: 'none', opacity: 1 }], { duration: 640, easing: spring });
-      arch.animate([{ transform: 'rotate(-2.5deg) scale(.96)' }, { transform: 'none' }], { duration: 560, easing: spring });
+      const ease = 'cubic-bezier(.2,.8,.2,1)';
+      sticker.animate([{ transform: 'translateY(14px) scale(.8)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 560, easing: ease });
+      arch.animate([{ transform: 'scale(.97)', opacity: .7 }, { transform: 'none', opacity: 1 }], { duration: 520, easing: ease });
       detail.animate([{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.2,.8,.2,1)' });
       mark.animate([{ opacity: 0, transform: 'translateY(25%)' }, { opacity: .5, transform: 'none' }], { duration: 520, easing: 'ease-out' });
     }
@@ -143,7 +143,11 @@
     ribbons.forEach(fillRibbon);
     updateProgress();
     titles.forEach(splitWords);
-    if (calm()) { ST?.refresh(); return; }
+    if (calm()) {
+      document.querySelector('.visit-track')?.style.setProperty('--visit', '1');
+      document.querySelectorAll('.visit-step').forEach(step => step.classList.add('is-on'));
+      ST?.refresh(); return;
+    }
     const rtl = root.dir === 'rtl';
     context = gsap.context(() => {
       // Portal: a polka-dot world blooms open as the hero hands over to "About".
@@ -153,26 +157,26 @@
       titles.forEach(title => {
         const words = title.querySelectorAll('.word-in');
         if (revealed.has(title)) return;
-        gsap.fromTo(words, { yPercent: 70, rotation: rtl ? -5 : 5, autoAlpha: 0 }, {
-          yPercent: 0, rotation: 0, autoAlpha: 1, duration: .85, stagger: .07, ease: 'back.out(1.7)', clearProps: 'transform,opacity,visibility',
+        gsap.fromTo(words, { yPercent: 55, autoAlpha: 0 }, {
+          yPercent: 0, autoAlpha: 1, duration: .9, stagger: .06, ease: 'power3.out', clearProps: 'transform,opacity,visibility',
           scrollTrigger: { trigger: title, start: 'top 88%', once: true, onEnter: () => revealed.add(title) }
         });
       });
 
-      // Stickers pop in, then drift at their own speed while scrolling.
+      // Stickers settle in softly, then drift at their own speed while scrolling.
       document.querySelectorAll('.sticker').forEach((sticker, i) => {
-        const host = sticker.closest('section') || sticker.parentElement;
+        const host = sticker.closest('section,footer') || sticker.parentElement;
         const speed = (.5 + (i * .37) % 1.1) * (innerWidth <= 800 ? 24 : 46);
         gsap.fromTo(sticker, { y: speed }, { y: -speed, ease: 'none',
           scrollTrigger: { trigger: host, start: 'top bottom', end: 'bottom top', scrub: 1 } });
-        gsap.fromTo(sticker.querySelector('img'), { scale: 0, rotation: i % 2 ? 40 : -40 }, {
-          scale: 1, rotation: 0, duration: .9, delay: (i % 4) * .08, ease: 'back.out(2.2)',
+        gsap.fromTo(sticker.querySelector('img'), { scale: .6, autoAlpha: 0 }, {
+          scale: 1, autoAlpha: 1, duration: 1, delay: (i % 4) * .08, ease: 'power3.out', clearProps: 'opacity,visibility',
           scrollTrigger: { trigger: sticker, start: 'top 95%', once: true } });
       });
 
-      // About cards land like stickers on paper.
-      gsap.fromTo('.about-point', { y: 70, scale: .9, rotation: i => [-5, 4, -3][i % 3], autoAlpha: 0 }, {
-        y: 0, scale: 1, rotation: 0, autoAlpha: 1, duration: .9, stagger: .12, ease: 'back.out(1.6)', clearProps: 'transform,opacity,visibility',
+      // About cards rise in sequence.
+      gsap.fromTo('.about-point', { y: 56, autoAlpha: 0 }, {
+        y: 0, autoAlpha: 1, duration: .9, stagger: .12, ease: 'power3.out', clearProps: 'transform,opacity,visibility',
         scrollTrigger: { trigger: '.about-points', start: 'top 88%', once: true } });
 
       // Catalog rows slide in from the reading side.
@@ -180,8 +184,50 @@
         { x: rtl ? 48 : -48, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: .7, stagger: .08, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }) });
 
       // The polaroid straightens as it arrives.
-      gsap.fromTo('.polaroid', { rotation: -11, y: 80 }, { rotation: -3, y: 0, ease: 'none',
+      gsap.fromTo('.polaroid', { rotation: -9, y: 70 }, { rotation: -3, y: 0, ease: 'none',
         scrollTrigger: { trigger: '.event-photo', start: 'top bottom', end: 'center 55%', scrub: 1 } });
+
+      // Visit journey: the path draws with the scroll and each stop lights up as it is reached.
+      const track = document.querySelector('.visit-track');
+      if (track) {
+        const steps = Array.from(track.querySelectorAll('.visit-step'));
+        ST.create({ trigger: track, start: 'top 72%', end: 'bottom 62%', scrub: .6,
+          onUpdate: self => {
+            track.style.setProperty('--visit', self.progress.toFixed(4));
+            steps.forEach((step, i) => step.classList.toggle('is-on', self.progress >= i / (steps.length - 1) - .02));
+          } });
+        gsap.fromTo(steps, { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .9, stagger: .1, ease: 'power3.out', clearProps: 'transform,opacity,visibility',
+          scrollTrigger: { trigger: track, start: 'top 85%', once: true } });
+      }
+
+      // Themed days: the room rises in as you arrive, and its motifs drift at different depths while scrolling.
+      const room = document.querySelector('.theme-room');
+      if (room) {
+        gsap.fromTo(room, { y: 60, scale: .97 }, { y: 0, scale: 1, ease: 'none',
+          scrollTrigger: { trigger: room, start: 'top bottom', end: 'top 45%', scrub: .8 } });
+        // Parallax moves the inner icon, so it never fights the CSS pop-in scale on the .motif wrapper.
+        gsap.utils.toArray(room.querySelectorAll('.scene-motifs')).forEach(layer => {
+          gsap.fromTo(layer.querySelectorAll('.motif svg'), { y: i => 40 + (i % 3) * 30 }, { y: i => -(40 + (i % 3) * 30), ease: 'none',
+            scrollTrigger: { trigger: room, start: 'top bottom', end: 'bottom top', scrub: 1 } });
+        });
+      }
+
+      // App phone and its stickers drift at different depths as the card passes.
+      if (document.querySelector('.app-card')) {
+        const opts = { ease: 'none', scrollTrigger: { trigger: '.app-card', start: 'top bottom', end: 'bottom top', scrub: 1 } };
+        gsap.fromTo('.app-phone', { y: 70 }, { y: -40, ...opts });
+        gsap.fromTo('.app-sticker-1', { y: 120 }, { y: -90, ...opts });
+        gsap.fromTo('.app-sticker-2', { y: -30 }, { y: 70, ...opts });
+      }
+
+      // Partner chips arrive one after another.
+      gsap.fromTo('.partners-chips li', { y: 22, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .6, stagger: .06, ease: 'power3.out', clearProps: 'transform,opacity,visibility',
+        scrollTrigger: { trigger: '.partners-chips', start: 'top 90%', once: true } });
+
+      // Footer: the giant wordmark gathers together as you reach the end of the page.
+      const mark = document.querySelector('.po-wordmark');
+      if (mark) gsap.fromTo(mark, { '--wm-track': '.3em', opacity: .06 }, { '--wm-track': '-.05em', opacity: .17, ease: 'none',
+        scrollTrigger: { trigger: mark, start: 'top bottom', end: 'bottom bottom', scrub: .6 } });
 
       // Ribbons run on their own and answer the scroll: faster with speed, reversing with direction.
       ribbons.forEach((ribbon, i) => {

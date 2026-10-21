@@ -6,10 +6,6 @@
 .text-link{display:inline-flex;align-items:center;font-size:14px;font-weight:500}
 .text-link:hover{color:var(--accent)}
 
-/* A soft band behind the floating header once the page scrolls, so content never collides with it. */
-body[data-page="home"] .site-header::before{content:'';position:absolute;inset:-12px -16px -10px;z-index:-1;background:#fff5f8e8;border-bottom:1px solid #b3235a1a;opacity:0;transition:opacity .25s;pointer-events:none}
-@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){body[data-page="home"] .site-header::before{background:#fff5f8c7;backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%)}}
-body[data-page="home"].is-scrolled .site-header::before{opacity:1}
 
 /* Hero: one plain line that says what PinkOut is. */
 .has-hero-video .brand-typography .hero-intro{position:relative;z-index:1;margin:10px 0 0;font:500 15px/1.6 var(--font);letter-spacing:0;color:#fff;text-shadow:0 1px 8px #210d2866}
@@ -91,7 +87,6 @@ body:not([data-page=home]) .footer-top p{font-size:16px}
 }
 
 @media(max-width:800px){
-  body[data-page="home"] .site-header::before{inset:-8px -8px -8px}
   .has-hero-video .brand-typography .hero-intro{font-size:14px;margin-top:8px}
   .section-intro{font-size:16px}
   .about{padding-top:80px}

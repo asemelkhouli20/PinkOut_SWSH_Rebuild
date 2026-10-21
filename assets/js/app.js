@@ -37,6 +37,7 @@
   function applyLanguage() {
     root.lang = language; root.dir = language === 'ar' ? 'rtl' : 'ltr';
     document.querySelectorAll('[data-copy]').forEach(el => { el.textContent = t(el.dataset.copy); });
+    document.querySelectorAll('[data-copy-label]').forEach(el => el.setAttribute('aria-label', t(el.dataset.copyLabel)));
     const page = document.body.dataset.page;
     const titleKey = page === 'home' ? 'Document title' : ({ event: 'pageEventTitle', privacy: 'pagePrivacyTitle', '404': 'page404Title', credits: 'pageCreditsTitle' }[page] || 'Document title');
     document.title = t(titleKey);
@@ -81,7 +82,8 @@
     altByName.pottery = language === 'ar' ? 'امرأتان تعملان على تشكيل الطين في استوديو إبداعي' : 'Two women shaping clay together in a creative studio';
     altByName['creative-table'] = language === 'ar' ? 'امرأتان ترسمان على أوعية في ورشة إبداعية' : 'Two women painting ceramic bowls in a creative workshop';
     altByName['creative-laugh'] = language === 'ar' ? 'نساء يعرضن لوحاتهن في ورشة إبداعية' : 'Women sharing their paintings in a creative workshop';
-    document.querySelectorAll('img[src$=".webp"]').forEach(img => {
+    document.querySelectorAll('img[data-alt]').forEach(img => { img.alt = t(img.dataset.alt); });
+    document.querySelectorAll('img[src$=".webp"]:not([data-alt])').forEach(img => {
       const name = img.getAttribute('src').split('/').pop().replace(/-(480|900)\.webp$|\.webp$/g, '');
       if (altByName[name]) img.alt = altByName[name];
     });
@@ -94,13 +96,7 @@
     applyLanguage();
   }));
   window.addEventListener('popstate', () => { const p = new URLSearchParams(location.search).get('lang'); if (p === 'ar' || p === 'en') { language = p; applyLanguage(); } });
-  const menuButton = document.querySelector('.menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  function closeMenu(restore = false) { if (!menu || !menuButton) return; menu.hidden = true; menuButton.setAttribute('aria-expanded', 'false'); if (restore) menuButton.focus(); }
-  menuButton?.addEventListener('click', () => { const open = menuButton.getAttribute('aria-expanded') !== 'true'; menuButton.setAttribute('aria-expanded', String(open)); menu.hidden = !open; });
-  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => closeMenu()));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(menu && !menu.hidden); });
-  document.addEventListener('click', e => { if (menu && !menu.hidden && !e.target.closest('.site-header')) closeMenu(); });
+  // The header menus and the phone menu sheet live in nav.js.
   // Visible world stories support optional local interest saving.
   function updateSavedLabel() {
     const selected = getInterests();
@@ -157,8 +153,6 @@
       document.dispatchEvent(new CustomEvent('pinkout:stack', { detail: { stack, front: planes.lastElementChild } }));
     });
   });
-  const narrow = matchMedia('(max-width: 800px)');
-  narrow.addEventListener('change', () => { if (!narrow.matches) closeMenu(); });
   const dialog = document.getElementById('interest-dialog');
   const form = document.getElementById('interest-form');
   const review = document.getElementById('request-review');
@@ -173,6 +167,7 @@
     document.getElementById('save-review').hidden = false; document.getElementById('edit-request').hidden = false;
     form.hidden = false; review.hidden = true; resetErrors();
     const interests = getInterests(); form.querySelectorAll('[name=interests]').forEach(input => input.checked = interests.includes(Number(input.value)));
+    const role = form.querySelector(`[name=role][value="${button?.dataset.role || 'visitor'}"]`); if (role) role.checked = true;
     dialog.showModal(); document.body.classList.add('dialog-open'); document.getElementById('interest-title').focus();
   }
   document.querySelectorAll('[data-open-interest]').forEach(button => button.addEventListener('click', () => openInterest(button)));
@@ -188,7 +183,8 @@
   function renderReviewDetails() {
     const dl = document.querySelector('.review-details'); dl.replaceChildren();
     const chosen = Array.from(form.querySelectorAll('[name=interests]:checked')).map(input => t(`world${input.value}Label`));
-    [[t('formName'), nameInput.value.trim()], [t('formEmail'), emailInput.value.trim()], [t('formInterests'), chosen.join(' · ')]].forEach(([label, value], index) => {
+    const role = form.querySelector('[name=role]:checked');
+    [[t('formName'), nameInput.value.trim()], [t('formEmail'), emailInput.value.trim()], [t('formRole'), role ? t(role.nextElementSibling.dataset.copy) : ''], [t('formInterests'), chosen.join(' · ')]].forEach(([label, value], index) => {
       if (!value) return;
       const dt = document.createElement('dt'); dt.textContent = label;
       const dd = document.createElement('dd'); dd.textContent = value;
@@ -206,7 +202,7 @@
       reviewReady = true; renderReviewDetails(); form.hidden = true; review.hidden = false;
       document.getElementById('review-title').focus(); return;
     }
-    const payload = { firstName: nameInput.value.trim(), email: emailInput.value, interests: Array.from(form.querySelectorAll('[name=interests]:checked')).map(input => Number(input.value)), acknowledgment: true, language, source: document.body.dataset.page };
+    const payload = { firstName: nameInput.value.trim(), email: emailInput.value, interests: Array.from(form.querySelectorAll('[name=interests]:checked')).map(input => Number(input.value)), role: form.querySelector('[name=role]:checked')?.value || 'visitor', acknowledgment: true, language, source: document.body.dataset.page };
     inFlight = true; const submit = document.querySelector('.submit-button'); submit.disabled = true;
     submit.querySelector('[data-copy]').textContent = t('sending');
     controller = new AbortController(); const thisController = controller;
@@ -236,8 +232,8 @@
   });
   document.getElementById('edit-request')?.addEventListener('click', () => { reviewReady = false; review.hidden = true; form.hidden = false; emailInput.focus(); });
   document.querySelectorAll('[data-share]').forEach(button => button.addEventListener('click', async () => {
-    const url = new URL('index.html', location.href); url.searchParams.set('lang', language); url.hash = 'first-event';
-    const data = { title: t('pageEventTitle'), text: t('Event title'), url: url.href };
+    const url = new URL('index.html', location.href); url.searchParams.set('lang', language); url.hash = 'coming-soon';
+    const data = { title: t('Document title'), text: t('Description'), url: url.href };
     if (navigator.share) { try { await navigator.share(data); return; } catch (error) { if (error.name === 'AbortError') return; } }
     if (navigator.clipboard?.writeText) { try { await navigator.clipboard.writeText(url.href); toast(t('copied')); return; } catch (_) { /* Visible copy fallback below. */ } }
     const fallback = document.querySelector('.share-fallback'); const input = document.getElementById('share-url');

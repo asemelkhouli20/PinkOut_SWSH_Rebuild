@@ -13,9 +13,9 @@ html[dir=rtl] .scroll-progress>b{left:auto;right:calc(var(--p,0) * 100%);transla
 .sticker{position:absolute;display:block;width:var(--s,110px);aspect-ratio:1;rotate:var(--r,0deg);pointer-events:auto;cursor:grab;-webkit-user-select:none;user-select:none}
 .sticker-bob{display:block;width:100%;height:100%;animation:sticker-bob var(--d,6s) ease-in-out infinite alternate}
 .sticker img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 14px 16px #7d163f2e);-webkit-user-drag:none}
-.sticker:hover .sticker-bob,.sticker.is-wiggle .sticker-bob{animation:sticker-wiggle .7s cubic-bezier(.3,1.6,.5,1)}
+.sticker:hover .sticker-bob,.sticker.is-wiggle .sticker-bob{animation:sticker-wiggle .8s cubic-bezier(.2,.8,.2,1)}
 @keyframes sticker-bob{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-12px) rotate(4deg)}}
-@keyframes sticker-wiggle{0%{transform:scale(1) rotate(0)}30%{transform:scale(1.18) rotate(-12deg)}60%{transform:scale(.96) rotate(9deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes sticker-wiggle{0%{transform:scale(1) rotate(0)}35%{transform:scale(1.06) rotate(-6deg)}70%{transform:scale(.99) rotate(4deg)}100%{transform:scale(1) rotate(0)}}
 .sticker:nth-child(2n) .sticker-bob{--d:7.5s;animation-delay:-2s}
 .sticker:nth-child(3n) .sticker-bob{--d:5.2s;animation-delay:-4s}
 .sticker-heart{position:fixed;z-index:96;pointer-events:none;font:18px/1 Arial,sans-serif;color:#df004c}
@@ -58,7 +58,7 @@ html[dir=ltr] .ribbon-a .ribbon-run>span{direction:ltr;font-family:Arial,Helveti
 /* First event: a taped polaroid. */
 .polaroid{position:relative;z-index:1;margin:0;padding:14px 14px 0;background:#fff;border-radius:6px;box-shadow:0 26px 60px #7d163f2e;transform:rotate(-3deg)}
 .polaroid::before{content:'';position:absolute;top:-16px;left:50%;width:128px;height:34px;translate:-50% 0;rotate:-3deg;background:#ffc9decc;box-shadow:0 2px 6px #7d163f14}
-.polaroid img{width:100%;aspect-ratio:4/5;border-radius:3px}
+.polaroid img{width:100%;height:auto;aspect-ratio:4/5;border-radius:3px}
 .polaroid figcaption{padding:16px 4px 20px;text-align:center;font:700 16px/1 Arial,Helvetica,sans-serif;letter-spacing:.06em;color:#7d163f}
 .event-photo .sticker{display:block}
 .event-photo .st-camera{--s:132px;--r:12deg;z-index:2;bottom:64px;inset-inline-end:-34px}

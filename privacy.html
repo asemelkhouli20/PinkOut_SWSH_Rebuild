@@ -20,17 +20,153 @@
 
 
 
-<link rel="stylesheet" href="assets/css/fonts.css"><link rel="stylesheet" href="assets/css/theme.css?v=29"><link rel="stylesheet" href="assets/css/polish.css?v=1"><script defer="" src="assets/js/config.js"></script><script defer="" src="assets/js/copy.js?v=47"></script><script defer="" src="assets/js/app.js?v=29"></script></head>
+<link rel="stylesheet" href="assets/css/fonts.css"><link rel="stylesheet" href="assets/css/theme.css?v=29"><link rel="stylesheet" href="assets/css/polish.css?v=5"><link rel="stylesheet" href="assets/css/site.css?v=8"><script defer="" src="assets/js/config.js"></script><script defer="" src="assets/js/copy.js?v=51"></script><script defer="" src="assets/js/app.js?v=48"></script><script defer src="assets/js/nav.js?v=1"></script></head>
 <body data-page="privacy" id="top">
 <a class="skip-link" href="#main">
 <span data-copy="Skip link">انتقلي للمحتوى</span>
 </a>
-<header class="site-header"><div class="header-inner">
-<a aria-label="PinkOut" class="brand" href="index.html"><img alt="PinkOut — Your Own World" height="64" src="assets/images/logo.svg" width="180"></a>
-<nav aria-label="التنقل الرئيسي" class="desktop-nav"><a href="index.html#first-event"><span data-copy="Nav 1">أول لقاء</span></a><a href="index.html#worlds"><span data-copy="Nav 2">تجاربنا</span></a><a href="index.html#about"><span data-copy="Nav 3">عن PinkOut</span></a></nav>
-<p class="header-note" data-copy="Hero eyebrow">مجتمع تجارب وطلعات للنساء</p>
-<div class="header-actions"><button aria-label="Switch to English" class="language-switch" lang="en" type="button">EN</button><button aria-controls="mobile-menu" aria-expanded="false" class="menu-toggle" type="button"><span class="sr-only" data-copy="Menu label">القائمة</span><span aria-hidden="true" class="menu-lines"></span></button></div></div>
-<nav aria-label="القائمة" class="mobile-menu" hidden="" id="mobile-menu"><a href="index.html#first-event"><span data-copy="Nav 1">أول لقاء</span></a><a href="index.html#worlds"><span data-copy="Nav 2">تجاربنا</span></a><a href="index.html#about"><span data-copy="Nav 3">عن PinkOut</span></a></nav></header>
+<header class="po-header">
+            <a class="po-logo" href="index.html#top" aria-label="PinkOut"><img src="assets/images/logo-nav.svg" width="150"
+                        height="62" alt="PinkOut"></a>
+            <nav class="po-nav" aria-label="التنقل الرئيسي">
+                  <span class="po-nav-indicator" aria-hidden="true"></span>
+                  <button type="button" class="po-nav-trigger" data-nav-panel="worlds" aria-expanded="false"
+                        aria-controls="nav-panel-worlds"><span data-copy="navWorlds">الوجهات</span><svg class="po-chevron" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5"/></svg></button>
+                  <button type="button" class="po-nav-trigger" data-nav-panel="experience" aria-expanded="false"
+                        aria-controls="nav-panel-experience"><span data-copy="navExperience">التجربة</span><svg class="po-chevron" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5"/></svg></button>
+                  <button type="button" class="po-nav-trigger" data-nav-panel="about" aria-expanded="false"
+                        aria-controls="nav-panel-about"><span data-copy="navAbout">عن PinkOut</span><svg class="po-chevron" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5"/></svg></button>
+            </nav>
+            <div class="po-actions">
+                  <a class="po-cta" href="index.html#coming-soon"><span class="po-cta-dot" aria-hidden="true"></span><span
+                              data-copy="navCTA">قريباً في الرياض</span></a>
+                  <button class="language-switch" type="button" aria-label="Switch to English">EN</button>
+                  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"><span
+                              class="po-burger" aria-hidden="true"></span><span class="sr-only"
+                              data-copy="Menu label">القائمة</span></button>
+            </div>
+            <div class="po-panel po-panel--worlds" id="nav-panel-worlds" hidden>
+                  <div class="po-panel-intro">
+                        <p class="po-panel-title" data-copy="navWorldsTitle">سبع وجهات.
+عالم واحد.</p>
+                        <p class="po-panel-text" data-copy="navWorldsText">كل وجهة لها جوّها الخاص، ويجمعها عالم PinkOut.</p>
+                        <a class="button" href="index.html#worlds"><span data-copy="navWorldsAll">شوفي كل الوجهات</span><span
+                                    class="arrow" aria-hidden="true">↗</span></a>
+                  </div>
+                  <ul class="po-dest-grid" role="list">
+                        <li><a class="po-dest" href="index.html#world-7"><span class="po-dest-img"><img
+                                                src="assets/images/worlds/passage-480.webp" width="480" height="270" alt=""
+                                                loading="lazy" decoding="async"></span><span class="po-dest-name"
+                                          dir="ltr">Pink Passage</span><span class="po-dest-line" data-copy="dest7Line">مدخل من أقواس وضوء</span></a></li>
+                        <li><a class="po-dest" href="index.html#world-2"><span class="po-dest-img"><img
+                                                src="assets/images/worlds/hub-480.webp" width="480" height="270" alt=""
+                                                loading="lazy" decoding="async"></span><span class="po-dest-name"
+                                          dir="ltr">Rose Hub</span><span class="po-dest-line" data-copy="dest2Line">قهوة ولقاء وتجارب تتغيّر</span></a></li>
+                        <li><a class="po-dest" href="index.html#world-4"><span class="po-dest-img"><img
+                                                src="assets/images/worlds/beauty-480.webp" width="480" height="270" alt=""
+                                                loading="lazy" decoding="async"></span><span class="po-dest-name"
+                                          dir="ltr">Beauty Lab</span><span class="po-dest-line" data-copy="dest4Line">اكتشفي وخصّصي جمالك</span></a></li>
+                        <li><a class="po-dest" href="index.html#world-1"><span class="po-dest-img"><img
+                                                src="assets/images/worlds/make-480.webp" width="480" height="270" alt=""
+                                                loading="lazy" decoding="async"></span><span class="po-dest-name"
+                                          dir="ltr">Make Studio</span><span class="po-dest-line" data-copy="dest1Line">اصنعيها وخذيها معك</span></a></li>
+                        <li><a class="po-dest" href="index.html#world-5"><span class="po-dest-img"><img
+                                                src="assets/images/worlds/market-480.webp" width="480" height="270" alt=""
+                                                loading="lazy" decoding="async"></span><span class="po-dest-name"
+                                          dir="ltr">Pink Market</span><span class="po-dest-line" data-copy="dest5Line">متاجر، حلويات وهدايا</span></a></li>
+                        <li><a class="po-dest" href="index.html#world-3"><span class="po-dest-img"><img
+                                                src="assets/images/worlds/move-480.webp" width="480" height="270" alt=""
+                                                loading="lazy" decoding="async"></span><span class="po-dest-name"
+                                          dir="ltr">Move Studio</span><span class="po-dest-line" data-copy="dest3Line">باليه، يوغا، رقص ولياقة</span></a></li>
+                        <li><a class="po-dest" href="index.html#world-6"><span class="po-dest-img"><img
+                                                src="assets/images/worlds/live-480.webp" width="480" height="270" alt=""
+                                                loading="lazy" decoding="async"></span><span class="po-dest-name"
+                                          dir="ltr">PinkOut Live</span><span class="po-dest-line" data-copy="dest6Line">عروض، حوارات وإطلاقات</span></a></li>
+                  </ul>
+            </div>
+            <div class="po-panel po-panel--experience" id="nav-panel-experience" hidden>
+                  <ul class="po-feature-grid" role="list">
+                        <li><a class="po-feature" href="index.html#visit"><span class="po-feature-art" aria-hidden="true"><img
+                                                src="assets/images/stickers/instant-camera.webp" width="280" height="280" alt=""
+                                                loading="lazy" decoding="async"></span><span class="po-feature-title"
+                                          data-copy="navVisit">زيارتك خطوة بخطوة</span><span class="po-feature-text"
+                                          data-copy="navVisitText">من الوصول إلى الرجعة</span></a></li>
+                        <li><a class="po-feature" href="index.html#mood-picker"><span class="po-feature-art" aria-hidden="true"><img
+                                                src="assets/images/stickers/painting-palette.webp" width="280" height="280" alt=""
+                                                loading="lazy" decoding="async"></span><span class="po-feature-title"
+                                          data-copy="navMood">وش جوّك اليوم؟</span><span class="po-feature-text"
+                                          data-copy="navMoodText">اختاري مزاجك ونرتّب لك جولة</span></a></li>
+                        <li><a class="po-feature" href="index.html#themes"><span class="po-feature-art" aria-hidden="true"><img
+                                                src="assets/images/stickers/boba-tea.webp" width="280" height="280" alt=""
+                                                loading="lazy" decoding="async"></span><span class="po-feature-title"
+                                          data-copy="navThemes">أيام بثيمات</span><span class="po-feature-text"
+                                          data-copy="navThemesText">أفكار تخلّي كل زيارة غير</span></a></li>
+                        <li><a class="po-feature" href="index.html#app"><span class="po-feature-art" aria-hidden="true"><img
+                                                src="assets/images/stickers/headphones.webp" width="280" height="280" alt=""
+                                                loading="lazy" decoding="async"></span><span class="po-feature-title"
+                                          data-copy="navApp">تطبيق PinkOut</span><span class="po-feature-text"
+                                          data-copy="navAppText">كل PinkOut في جيبك · قريباً</span></a></li>
+                  </ul>
+            </div>
+            <div class="po-panel po-panel--about" id="nav-panel-about" hidden>
+                  <ul class="po-rows" role="list">
+                        <li><a class="po-row" href="index.html#about"><span class="po-row-title" data-copy="navAbout">عن PinkOut</span><span
+                                          class="po-row-text" data-copy="navAboutText">الفكرة وراء عالمك الخاص</span><span class="po-row-arrow"
+                                          aria-hidden="true">↗</span></a></li>
+                        <li><a class="po-row" href="index.html#coming-soon"><span class="po-row-title" data-copy="navSoon">قريباً في الرياض</span><span
+                                          class="po-row-text" data-copy="navSoonText">الافتتاح وقائمة PinkOut</span><span class="po-row-arrow"
+                                          aria-hidden="true">↗</span></a></li>
+                        <li><a class="po-row" href="index.html#partners"><span class="po-row-title" data-copy="navPartners">للشركاء والمواهب</span><span
+                                          class="po-row-text" data-copy="navPartnersText">ورش، إطلاقات وأركان مؤقتة</span><span class="po-row-arrow"
+                                          aria-hidden="true">↗</span></a></li>
+                        <li><a class="po-row" href="index.html#questions"><span class="po-row-title" data-copy="navFaq">الأسئلة الشائعة</span><span
+                                          class="po-row-text" data-copy="navFaqText">كل اللي تحتاجين تعرفينه</span><span class="po-row-arrow"
+                                          aria-hidden="true">↗</span></a></li>
+                  </ul>
+                  <a class="po-panel-feature" href="index.html#coming-soon"><img src="assets/images/worlds/hero-480.webp"
+                              width="480" height="272" alt="" loading="lazy" decoding="async"><span
+                              data-copy="navCTA">قريباً في الرياض</span></a>
+            </div>
+      </header>
+      <div class="po-menu" id="mobile-menu" hidden>
+            <div class="po-menu-sheet">
+                  <div class="po-menu-top"><img src="assets/images/logo-nav.svg" width="120" height="50" alt=""><button
+                              type="button" class="po-menu-close" data-menu-close aria-label="إغلاق القائمة"><span
+                                    aria-hidden="true">×</span></button></div>
+                  <nav class="po-menu-nav" aria-label="القائمة">
+                        <a class="po-menu-link" href="index.html#about" style="--i:0"><span class="po-menu-num" aria-hidden="true"
+                                    dir="ltr">01</span><span data-copy="navAbout">عن PinkOut</span></a>
+                        <a class="po-menu-link" href="index.html#worlds" style="--i:1"><span class="po-menu-num" aria-hidden="true"
+                                    dir="ltr">02</span><span data-copy="navWorlds">الوجهات</span></a>
+                        <a class="po-menu-link" href="index.html#visit" style="--i:2"><span class="po-menu-num" aria-hidden="true"
+                                    dir="ltr">03</span><span data-copy="navVisit">زيارتك خطوة بخطوة</span></a>
+                        <a class="po-menu-link" href="index.html#mood-picker" style="--i:3"><span class="po-menu-num" aria-hidden="true"
+                                    dir="ltr">04</span><span data-copy="navMood">وش جوّك اليوم؟</span></a>
+                        <a class="po-menu-link" href="index.html#themes" style="--i:4"><span class="po-menu-num" aria-hidden="true"
+                                    dir="ltr">05</span><span data-copy="navThemes">أيام بثيمات</span></a>
+                        <a class="po-menu-link" href="index.html#coming-soon" style="--i:5"><span class="po-menu-num" aria-hidden="true"
+                                    dir="ltr">06</span><span data-copy="navSoon">قريباً في الرياض</span></a>
+                        <a class="po-menu-link" href="index.html#app" style="--i:6"><span class="po-menu-num" aria-hidden="true"
+                                    dir="ltr">07</span><span data-copy="navApp">تطبيق PinkOut</span></a>
+                        <a class="po-menu-link" href="index.html#partners" style="--i:7"><span class="po-menu-num" aria-hidden="true"
+                                    dir="ltr">08</span><span data-copy="navPartners">للشركاء والمواهب</span></a>
+                        <a class="po-menu-link" href="index.html#questions" style="--i:8"><span class="po-menu-num" aria-hidden="true"
+                                    dir="ltr">09</span><span data-copy="navFaq">الأسئلة الشائعة</span></a>
+                  </nav>
+                  <div class="po-menu-chips"><a class="po-menu-chip" href="index.html#world-7"><img src="assets/images/worlds/passage-480.webp" width="480"
+                                    height="270" alt="" loading="lazy" decoding="async"><span dir="ltr">Pink Passage</span></a><a class="po-menu-chip" href="index.html#world-2"><img src="assets/images/worlds/hub-480.webp" width="480"
+                                    height="270" alt="" loading="lazy" decoding="async"><span dir="ltr">Rose Hub</span></a><a class="po-menu-chip" href="index.html#world-4"><img src="assets/images/worlds/beauty-480.webp" width="480"
+                                    height="270" alt="" loading="lazy" decoding="async"><span dir="ltr">Beauty Lab</span></a><a class="po-menu-chip" href="index.html#world-1"><img src="assets/images/worlds/make-480.webp" width="480"
+                                    height="270" alt="" loading="lazy" decoding="async"><span dir="ltr">Make Studio</span></a><a class="po-menu-chip" href="index.html#world-5"><img src="assets/images/worlds/market-480.webp" width="480"
+                                    height="270" alt="" loading="lazy" decoding="async"><span dir="ltr">Pink Market</span></a><a class="po-menu-chip" href="index.html#world-3"><img src="assets/images/worlds/move-480.webp" width="480"
+                                    height="270" alt="" loading="lazy" decoding="async"><span dir="ltr">Move Studio</span></a><a class="po-menu-chip" href="index.html#world-6"><img src="assets/images/worlds/live-480.webp" width="480"
+                                    height="270" alt="" loading="lazy" decoding="async"><span dir="ltr">PinkOut Live</span></a></div>
+                  <div class="po-menu-foot"><a class="button" href="index.html#coming-soon"><span
+                                    data-copy="navCTA">قريباً في الرياض</span><span class="arrow" aria-hidden="true">↗</span></a><button
+                              class="language-switch" type="button" aria-label="Switch to English">EN</button><button
+                              class="motion-toggle" type="button">إيقاف الحركة</button></div>
+            </div>
+      </div>
 <noscript>
 <p class="noscript">تقدرين تتصفحين المحتوى. بعض خيارات العرض ونموذج الاهتمام تحتاج JavaScript.</p>
 </noscript>
@@ -62,97 +198,158 @@
 </button>
 </div>
 </main>
-<footer class="site-footer"><div class="footer-top"><a class="brand" href="index.html"><img alt="PinkOut" height="100" src="assets/images/logo-cherry.svg" width="280"></a><p data-copy="Footer statement">طلعة اليوم، حكاية بكرة.</p></div><div class="footer-bottom"><span dir="ltr">© 2026 PinkOut</span><a href="privacy.html"><span data-copy="Privacy link">الخصوصية</span></a><a href="credits.html"><span data-copy="photoCredits">عن الصور</span></a><button class="motion-toggle" type="button"><span data-copy="Motion toggle">إيقاف الحركة</span></button><a href="#top"><span data-copy="Back to top">للأعلى</span> ↑</a></div></footer>
+<footer class="po-footer">
+            <div class="po-footer-card">
+                  <div class="sticker-field" aria-hidden="true"><span class="sticker st-1"><span class="sticker-bob"><img
+                                          src="assets/images/stickers/matcha.webp" width="280" height="280" alt="" loading="lazy"
+                                          decoding="async"></span></span><span class="sticker st-2"><span class="sticker-bob"><img
+                                          src="assets/images/stickers/lipstick.webp" width="280" height="280" alt="" loading="lazy"
+                                          decoding="async"></span></span><span class="sticker st-3"><span class="sticker-bob"><img
+                                          src="assets/images/stickers/roller-skate.webp" width="280" height="280" alt="" loading="lazy"
+                                          decoding="async"></span></span></div>
+                  <div class="po-footer-cta">
+                        <h2 class="po-footer-big" data-copy="footerBig">عالمك الخاص،
+قريباً في الرياض.</h2>
+                        <p data-copy="footerBigText">انضمي لقائمة PinkOut، وكوني أول من يعرف.</p>
+                        <button type="button" class="button po-footer-button" data-open-interest=""><span
+                                    data-copy="soonCTA">استعرضي نموذج القائمة</span><span class="arrow" aria-hidden="true">↗</span></button>
+                  </div>
+                  <div class="po-footer-grid">
+                        <div class="po-footer-brand"><img src="assets/images/logo-light.svg" width="190" height="75"
+                                    alt="PinkOut" loading="lazy">
+                              <p data-copy="footerStatement">مكان تصنعين فيه، تلتقين فيه، وترجعين له.</p>
+                        </div>
+                        <div class="po-footer-col">
+                              <h3 data-copy="footerExplore">استكشفي</h3>
+                              <ul role="list"><li><a href="index.html#about"><span data-copy="navAbout">عن PinkOut</span></a></li><li><a href="index.html#worlds"><span data-copy="navWorlds">الوجهات</span></a></li><li><a href="index.html#visit"><span data-copy="navVisit">زيارتك خطوة بخطوة</span></a></li><li><a href="index.html#themes"><span data-copy="navThemes">أيام بثيمات</span></a></li></ul>
+                        </div>
+                        <div class="po-footer-col">
+                              <h3 data-copy="footerPinkOut">PinkOut</h3>
+                              <ul role="list"><li><a href="index.html#coming-soon"><span data-copy="navSoon">قريباً في الرياض</span></a></li><li><a href="index.html#app"><span data-copy="navApp">تطبيق PinkOut</span></a></li><li><a href="index.html#partners"><span data-copy="navPartners">للشركاء والمواهب</span></a></li><li><a href="index.html#questions"><span data-copy="navFaq">الأسئلة الشائعة</span></a></li></ul>
+                        </div>
+                        <div class="po-footer-col">
+                              <h3 data-copy="footerDetails">التفاصيل</h3>
+                              <ul role="list"><li><a href="privacy.html"><span data-copy="Privacy link">الخصوصية</span></a></li><li><a href="credits.html"><span data-copy="photoCredits">عن الصور</span></a></li></ul>
+                        </div>
+                  </div>
+                  <p class="po-wordmark" aria-hidden="true" dir="ltr"><span>PINK</span><span>OUT</span></p>
+                  <div class="po-footer-bottom"><span dir="ltr">© 2026 PinkOut</span>
+                        <p data-copy="imageLabel">الصور والتصاميم تعبيرية وتصوّرية، وليست من فعاليات منعقدة.</p><button type="button"
+                              class="motion-toggle">إيقاف الحركة</button><a href="#top"><span
+                                    data-copy="Back to top">للأعلى</span> ↑</a>
+                  </div>
+            </div>
+      </footer>
 <div aria-live="polite" class="toast" id="toast" role="status">
 </div>
 <dialog aria-labelledby="interest-title" id="interest-dialog">
-<div class="dialog-shell">
-<button aria-label="إغلاق" class="dialog-close icon-button" type="button">×</button>
-<span class="eyebrow" dir="ltr">PINKOUT / THE BEGINNING</span>
-<h2 data-copy="formTitle" id="interest-title" tabindex="-1">كوني قريبة من البداية.</h2>
-<form id="interest-form" novalidate="">
-<p class="form-notice" data-copy="formNotice">التسجيل لم يُفتح بعد. يمكنك مراجعة نموذج الاهتمام، لكن لن تُرسل بياناتك الآن.</p>
-<div class="field">
-<label for="first-name">
-<span data-copy="formName">اسمك الأول (اختياري)</span>
-</label>
-<input autocomplete="given-name" id="first-name" maxlength="80" name="firstName">
-</div>
-<div class="field">
-<label for="email">
-<span data-copy="formEmail">بريدك الإلكتروني</span>
-</label>
-<input aria-describedby="email-error" autocomplete="email" dir="ltr" id="email" inputmode="email" maxlength="254" name="email" required="" type="email">
-<span aria-live="polite" class="field-error" id="email-error">
-</span>
-</div>
-<fieldset>
-<legend>
-<span data-copy="formInterests">أي جو يحمّسك؟ (اختياري)</span>
-</legend>
-<div class="interest-options">
-<label class="interest-option">
-<input name="interests" type="checkbox" value="1">
-<span data-copy="world1Label">نصنع بأيدينا</span>
-</label>
-<label class="interest-option">
-<input name="interests" type="checkbox" value="2">
-<span data-copy="world2Label">نروق على قهوة</span>
-</label>
-<label class="interest-option">
-<input name="interests" type="checkbox" value="3">
-<span data-copy="world3Label">نغيّر الجو بالحركة</span>
-</label>
-<label class="interest-option">
-<input name="interests" type="checkbox" value="4">
-<span data-copy="world4Label">نجرّب حواسّنا</span>
-</label>
-<label class="interest-option">
-<input name="interests" type="checkbox" value="5">
-<span data-copy="world5Label">نلقى أشياء حلوة</span>
-</label>
-<label class="interest-option">
-<input name="interests" type="checkbox" value="6">
-<span data-copy="world6Label">نعيش اللحظة</span>
-</label>
-<label class="interest-option">
-<input name="interests" type="checkbox" value="7">
-<span data-copy="world7Label">ندخل عالم ثاني</span>
-</label>
-</div>
-</fieldset>
-<label class="acknowledgment">
-<input aria-describedby="consent-error" id="acknowledgment" name="acknowledgment" required="" type="checkbox">
-<span data-copy="formConsent">أفهم أن الاهتمام لا يعني حجز مكان، واطلعت على الخصوصية.</span>
-</label>
-<span aria-live="polite" class="field-error" id="consent-error">
-</span>
-<a class="privacy-form-link" href="privacy.html" rel="noopener" target="_blank">
-<span data-copy="Privacy link">الخصوصية</span> ↗</a>
-<p aria-live="polite" id="form-status" role="status">
-</p>
-<button class="button submit-button" type="submit">
-<span data-copy="reviewButton">راجعي طلبك</span>
-<span aria-hidden="true" class="arrow">↗</span>
-</button>
-</form>
-<section aria-labelledby="review-title" hidden="" id="request-review">
-<h3 data-copy="reviewTitle" id="review-title" tabindex="-1">طلبك جاهز للمراجعة.</h3>
-<p class="review-notice" data-copy="reviewNotice">لم يُرسل الطلب. إرسال الاهتمام يفتح لاحقًا؛ لا يوجد حجز أو تذكرة حتى الآن.</p>
-<dl class="review-details">
-</dl>
-<button class="button" id="save-review" type="button">
-<span data-copy="saveChoices">احفظي اختياراتك على هذا الجهاز</span>
-<span aria-hidden="true" class="arrow">↗</span>
-</button>
-<button class="text-button" id="edit-request" type="button">
-<span data-copy="editRequest">تعديل الطلب</span>
-</button>
-<p id="review-status" role="status">
-</p>
-</section>
-</div>
-</dialog>
+            <div class="dialog-shell">
+                  <button aria-label="إغلاق" class="dialog-close icon-button" type="button">×</button>
+                  <span class="eyebrow" dir="ltr" data-copy="formEyebrow">PINKOUT / COMING SOON</span>
+                  <h2 data-copy="formTitle" id="interest-title" tabindex="-1">قائمة PinkOut</h2>
+                  <form id="interest-form" novalidate="">
+                        <p class="form-notice" data-copy="formNotice">التسجيل يفتح قريباً. تقدرين تعاينين النموذج الآن، لكن بياناتك ما تنرسل.</p>
+                        <fieldset class="role-field">
+                              <legend><span data-copy="formRole">أنا مهتمة كـ</span></legend>
+                              <div class="role-options">
+                                    <label class="role-option">
+                                          <input name="role" type="radio" value="visitor" checked>
+                                          <span data-copy="roleVisitor">زائرة</span>
+                                    </label>
+                                    <label class="role-option">
+                                          <input name="role" type="radio" value="brand">
+                                          <span data-copy="roleBrand">علامة تجارية أو متجر</span>
+                                    </label>
+                                    <label class="role-option">
+                                          <input name="role" type="radio" value="talent">
+                                          <span data-copy="roleTalent">مبدعة، مدرّبة أو فنانة</span>
+                                    </label>
+                              </div>
+                        </fieldset>
+                        <div class="field">
+                              <label for="first-name">
+                                    <span data-copy="formName">اسمك الأول (اختياري)</span>
+                              </label>
+                              <input autocomplete="given-name" id="first-name" maxlength="80" name="firstName">
+                        </div>
+                        <div class="field">
+                              <label for="email">
+                                    <span data-copy="formEmail">بريدك الإلكتروني</span>
+                              </label>
+                              <input aria-describedby="email-error" autocomplete="email" dir="ltr" id="email"
+                                    inputmode="email" maxlength="254" name="email" required="" type="email">
+                              <span aria-live="polite" class="field-error" id="email-error">
+                              </span>
+                        </div>
+                        <fieldset>
+                              <legend>
+                                    <span data-copy="formInterests">أي وجهة تحمّسك؟ (اختياري)</span>
+                              </legend>
+                              <div class="interest-options">
+                                    <label class="interest-option">
+                                          <input name="interests" type="checkbox" value="1">
+                                          <span data-copy="world1Label">نصنع بأيدينا</span>
+                                    </label>
+                                    <label class="interest-option">
+                                          <input name="interests" type="checkbox" value="2">
+                                          <span data-copy="world2Label">نروق على قهوة</span>
+                                    </label>
+                                    <label class="interest-option">
+                                          <input name="interests" type="checkbox" value="3">
+                                          <span data-copy="world3Label">نغيّر الجو بالحركة</span>
+                                    </label>
+                                    <label class="interest-option">
+                                          <input name="interests" type="checkbox" value="4">
+                                          <span data-copy="world4Label">نجرّب حواسّنا</span>
+                                    </label>
+                                    <label class="interest-option">
+                                          <input name="interests" type="checkbox" value="5">
+                                          <span data-copy="world5Label">نلقى أشياء حلوة</span>
+                                    </label>
+                                    <label class="interest-option">
+                                          <input name="interests" type="checkbox" value="6">
+                                          <span data-copy="world6Label">نعيش اللحظة</span>
+                                    </label>
+                                    <label class="interest-option">
+                                          <input name="interests" type="checkbox" value="7">
+                                          <span data-copy="world7Label">ندخل عالم ثاني</span>
+                                    </label>
+                              </div>
+                        </fieldset>
+                        <label class="acknowledgment">
+                              <input aria-describedby="consent-error" id="acknowledgment" name="acknowledgment"
+                                    required="" type="checkbox">
+                              <span data-copy="formConsent">أفهم إن التسجيل ما يعني حجز مكان، واطلعت على الخصوصية.</span>
+                        </label>
+                        <span aria-live="polite" class="field-error" id="consent-error">
+                        </span>
+                        <a class="privacy-form-link" href="privacy.html" rel="noopener" target="_blank">
+                              <span data-copy="Privacy link">الخصوصية</span> ↗</a>
+                        <p aria-live="polite" id="form-status" role="status">
+                        </p>
+                        <button class="button submit-button" type="submit">
+                              <span data-copy="reviewButton">راجعي طلبك</span>
+                              <span aria-hidden="true" class="arrow">↗</span>
+                        </button>
+                  </form>
+                  <section aria-labelledby="review-title" hidden="" id="request-review">
+                        <h3 data-copy="reviewTitle" id="review-title" tabindex="-1">طلبك جاهز للمراجعة.</h3>
+                        <p class="review-notice" data-copy="reviewNotice">لم يُرسل الطلب. إرسال الاهتمام يفتح لاحقًا؛ لا
+                              يوجد حجز أو تذكرة حتى الآن.</p>
+                        <dl class="review-details">
+                        </dl>
+                        <button class="button" id="save-review" type="button">
+                              <span data-copy="saveChoices">احفظي اختياراتك على هذا الجهاز</span>
+                              <span aria-hidden="true" class="arrow">↗</span>
+                        </button>
+                        <button class="text-button" id="edit-request" type="button">
+                              <span data-copy="editRequest">تعديل الطلب</span>
+                        </button>
+                        <p id="review-status" role="status">
+                        </p>
+                  </section>
+            </div>
+      </dialog>
 
 
 </body></html>

@@ -54,14 +54,14 @@
   records.forEach(record => {
     const {video} = record;
     video.muted = true; video.defaultMuted = true;
-    video.addEventListener('playing', () => {
-      if (!record.offsetSet) {
-        record.offsetSet = true;
-        const offset = Number(video.dataset.start || 0);
-        if (Number.isFinite(video.duration) && offset > 0) video.currentTime = Math.min(offset, Math.max(0, video.duration - .25));
-      }
-      video.classList.add('is-ready'); label();
+    // Stagger the loops once, as soon as the length is known, so the tiles never pulse in sync.
+    video.addEventListener('loadedmetadata', () => {
+      if (record.offsetSet) return;
+      record.offsetSet = true;
+      const offset = Number(video.dataset.start || 0);
+      if (Number.isFinite(video.duration) && offset > 0) video.currentTime = offset % video.duration;
     });
+    video.addEventListener('playing', () => { video.classList.add('is-ready'); label(); });
     video.addEventListener('pause', label);
     video.addEventListener('error', () => { record.pending = false; record.failed = true; video.classList.remove('is-ready'); label(); });
   });

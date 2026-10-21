@@ -1,0 +1,154 @@
+/* PinkOut themed days: one room that transforms into each theme's world.
+   Each theme sets its palette on .theme-room[data-theme]; scenes, motifs and tabs inherit it. */
+
+.themes{position:relative;padding-top:130px}
+.themes-head{max-width:760px;margin:0 auto;text-align:center}
+.tm-sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ---------- Palettes ---------- */
+.theme-room{--ink:#fff;--soft:#f3d9ff;--accent:#ff5fd2;--on-accent:#2a0f5c;--motif:#7cf7ff;--motif2:#ff5fd2;--tab:#ffffff24;--tab-line:#ffffff40;--frame:#fff}
+.theme-room[data-theme=movie]{--ink:#fff6e3;--soft:#f1d9b8;--accent:#ffcd57;--on-accent:#2a0b10;--motif:#ffcd57;--motif2:#ff8a8a;--tab:#ffffff1c;--tab-line:#ffffff33;--frame:#fff6e3}
+.theme-room[data-theme=henna]{--ink:#4e1d0a;--soft:#6e3017;--accent:#b4441a;--on-accent:#fff;--motif:#c0612f;--motif2:#8f6a2f;--tab:#ffffffa6;--tab-line:#b4441a33;--frame:#fff}
+.theme-room[data-theme=princess]{--ink:#5e1340;--soft:#7d3658;--accent:#9b2c74;--on-accent:#fff;--motif:#d4a437;--motif2:#c79bff;--tab:#ffffffb3;--tab-line:#9b2c7433;--frame:#fff}
+.theme-room[data-theme=pajama]{--ink:#1f2b63;--soft:#34437f;--accent:#ff6fa6;--on-accent:#1f2b63;--motif:#7f9cff;--motif2:#ffd166;--tab:#ffffffb3;--tab-line:#1f2b6333;--frame:#fff}
+.theme-room[data-theme=japan]{--ink:#8e0f24;--soft:#7a2a3a;--accent:#c8243b;--on-accent:#fff;--motif:#f48fb1;--motif2:#c8243b;--tab:#ffffffbf;--tab-line:#c8243b33;--frame:#fff}
+.theme-room[data-theme=camping]{--ink:#fff4e0;--soft:#e9dcc2;--accent:#ff9b4a;--on-accent:#0f2a20;--motif:#ffd28a;--motif2:#8fd19e;--tab:#ffffff1c;--tab-line:#ffffff33;--frame:#fff4e0}
+.theme-room[data-theme=horror]{--ink:#f5edff;--soft:#d9c8f2;--accent:#ff8a3d;--on-accent:#150b22;--motif:#b6ff5c;--motif2:#ff8a3d;--tab:#ffffff1c;--tab-line:#ffffff33;--frame:#f5edff}
+
+/* Backgrounds crossfade: one layer per theme, colour plus its own pattern. */
+.room-bg[data-bg=kpop]{background:radial-gradient(#ffffff26 1.5px,transparent 2px) 0 0/26px 26px,linear-gradient(135deg,#2a0f5c,#6a1b9a 55%,#b0175a)}
+.room-bg[data-bg=movie]{background:repeating-linear-gradient(90deg,#00000038 0 22px,transparent 22px 44px),radial-gradient(ellipse at 50% 0,#7a1426,#260a12 70%)}
+.room-bg[data-bg=henna]{background:radial-gradient(#b4441a26 2px,transparent 2.5px) 0 0/24px 24px,radial-gradient(circle at 80% 20%,#fbeedb,#efd8b8)}
+.room-bg[data-bg=princess]{background:radial-gradient(#ffffffd9 1.6px,transparent 2px) 0 0/22px 22px,linear-gradient(135deg,#ffe1f1,#efd9ff)}
+.room-bg[data-bg=pajama]{background:repeating-linear-gradient(90deg,#ffffffa6 0 16px,transparent 16px 44px),#d7e3ff}
+.room-bg[data-bg=japan]{background:radial-gradient(circle at 0 100%,transparent 9px,#f6c3cf 10px 11px,transparent 12px) 0 0/28px 14px,#fff1f4}
+.room-bg[data-bg=camping]{background:radial-gradient(#fff6 1px,transparent 1.6px) 0 0/34px 34px,radial-gradient(#fff3 1px,transparent 1.6px) 17px 17px/34px 34px,linear-gradient(#0d241b,#23472f)}
+.room-bg[data-bg=horror]{background:radial-gradient(#b6ff5c1f 1.5px,transparent 2px) 0 0/24px 24px,radial-gradient(ellipse at 50% 0,#3b1d5e,#140a21 72%)}
+
+/* ---------- Room ---------- */
+.theme-room{position:relative;isolation:isolate;contain:paint;max-width:1360px;margin:54px auto 0;padding:clamp(26px,4vw,56px) clamp(20px,4vw,56px) clamp(22px,3vw,34px);border-radius:36px;overflow:hidden;color:var(--ink);transition:color .5s ease}
+.room-bgs{position:absolute;inset:0;z-index:-1}
+.room-bg{position:absolute;inset:0;opacity:0;transition:opacity .7s ease}
+.theme-room[data-theme=kpop] [data-bg=kpop],.theme-room[data-theme=movie] [data-bg=movie],.theme-room[data-theme=henna] [data-bg=henna],
+.theme-room[data-theme=princess] [data-bg=princess],.theme-room[data-theme=pajama] [data-bg=pajama],.theme-room[data-theme=japan] [data-bg=japan],
+.theme-room[data-theme=camping] [data-bg=camping],.theme-room[data-theme=horror] [data-bg=horror]{opacity:1}
+
+.room-stage{position:relative;display:grid;touch-action:pan-y}
+.theme-scene{grid-area:1/1;position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(24px,4vw,64px);min-height:clamp(360px,min(34vw,52svh),480px);padding-block:30px 22px}
+.theme-room.is-live .theme-scene{display:grid;visibility:hidden;pointer-events:none}
+.theme-room.is-live .theme-scene.is-active{visibility:visible;pointer-events:auto}
+
+/* Motifs pop in around the edges, then drift. */
+.scene-motifs{position:absolute;inset:0;z-index:0;pointer-events:none}
+.motif{position:absolute;top:var(--y);inset-inline-start:var(--x);width:var(--s);height:var(--s);margin:calc(var(--s) / -2) 0 0;color:var(--motif);opacity:0;transform:scale(.3) rotate(0deg);transition:opacity .45s ease,transform .7s cubic-bezier(.2,1.4,.4,1);transition-delay:calc(var(--i) * 45ms)}
+html[dir=rtl] .motif{margin:calc(var(--s) / -2) calc(var(--s) / -2) 0 0}
+html[dir=ltr] .motif{margin:calc(var(--s) / -2) 0 0 calc(var(--s) / -2)}
+.motif:nth-child(even){color:var(--motif2)}
+.motif svg{display:block;width:100%;height:100%;filter:drop-shadow(0 4px 10px #0000002a);animation:motif-float 5.5s ease-in-out infinite alternate;animation-delay:calc(var(--i) * -.7s)}
+.theme-scene.is-active .motif,.theme-room:not(.is-live) .motif{opacity:.9;transform:scale(1) rotate(var(--r))}
+@keyframes motif-float{from{translate:0 0}to{translate:0 -10px}}
+
+/* Copy */
+.scene-copy{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:12px;text-align:start}
+.scene-count{margin:0;font:700 13px/1 Arial,Helvetica,sans-serif;letter-spacing:.14em;color:var(--soft)}
+.scene-count b{color:var(--accent)}
+.scene-title{margin:0;font:700 clamp(38px,4.6vw,70px)/1.12 var(--font);letter-spacing:-.02em;color:var(--ink)}
+html[dir=ltr] .scene-title{font-family:Arial,Helvetica,sans-serif;letter-spacing:-.04em;line-height:1}
+.scene-mood{margin:0;padding:8px 16px;border:1.5px solid var(--tab-line);border-radius:999px;background:var(--tab);color:var(--ink);font-size:15px;font-weight:600}
+.scene-text{max-width:460px;margin:0;color:var(--soft);font-size:19px;line-height:1.75}
+.scene-tag{padding:6px 14px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:13px;font-weight:700}
+
+/* Poster */
+.scene-poster{position:relative;z-index:1;justify-self:center;width:min(100%,62svh,600px);margin:0;padding:12px;border-radius:24px;background:var(--frame);box-shadow:0 30px 60px #0000003d;transform:rotate(var(--tilt,-2.5deg));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+html[dir=ltr] .scene-poster{--tilt:2.5deg}
+.scene-poster img{display:block;width:100%;height:auto;aspect-ratio:3/2;border-radius:14px;object-fit:cover}
+.scene-emblem{position:absolute;top:-30px;inset-inline-end:-26px;display:grid;place-items:center;width:clamp(80px,8vw,108px);aspect-ratio:1;border-radius:50%;background:var(--accent);color:var(--on-accent);box-shadow:0 14px 30px #0000003d;transform:rotate(10deg)}
+.scene-emblem svg{width:52%;height:52%}
+
+/* Entrance of a newly chosen scene. */
+.theme-scene.is-entering .scene-copy>*{animation:scene-rise .6s cubic-bezier(.2,.8,.2,1) both}
+.theme-scene.is-entering .scene-copy>:nth-child(2){animation-delay:.05s}
+.theme-scene.is-entering .scene-copy>:nth-child(3){animation-delay:.1s}
+.theme-scene.is-entering .scene-copy>:nth-child(4){animation-delay:.15s}
+.theme-scene.is-entering .scene-copy>:nth-child(5){animation-delay:.2s}
+.theme-scene.is-entering .scene-poster{animation:poster-swap .7s cubic-bezier(.2,.8,.2,1) both}
+.theme-scene.is-entering .scene-emblem{animation:emblem-pop .7s .2s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes scene-rise{from{opacity:0;translate:0 24px}to{opacity:1;translate:0 0}}
+@keyframes poster-swap{from{opacity:0;translate:0 40px;scale:.94}to{opacity:1;translate:0 0;scale:1}}
+@keyframes emblem-pop{from{opacity:0;scale:.3}to{opacity:1;scale:1}}
+
+/* ---------- Ticket tabs ---------- */
+.room-controls{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:clamp(12px,2.4vw,32px);margin-top:6px;padding-top:4px}
+/* Theme track: eight emblems on a line; the line fills with scroll progress through the themes. */
+.room-tabs{position:relative;display:flex;align-items:center;justify-content:space-between;gap:var(--dot-gap,clamp(10px,2.4vw,36px));padding:8px 0}
+.room-tabs::before,.room-tabs::after{content:'';position:absolute;top:50%;left:calc(var(--dot,52px) / 2);right:calc(var(--dot,52px) / 2);height:4px;margin-top:-2px;border-radius:4px;pointer-events:none}
+.room-tabs::before{background:var(--tab-line)}
+.room-tabs::after{background:var(--accent);transform:scaleX(max(0,var(--track-progress,0)));transform-origin:left;transition:background-color .5s}
+html[dir=rtl] .room-tabs::after{transform-origin:right}
+.room-tab{position:relative;z-index:1;flex:0 0 auto;display:grid;place-items:center;width:var(--dot,52px);height:var(--dot,52px);padding:0;border:2px solid var(--dot-line);border-radius:50%;background:var(--dot-bg);color:var(--ink);box-shadow:0 6px 16px #0000001f;transition:background-color .3s,color .3s,border-color .3s,transform .4s cubic-bezier(.2,1.4,.4,1),box-shadow .3s}
+/* Solid emblem fill per dark theme, so the track line never shows through an icon. */
+.theme-room{--dot-bg:var(--frame);--dot-line:var(--tab-line)}
+.theme-room[data-theme=kpop]{--dot-bg:#4b1a8c;--dot-line:#ffffff4d}
+.theme-room[data-theme=movie]{--dot-bg:#4a1220;--dot-line:#ffffff40}
+.theme-room[data-theme=camping]{--dot-bg:#1d3d2c;--dot-line:#ffffff40}
+.theme-room[data-theme=horror]{--dot-bg:#2c1645;--dot-line:#ffffff40}
+.room-tab-icon{width:46%;height:46%}
+.room-tab:hover{transform:translateY(-3px)}
+.room-tab[aria-selected=true]{border-color:var(--accent);background:var(--accent);color:var(--on-accent);transform:scale(1.18);box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 30%,transparent),0 10px 22px #0000002e}
+/* The name shows in a small bubble on hover or keyboard focus; it stays available to screen readers. */
+.room-tab>span{position:absolute;bottom:calc(100% + 12px);left:50%;padding:6px 12px;border-radius:999px;background:var(--ink);color:var(--frame);font:600 13px/1.2 var(--font);white-space:nowrap;opacity:0;transform:translate(-50%,6px);pointer-events:none;transition:opacity .2s,transform .25s}
+html[dir=ltr] .room-tab>span{font-family:Arial,Helvetica,sans-serif}
+.room-tab>span::after{content:'';position:absolute;top:100%;left:50%;margin-left:-5px;border:5px solid transparent;border-top-color:var(--ink)}
+.room-tab:hover>span,.room-tab:focus-visible>span{opacity:1;transform:translate(-50%,0)}
+.room-tab[aria-selected=true]:hover>span{transform:translate(-50%,-4px) scale(.85)}
+.room-tab:first-child>span{left:0;transform:translate(0,6px)}
+.room-tab:first-child:hover>span,.room-tab:first-child:focus-visible>span{transform:translate(0,0)}
+.room-tab:first-child>span::after{left:calc(var(--dot,52px) / 2)}
+.room-tab:last-child>span{left:auto;right:0;transform:translate(0,6px)}
+.room-tab:last-child:hover>span,.room-tab:last-child:focus-visible>span{transform:translate(0,0)}
+.room-tab:last-child>span::after{left:auto;right:calc(var(--dot,52px) / 2 - 5px);margin-left:0}
+.room-step{flex:0 0 auto;display:grid;place-items:center;width:44px;height:44px;padding:0;border:1.5px solid var(--tab-line);border-radius:50%;background:var(--tab);color:var(--ink);font-size:18px;transition:background-color .2s,transform .3s}
+.room-step:hover{background:var(--accent);color:var(--on-accent)}
+.room-step:disabled{opacity:.35;cursor:default;background:var(--tab);color:var(--ink)}
+html[dir=ltr] .room-step span{display:inline-block;transform:scaleX(-1)}
+
+/* Calm states */
+.motion-paused .motif svg{animation:none}
+.motion-paused .theme-scene.is-entering *{animation:none!important}
+@media(prefers-reduced-motion:reduce){.motif svg,.theme-scene.is-entering *{animation:none!important}.motif,.room-bg,.room-tab{transition:none}}
+
+/* ---------- Tablet and phone ---------- */
+@media(max-width:900px){
+  .theme-scene{grid-template-columns:1fr;gap:26px;min-height:0;padding-block:24px 14px}
+  .scene-poster{order:-1;max-width:560px;width:calc(100% - 24px);margin-inline:auto}
+  .scene-copy{align-items:center;text-align:center}
+  .scene-text{font-size:16px}
+  .motif{transform:scale(.3)}
+  .theme-scene.is-active .motif,.theme-room:not(.is-live) .motif{transform:scale(.7) rotate(var(--r))}
+  /* The copy sits below the poster here, so the bottom-band motifs (4,5,6,9,10) would cross the text. */
+  .motif:is(:nth-child(4),:nth-child(5),:nth-child(6),:nth-child(9),:nth-child(10)){display:none}
+}
+@media(max-width:800px){
+  .themes{padding-top:84px}
+  .theme-room{margin-top:30px;padding:18px 14px 16px;border-radius:26px}
+  .scene-title{font-size:clamp(32px,9vw,44px)}
+  .scene-emblem{top:-18px;inset-inline-end:-10px;width:68px}
+  .scene-mood{font-size:13px;padding:7px 13px}
+  .room-step{display:none}
+  /* Eight emblems fit one row down to 320px wide. */
+  .room-tabs{--dot:clamp(30px,8.4vw,40px);--dot-gap:clamp(4px,1.6vw,10px)}
+  .room-tab[aria-selected=true]{transform:scale(1.14)}
+}
+
+/* ---------- Scroll-driven room ---------- */
+.theme-scroll-shell{position:relative}
+.theme-scroll-shell>.theme-room{position:sticky;top:var(--room-top,84px)}
+/* Short phones: a smaller poster keeps the whole pinned room below the header. */
+@media(max-width:900px) and (max-height:760px){
+  .scene-poster{width:min(calc(100% - 24px),40svh)}
+  .theme-scene{gap:14px;padding-block:14px 6px}
+  .scene-copy{gap:8px}
+  .scene-title{font-size:clamp(28px,8vw,36px)}
+  .scene-text{font-size:15px}
+}
+@media(max-width:900px) and (max-height:600px){.scene-poster{width:min(calc(100% - 24px),34svh)}.scene-mood{padding:5px 11px}}

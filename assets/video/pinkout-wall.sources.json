@@ -1,0 +1,167 @@
+{
+  "date": "2026-10-21",
+  "note": "PinkOut destination clips from Mixkit (free licence). Hands, products, flowers and light; no faces. Illustrative, not PinkOut events.",
+  "license": "https://mixkit.co/license/#videoFree",
+  "audio": false,
+  "fps": 24,
+  "transitionSeconds": 0.5,
+  "clips": [
+    {
+      "tile": "moments",
+      "file": "assets/video/cinema-po-moments.mp4",
+      "poster": "assets/images/cinema-po-moments-poster.jpg",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "duration": 24.0,
+      "segments": [
+        {
+          "title": "A person opens a pink lipstick",
+          "mixkitId": 382,
+          "sourceStart": 2.0,
+          "source": "https://mixkit.co/free-stock-video/a-person-opens-a-pink-lipstick-382/"
+        },
+        {
+          "title": "Several pink lily flowers opening",
+          "mixkitId": 17803,
+          "sourceStart": 14.0,
+          "source": "https://mixkit.co/free-stock-video/several-pink-lily-flowers-opening-17803/"
+        },
+        {
+          "title": "Lights reflecting off of disco ball",
+          "mixkitId": 1357,
+          "sourceStart": 2.0,
+          "source": "https://mixkit.co/free-stock-video/lights-reflecting-off-of-disco-ball-1357/"
+        },
+        {
+          "title": "Retro rectangular 3D tunnel of pink neon lights",
+          "mixkitId": 31523,
+          "sourceStart": 0.0,
+          "source": "https://mixkit.co/free-stock-video/retro-rectangular-3d-tunnel-of-pink-neon-lights-31523/"
+        }
+      ],
+      "bytes": 5193288
+    },
+    {
+      "tile": "rosehub-matcha",
+      "file": "assets/video/cinema-po-rosehub-matcha.mp4",
+      "poster": "assets/images/cinema-po-rosehub-matcha-poster.jpg",
+      "dimensions": [
+        960,
+        540
+      ],
+      "duration": 4.5,
+      "sourceStart": 0.0,
+      "title": "Mixing the cream on a Latte",
+      "source": "https://mixkit.co/free-stock-video/mixing-the-cream-on-a-latte-21882/",
+      "mixkitId": 21882,
+      "bytes": 238671
+    },
+    {
+      "tile": "move-pointe",
+      "file": "assets/video/cinema-po-move-pointe.mp4",
+      "poster": "assets/images/cinema-po-move-pointe-poster.jpg",
+      "dimensions": [
+        960,
+        540
+      ],
+      "duration": 6.0,
+      "sourceStart": 4.0,
+      "title": "Ballerina preparing their shoes",
+      "source": "https://mixkit.co/free-stock-video/ballerina-preparing-their-shoes-20965/",
+      "mixkitId": 20965,
+      "bytes": 437786
+    },
+    {
+      "tile": "make-clay",
+      "file": "assets/video/cinema-po-make-clay.mp4",
+      "poster": "assets/images/cinema-po-make-clay-poster.jpg",
+      "dimensions": [
+        540,
+        960
+      ],
+      "duration": 6.0,
+      "sourceStart": 2.0,
+      "title": "Playing with plasticine, kneading it",
+      "source": "https://mixkit.co/free-stock-video/playing-with-plasticine-kneading-it-47333/",
+      "mixkitId": 47333,
+      "bytes": 461292
+    },
+    {
+      "tile": "beauty-nails",
+      "file": "assets/video/cinema-po-beauty-nails.mp4",
+      "poster": "assets/images/cinema-po-beauty-nails-poster.jpg",
+      "dimensions": [
+        640,
+        360
+      ],
+      "duration": 6.0,
+      "sourceStart": 3.0,
+      "title": "A woman applying red nail polish",
+      "source": "https://mixkit.co/free-stock-video/a-woman-applying-red-nail-polish-7167/",
+      "mixkitId": 7167,
+      "bytes": 206969
+    },
+    {
+      "tile": "market-macarons",
+      "file": "assets/video/cinema-po-market-macarons.mp4",
+      "poster": "assets/images/cinema-po-market-macarons-poster.jpg",
+      "dimensions": [
+        640,
+        360
+      ],
+      "duration": 5.0,
+      "sourceStart": 0.0,
+      "title": "Macaroons on a pink cloth",
+      "source": "https://mixkit.co/free-stock-video/macaroons-on-a-pink-cloth-26589/",
+      "mixkitId": 26589,
+      "bytes": 96727
+    },
+    {
+      "tile": "make-jewelry",
+      "file": "assets/video/cinema-po-make-jewelry.mp4",
+      "poster": "assets/images/cinema-po-make-jewelry-poster.jpg",
+      "dimensions": [
+        960,
+        540
+      ],
+      "duration": 6.0,
+      "sourceStart": 1.0,
+      "title": "Group of craftswomen making handmade jewelry",
+      "source": "https://mixkit.co/free-stock-video/group-of-craftswomen-making-handmade-jewelry-49163/",
+      "mixkitId": 49163,
+      "bytes": 626471
+    },
+    {
+      "tile": "live-dj",
+      "file": "assets/video/cinema-po-live-dj.mp4",
+      "poster": "assets/images/cinema-po-live-dj-poster.jpg",
+      "dimensions": [
+        640,
+        360
+      ],
+      "duration": 6.0,
+      "sourceStart": 1.0,
+      "title": "Hands of a DJ turning knobs on a turntable",
+      "source": "https://mixkit.co/free-stock-video/hands-of-a-dj-turning-knobs-on-a-turntable-42421/",
+      "mixkitId": 42421,
+      "bytes": 302021
+    },
+    {
+      "tile": "rosehub-tea",
+      "file": "assets/video/cinema-po-rosehub-tea.mp4",
+      "poster": "assets/images/cinema-po-rosehub-tea-poster.jpg",
+      "dimensions": [
+        640,
+        360
+      ],
+      "duration": 6.0,
+      "sourceStart": 1.0,
+      "title": "Top view of teapot pouring into china cup",
+      "source": "https://mixkit.co/free-stock-video/top-view-of-teapot-pouring-tea-into-china-cup-13199/",
+      "mixkitId": 13199,
+      "bytes": 85522
+    }
+  ]
+}

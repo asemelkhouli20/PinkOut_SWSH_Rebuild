@@ -96,17 +96,17 @@
     routeLabel.replaceChildren(el('span', '', w().route), el('b', '', w().moods[mood]));
     routeCards.forEach((item, i) => {
       const id = routes[mood][i]; const image = worldImage(id);
-      item.img.src = image.getAttribute('src').replace('-900.', '-480.'); item.img.alt = image.alt;
+      item.img.src = image.getAttribute('src').replace(/-(900|960|1600)\./, '-480.'); item.img.alt = image.alt;
       item.photo.setAttribute('aria-label', `${w().open}: ${worldName(id)}`);
       item.name.textContent = worldName(id); item.link.href = `#world-${id}`; item.link.textContent = `${w().explore} ↗`;
       // Polaroids are dealt onto the table one after another.
-      if (moving) animate(item.card, [{ opacity: 0, transform: `translateY(46px) rotate(${(i - 1) * 14}deg) scale(.82)` }, { opacity: 1, transform: 'none' }], { delay: i * 90, duration: 620, easing: 'cubic-bezier(.3,1.4,.5,1)', fill: 'backwards' });
+      if (moving) animate(item.card, [{ opacity: 0, transform: `translateY(32px) rotate(${(i - 1) * 5}deg)` }, { opacity: 1, transform: 'none' }], { delay: i * 80, duration: 560, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'backwards' });
     });
     renderCollection();
   }
   function selectMood(index) {
     mood = index; renderRoute(true); status.textContent = `${w().updated} ${w().moods[mood]}`;
-    animate(chips[mood].art, [{ transform: 'translateY(0) rotate(0)' }, { transform: 'translateY(-16px) rotate(-14deg) scale(1.12)', offset: .45 }, { transform: 'none' }], { duration: 650 });
+    animate(chips[mood].art, [{ transform: 'translateY(0)' }, { transform: 'translateY(-10px) scale(1.06)', offset: .45 }, { transform: 'none' }], { duration: 560 });
   }
 
   // One native dialog keeps focus, Escape and assistive-technology behavior predictable.
@@ -235,8 +235,8 @@
         const dx = event.clientX - previousPoint.x, dy = event.clientY - previousPoint.y;
         const distance = Math.hypot(dx, dy);
         const now = performance.now();
-        if (distance > 3 && now - lastSpark > 24) {
-          for (let i = 0; i < 3; i++) emitSpark(event.clientX, event.clientY, dx, dy);
+        if (distance > 8 && now - lastSpark > 70) {
+          emitSpark(event.clientX, event.clientY, dx, dy);
           lastSpark = now;
         }
       }

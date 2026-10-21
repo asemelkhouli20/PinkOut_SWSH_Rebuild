@@ -7,20 +7,8 @@
   const stickyFrame = document.querySelector('.hero-sticky-frame');
   if (!api || !hero) return;
   if (gsap && ST) gsap.registerPlugin(ST);
-  const panels = Array.from(document.querySelectorAll('.nav-panel'));
-  let panelOpener;
-  function closePanels(focus = false) {
-    panels.forEach(panel => panel.hidden = true);
-    document.querySelectorAll('[data-nav-panel]').forEach(button => button.setAttribute('aria-expanded', 'false'));
-    if (focus) panelOpener?.focus();
-  }
-  document.querySelectorAll('[data-nav-panel]').forEach(button => button.addEventListener('click', () => {
-    const open = button.getAttribute('aria-expanded') !== 'true'; closePanels();
-    if (open) { panelOpener = button; document.getElementById('nav-panel-' + button.dataset.navPanel).hidden = false; button.setAttribute('aria-expanded', 'true'); }
-  }));
-  document.addEventListener('click', event => { if (!event.target.closest('.site-header')) closePanels(); if (event.target.closest('.nav-panel a')) closePanels(); });
-  document.addEventListener('keydown', event => { if (event.key === 'Escape' && panels.some(panel => !panel.hidden)) closePanels(true); });
-  document.querySelector('.menu-toggle')?.addEventListener('click', () => closePanels());
+  // Header menus belong to nav.js; layout changes ask it to close any open panel.
+  const closePanels = () => window.PinkOutNav?.close();
   const track = document.querySelector('.results-track');
   const previous = document.querySelector('[data-carousel-prev]'), next = document.querySelector('[data-carousel-next]');
   // The results carousel is optional; the homepage may not include it.
@@ -116,7 +104,7 @@
     if (stageRect.top <= stageTop && stageRect.bottom > innerHeight - 1) {
       return { stageProgress: travel ? Math.max(0, Math.min(1, (stageTop - stageRect.top) / travel)) : 0 };
     }
-    for (const element of document.querySelectorAll('main > section,.site-footer')) {
+    for (const element of document.querySelectorAll('main > section,.po-footer')) {
       const rect = element.getBoundingClientRect();
       if (rect.top <= 100 && rect.bottom > 100) return { element, top: rect.top };
     }
@@ -248,8 +236,17 @@
     closePanels(); clearTimeout(resizeTimer); resizeTimer = setTimeout(build, 180);
   });
   // Intrinsic-size changes (FAQ, translated text, downloaded media) update scroll markers.
-  let refreshFrame;
-  const refreshLayout = () => { cancelAnimationFrame(refreshFrame); refreshFrame = requestAnimationFrame(() => { updateCarousel(); layoutStage(); ST?.refresh(); }); };
+  // A full refresh briefly resets the scroll position, which cancels any smooth scroll in progress,
+  // so it only runs when the page height really changed (images reserve their space and usually don't).
+  let refreshFrame, refreshedHeight = 0;
+  const refreshLayout = () => {
+    cancelAnimationFrame(refreshFrame);
+    refreshFrame = requestAnimationFrame(() => {
+      updateCarousel(); layoutStage();
+      const height = document.documentElement.scrollHeight;
+      if (height !== refreshedHeight) { refreshedHeight = height; ST?.refresh(); }
+    });
+  };
   document.querySelectorAll('img').forEach(image => { if (!image.complete) image.addEventListener('load', refreshLayout, { once: true }); });
   document.querySelectorAll('.faq-item').forEach(item => item.addEventListener('toggle', refreshLayout));
   if ('ResizeObserver' in window) {

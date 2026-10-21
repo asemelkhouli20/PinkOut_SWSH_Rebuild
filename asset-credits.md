@@ -22,3 +22,11 @@ User-supplied Mixkit clip: `mixkit-pair-of-female-friends-having-fun-on-a-night-
 ## Stickers (`assets/images/stickers/`)
 
 Twelve 3D sticker illustrations (boba tea, lipstick, makeup compact, nail polish, matcha, pottery vase, headphones, roller skate, shopping tote, instant camera, perfume, painting palette), 280×280 WebP with transparent backgrounds. Reused from the previous PinkOut website (pinkoutsa.com/assets/stickers/), where they were PinkOut project assets.
+
+## PinkOut concept artwork (`assets/images/worlds/`, `themes/`, `app/`)
+
+Destination renders (Pink Passage, Rose Hub, Beauty Lab, Make Studio, Pink Market, Move Studio, PinkOut Live), the floral facade concept, eight themed-day illustrations and the app home-screen mockup come from the PinkOut brand presentation, as published on the previous pinkoutsa.com site. They were re-encoded locally at 480/960/1600px widths. They are concept artwork, not photographs of an operating venue, events or a released app.
+
+## Video wall (`assets/video/cinema-po-*.mp4`)
+
+Nine silent loops from Mixkit (Mixkit Free License), one or more per PinkOut destination: lipstick, lilies, disco light and a pink neon tunnel (centre montage), matcha latte art, pointe shoes, pink clay, pink nail polish, macarons, handmade jewellery, DJ hands and a teapot pour. All are hands, products, flowers or light, with no faces. Titles, Mixkit IDs, source pages and edit points are in `assets/video/pinkout-wall.sources.json`. The earlier `cinema-sa-*` and older wall clips remain in the folder as archived revisions and are no longer referenced.
