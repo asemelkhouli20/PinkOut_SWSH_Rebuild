@@ -1,64 +1,73 @@
-/* Title-only enhancement. Does not control hero media, layout or scroll timelines. */
+/* Autonomous brand typography, shared by the homepage and iframe document. */
 (() => {
   'use strict';
   const title = document.getElementById('hero-title');
-  if (!title || title.dataset.outSeriesReady) return;
+  const slot = title?.querySelector('.out-series-slot');
+  const middle = slot?.querySelector('.out-series-word');
+  if (!middle || title.dataset.outSeriesReady) return;
   title.dataset.outSeriesReady = 'true';
 
-  const words = [
-    ['STEP', '#c60046'], ['HANG', '#6c43aa'], ['TRY', '#167350'],
-    ['WORK', '#b34816'], ['CHILL', '#236d9d'], ['BRANCH', '#657322'],
-    ['STAND', '#a42b76']
-  ];
+  const words = ['STEP', 'HANG', 'TRY', 'WORK', 'CHILL', 'BRANCH', 'STAND'];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const style = document.createElement('style');
-  style.textContent = `
-    #hero-title .out-series-line{display:flex;justify-content:center;align-items:baseline;gap:.22em;direction:ltr;font-family:Arial,sans-serif;font-weight:900;font-size:inherit;line-height:1.17;letter-spacing:-.04em;white-space:nowrap}
-    #hero-title .out-series-word{display:inline-block;color:#c60046}
-  `;
-  document.head.append(style);
-
-  // Preserve the two original heading lines as the entrance animation's targets.
-  // All changing content is nested inside the first target.
-  const first = title.querySelector('[data-copy="heroFirst"]');
-  const second = title.querySelector('[data-copy="heroSecond"]');
-  if (!first || !second) { style.remove(); delete title.dataset.outSeriesReady; return; }
-  first.removeAttribute('data-copy');
-  second.removeAttribute('data-copy');
-  first.classList.add('out-series-line');
-  first.dir = 'ltr';
-  first.setAttribute('aria-hidden', 'true');
-  const pink = document.createElement('span'); pink.textContent = 'PINK';
-  const middle = document.createElement('span'); middle.className = 'out-series-word'; middle.textContent = words[0][0];
-  const out = document.createElement('span'); out.textContent = 'OUT';
-  first.replaceChildren(pink, middle, out);
-  second.textContent = '';
-  second.setAttribute('aria-hidden', 'true');
-  title.setAttribute('aria-label', 'Pink Out — Step Out, Hang Out, Try Out, Work Out, Chill Out, Branch Out, Stand Out');
-
-  let index = 0, timer, animation, inView = true, pageActive = true;
   const hero = title.closest('.has-hero-video');
-  function permitted() {
-    return pageActive && inView && !document.hidden && !reduced.matches &&
-      !window.PinkOut?.motionPaused && !navigator.connection?.saveData && hero?.dataset.covered !== 'true';
+  let index = 0, gapAnimation, wordAnimation, inView = true, pageActive = true;
+  let measuredWidth = 0;
+
+  function staticMode() {
+    return reduced.matches || window.PinkOut?.motionPaused || navigator.connection?.saveData;
+  }
+  function visible() {
+    return pageActive && inView && !document.hidden && hero?.dataset.covered !== 'true';
+  }
+  function reset() {
+    if (gapAnimation) gapAnimation.onfinish = null;
+    gapAnimation?.cancel(); wordAnimation?.cancel();
+    gapAnimation = wordAnimation = null;
+    middle.textContent = '';
+  }
+  function cycle(progress = 0) {
+    if (!slot.animate || staticMode() || !visible()) return;
+    middle.textContent = words[index];
+    // Measure only the inserted word; the two brand words never change.
+    measuredWidth = middle.getBoundingClientRect().width;
+    const width = `${measuredWidth}px`;
+    const timing = { duration: 4000, fill: 'both', easing: 'linear' };
+    gapAnimation = slot.animate([
+      { width: '0px', offset: 0 },
+      { width: '0px', offset: .2, easing: 'cubic-bezier(.4,0,.2,1)' },
+      { width, offset: .36 },
+      { width, offset: .78, easing: 'cubic-bezier(.4,0,.2,1)' },
+      { width: '0px', offset: .94 },
+      { width: '0px', offset: 1 }
+    ], timing);
+    wordAnimation = middle.animate([
+      { opacity: 0, transform: 'translateY(.2em)', offset: 0 },
+      { opacity: 0, transform: 'translateY(.2em)', offset: .32 },
+      { opacity: 1, transform: 'translateY(0)', offset: .44 },
+      { opacity: 1, transform: 'translateY(0)', offset: .66 },
+      { opacity: 0, transform: 'translateY(-.15em)', offset: .78 },
+      { opacity: 0, transform: 'translateY(-.15em)', offset: 1 }
+    ], timing);
+    gapAnimation.currentTime = wordAnimation.currentTime = progress;
+    gapAnimation.onfinish = () => {
+      reset();
+      index = (index + 1) % words.length;
+      cycle();
+    };
   }
   function sync() {
-    clearTimeout(timer);
-    if (!permitted()) { animation?.cancel(); return; }
-    timer = setTimeout(advance, 1200);
+    if (staticMode()) { reset(); return; }
+    if (!visible()) { gapAnimation?.pause(); wordAnimation?.pause(); return; }
+    if (!gapAnimation) cycle();
+    else { gapAnimation.play(); wordAnimation.play(); }
   }
-  function advance() {
-    if (!permitted()) return;
-    index = (index + 1) % words.length;
-    middle.textContent = words[index][0];
-    middle.style.color = words[index][1];
-    animation?.cancel();
-    animation = middle.animate?.([
-      { opacity: 0, transform: 'translateY(.3em)' },
-      { opacity: 1, transform: 'translateY(0)' }
-    ], { duration: 180, easing: 'ease-out' });
-    sync();
-  }
+  // Keep the current phase when responsive typography changes size.
+  if ('ResizeObserver' in window) new ResizeObserver(() => {
+    if (!gapAnimation || Math.abs(middle.getBoundingClientRect().width - measuredWidth) < .5) return;
+    const progress = gapAnimation.currentTime || 0;
+    reset(); cycle(progress);
+  }).observe(title);
+
   ['visibilitychange', 'pinkout:motion', 'pinkout:hero-scene'].forEach(event => document.addEventListener(event, sync));
   reduced.addEventListener('change', sync);
   navigator.connection?.addEventListener?.('change', sync);

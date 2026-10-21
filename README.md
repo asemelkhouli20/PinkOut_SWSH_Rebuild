@@ -32,6 +32,21 @@ Configure HTTPS for the actual server/domain before public launch. Keep existing
 
 ## Behavior
 
+### Animated brand typography
+
+The homepage starts with `PINK OUT`, opens the space for `STEP`, hides that word and closes back to `PINK OUT`, then repeats for `HANG`, `TRY`, `WORK`, `CHILL`, `BRANCH`, and `STAND`. Each word has a four-second cycle. Both brand words retain the same text; inserted words use cherry `#c60046` without a box. `THE WORLD IS OUT THERE.` stays below the heading. The panel width stays constant while the words move apart and together. The sequence starts automatically, independently of scroll or click.
+
+`assets/css/brand-typography.css` and `assets/js/hero-series.js` are shared with the standalone `brand-typography.html` iframe document:
+
+```html
+<iframe src="brand-typography.html"
+        title="PinkOut — Animated Brand Typography"
+        width="600" height="180"
+        style="display:block;width:100%;max-width:600px;border:0"></iframe>
+```
+
+The iframe has a transparent background and uses the same berry/cherry text as the white homepage panel. Serve it from this static package and adjust `src` to its hosted URL when embedding elsewhere. It needs no third-party libraries. The homepage motion toggle, reduced motion and data saving show the closed brand and fixed slogan. Hidden tabs and covered/offscreen heroes suspend the sequence and resume its current phase. The animated words are decorative for screen readers; the heading's accessible name remains `PINK OUT`.
+
 Arabic/English switching; desktop mega-menu and mobile menu; horizontal results navigation; selectable photographic categories; clickable photo stacks; seven permanently visible world descriptions; saved interests stored only on the visitor's device; native interest dialog with validation/review; event sharing fallback; motion control; reduced-motion, low-data and responsive fallbacks.
 
 The interface includes conceptual device screens. They do not announce a released app. Future idea entries are not bookable events. First-event date, venue, programme and prices are not confirmed.

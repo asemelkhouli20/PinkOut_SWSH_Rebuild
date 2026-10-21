@@ -1,0 +1,57 @@
+/* Fixed brand words with a collapsible slot. Shared with the iframe version. */
+.brand-typography {
+  container-type: inline-size;
+  color: #7d163f;
+  text-align: center;
+}
+.brand-typography #hero-title,
+html[dir] .has-hero-video .hero-core.brand-typography #hero-title {
+  margin: 0;
+  font: 900 clamp(19px, 7.8cqi, 49px)/1.2 Arial, Helvetica, sans-serif;
+  letter-spacing: -.04em;
+}
+#hero-title .out-series-line {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  direction: ltr;
+  white-space: nowrap;
+  padding-block: .05em;
+}
+#hero-title .out-series-slot {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 0;
+  overflow: hidden;
+}
+#hero-title .out-series-word {
+  display: block;
+  width: max-content;
+  padding-inline: .2em;
+  color: #c60046;
+  opacity: 0;
+}
+#hero-title .out-series-out { margin-inline-start: .2em; }
+.brand-typography .brand-tagline {
+  margin: 12px 0 0;
+  color: #7d163f;
+  font: 700 clamp(10px, 2.3cqi, 13px)/1.5 Arial, Helvetica, sans-serif;
+  letter-spacing: .14em;
+  direction: ltr;
+}
+.has-hero-video .hero-core.brand-typography { width: min(600px, 100%); }
+
+/* This document can be embedded at any width without external dependencies. */
+.brand-embed {
+  display: grid;
+  align-items: center;
+  min-height: 100svh;
+  margin: 0;
+  background: transparent;
+}
+.brand-embed .brand-typography {
+  box-sizing: border-box;
+  width: min(600px, 100%);
+  margin-inline: auto;
+  padding: 20px 16px;
+}
