@@ -156,7 +156,14 @@
         <ellipse cx="12" cy="24" rx="10" ry="7" transform="rotate(45 24 24)"/>
         <ellipse cx="36" cy="24" rx="10" ry="7" transform="rotate(45 24 24)"/>
       </g>
-      <path class="cursor-motif cursor-motif-sparkle" fill="#b99aff" d="M24 2 30 16 46 24 30 30 24 46 18 30 2 24 18 18Z"/>
+      <g class="cursor-motif cursor-motif-moon">
+        <circle cx="24" cy="24" r="21" fill="#f2edff"/>
+        <g fill="#c9bfdf" stroke="none" opacity=".65">
+          <circle cx="15" cy="12" r="3.5"/><circle cx="35" cy="18" r="2.5"/>
+          <circle cx="12" cy="29" r="2"/><circle cx="30" cy="37" r="3"/>
+          <circle cx="20" cy="39" r="1.5"/>
+        </g>
+      </g>
       <path class="cursor-motif cursor-motif-sun" fill="#ffbf51" d="m24 2 5 8 9-2 1 10 7 6-7 6-1 10-9-2-5 8-5-8-9 2-1-10-7-6 7-6 1-10 9 2Z"/>
     </g>
     <circle cx="24" cy="24" r="9" fill="#fff0a8" stroke="#fff5f8" stroke-width="1.3"/>

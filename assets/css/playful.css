@@ -97,7 +97,7 @@ body[data-page="home"] .mobile-menu{top:68px;right:0}
 .animated-cursor-flower svg{display:block;width:100%;height:100%;overflow:visible}
 .cursor-emblem{transform-origin:24px 24px;animation:cursor-turn 14s linear infinite}
 .cursor-motif{transform-origin:24px 24px;opacity:0;animation:cursor-change 9s ease-in-out infinite}
-.cursor-motif-sparkle{animation-delay:-6s}
+.cursor-motif-moon{animation-delay:-6s}
 .cursor-motif-sun{animation-delay:-3s}
 .animated-cursor:not(.is-visible) :is(.animated-cursor-flower,.cursor-emblem,.cursor-motif){animation-play-state:paused}
 @keyframes cursor-breathe{0%,100%{transform:scale(.92)}50%{transform:scale(1.06)}}
