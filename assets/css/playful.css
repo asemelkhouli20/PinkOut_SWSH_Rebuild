@@ -89,3 +89,25 @@ body[data-page="home"] .mobile-menu{top:68px;right:0}
 @media(max-height:600px) and (min-width:801px){
   .has-hero-video:has(.invitation-copy--title-only){min-height:600px;padding-bottom:80px}
 }
+
+/* A breathing, shape-changing flower loops while visible, with movement sparks. */
+.animated-cursor{position:fixed;left:0;top:0;width:0;height:0;z-index:250;pointer-events:none;opacity:0}
+.animated-cursor.is-visible{opacity:1}
+.animated-cursor-flower{position:absolute;left:-18px;top:-18px;width:36px;height:36px;filter:drop-shadow(0 2px 3px #7d163f30);animation:cursor-breathe 2.4s ease-in-out infinite}
+.animated-cursor-flower svg{display:block;width:100%;height:100%;overflow:visible}
+.cursor-emblem{transform-origin:24px 24px;animation:cursor-turn 14s linear infinite}
+.cursor-motif{transform-origin:24px 24px;opacity:0;animation:cursor-change 9s ease-in-out infinite}
+.cursor-motif-sparkle{animation-delay:-6s}
+.cursor-motif-sun{animation-delay:-3s}
+.animated-cursor:not(.is-visible) :is(.animated-cursor-flower,.cursor-emblem,.cursor-motif){animation-play-state:paused}
+@keyframes cursor-breathe{0%,100%{transform:scale(.92)}50%{transform:scale(1.06)}}
+@keyframes cursor-turn{to{transform:rotate(360deg)}}
+@keyframes cursor-change{0%,24%{opacity:1;transform:scale(1)}33%,91%{opacity:0;transform:scale(.55)}100%{opacity:1;transform:scale(1)}}
+.cursor-spark{position:fixed;z-index:249;pointer-events:none;clip-path:polygon(50% 0,62% 36%,100% 50%,62% 64%,50% 100%,38% 64%,0 50%,38% 36%)}
+@media(hover:hover) and (pointer:fine){
+  .playful-pointer.spark-cursor-active,.playful-pointer.spark-cursor-active :is(a,button,summary){cursor:none}
+}
+.motion-paused :is(.animated-cursor,.cursor-spark){display:none}
+@media(prefers-reduced-motion:reduce),(hover:none),(pointer:coarse){
+  .animated-cursor,.cursor-spark{display:none}
+}

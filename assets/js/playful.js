@@ -140,29 +140,98 @@
   document.addEventListener('pinkout:language', translate);
   document.addEventListener('pinkout:saved-change', renderCollection);
 
-  // A flower cursor and a small contextual label, without an endless animation loop.
+  // A looping illustrated cursor; CSS pauses the loop whenever the cursor is hidden.
   const fine = matchMedia('(hover: hover) and (pointer: fine)');
   const cursor = el('span', 'cursor-hint'); cursor.setAttribute('aria-hidden', 'true'); document.body.append(cursor);
+  const cursorFlower = el('span', 'animated-cursor');
+  cursorFlower.setAttribute('aria-hidden', 'true');
+  const flowerIcon = el('span', 'animated-cursor-flower');
+  flowerIcon.innerHTML = `<svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+    <g class="cursor-emblem" stroke="#fff5f8" stroke-width="1.3" stroke-linejoin="round">
+      <g class="cursor-motif cursor-motif-flower" fill="#f43d83">
+        <ellipse cx="24" cy="12" rx="7" ry="10"/><ellipse cx="24" cy="36" rx="7" ry="10"/>
+        <ellipse cx="12" cy="24" rx="10" ry="7"/><ellipse cx="36" cy="24" rx="10" ry="7"/>
+        <ellipse cx="24" cy="12" rx="7" ry="10" transform="rotate(45 24 24)"/>
+        <ellipse cx="24" cy="36" rx="7" ry="10" transform="rotate(45 24 24)"/>
+        <ellipse cx="12" cy="24" rx="10" ry="7" transform="rotate(45 24 24)"/>
+        <ellipse cx="36" cy="24" rx="10" ry="7" transform="rotate(45 24 24)"/>
+      </g>
+      <path class="cursor-motif cursor-motif-sparkle" fill="#b99aff" d="M24 2 30 16 46 24 30 30 24 46 18 30 2 24 18 18Z"/>
+      <path class="cursor-motif cursor-motif-sun" fill="#ffbf51" d="m24 2 5 8 9-2 1 10 7 6-7 6-1 10-9-2-5 8-5-8-9 2-1-10-7-6 7-6 1-10 9 2Z"/>
+    </g>
+    <circle cx="24" cy="24" r="9" fill="#fff0a8" stroke="#fff5f8" stroke-width="1.3"/>
+    <g fill="#7d163f"><circle cx="21" cy="23" r="1.1"/><circle cx="27" cy="23" r="1.1"/></g>
+    <path d="M21 27q3 3 6 0" stroke="#7d163f" stroke-width="1.2" stroke-linecap="round"/>
+  </svg>`;
+  cursorFlower.append(flowerIcon); document.body.append(cursorFlower);
+  const sparks = new Set();
+  let previousPoint, lastSpark = 0;
+  function clearSparks() {
+    sparks.forEach(animation => animation.cancel());
+    sparks.clear();
+  }
+  function emitSpark(x, y, dx, dy) {
+    if (sparks.size >= 36 || !cursorFlower.animate) return;
+    const spark = el('span', 'cursor-spark'); spark.setAttribute('aria-hidden', 'true');
+    spark.style.left = `${x}px`; spark.style.top = `${y}px`;
+    spark.style.background = ['#df004c', '#ffcf40', '#b58aff', '#54d7b0'][Math.floor(Math.random() * 4)];
+    const size = 5 + Math.random() * 8;
+    spark.style.width = spark.style.height = `${size}px`;
+    document.body.append(spark);
+    const angle = Math.random() * Math.PI * 2, reach = 12 + Math.random() * 30;
+    const endX = Math.cos(angle) * reach - dx * .3;
+    const endY = Math.sin(angle) * reach - dy * .3 + 20;
+    const animation = spark.animate([
+      { transform: 'translate(-50%,-50%) scale(.3)', opacity: 0 },
+      { transform: 'translate(-50%,-50%) scale(1)', opacity: 1, offset: .12 },
+      { transform: `translate(${endX}px,${endY}px) rotate(140deg) scale(0)`, opacity: 0 }
+    ], { duration: 450 + Math.random() * 250, easing: 'ease-out' });
+    sparks.add(animation);
+    animation.onfinish = animation.oncancel = () => { spark.remove(); sparks.delete(animation); };
+  }
   let tiltTarget; let cursorFrame = 0; let lastPointer;
   const interactive = 'a,button,summary';
   const tiltSelector = '.result-card,.feature-tile,.mood-card';
   function resetTilt() { if (tiltTarget) { tiltTarget.style.removeProperty('--play-tilt'); tiltTarget.classList.remove('play-tilting'); tiltTarget = null; } }
-  function clearPointer() { cursor.classList.remove('is-visible'); resetTilt(); cancelAnimationFrame(cursorFrame); cursorFrame = 0; }
+  function clearPointer() {
+    cursor.classList.remove('is-visible'); cursorFlower.classList.remove('is-visible');
+    document.body.classList.remove('spark-cursor-active');
+    previousPoint = null; lastPointer = null; clearSparks();
+    resetTilt(); cancelAnimationFrame(cursorFrame); cursorFrame = 0;
+  }
   function updatePointer() {
     cursorFrame = 0; const event = lastPointer; if (!event || api.motionPaused || !fine.matches) return;
     cursor.style.left = `${Math.min(event.clientX + 20, innerWidth - 100)}px`; cursor.style.top = `${Math.min(event.clientY + 20, innerHeight - 40)}px`;
     const target = event.target.closest(interactive); const inDialog = event.target.closest('dialog');
+    const nativeCursor = inDialog || event.target.closest('input,textarea,select,[contenteditable]:not([contenteditable="false"])');
+    cursorFlower.classList.toggle('is-visible', !nativeCursor);
+    document.body.classList.toggle('spark-cursor-active', !nativeCursor);
+    if (nativeCursor) { previousPoint = null; clearSparks(); }
+    else {
+      cursorFlower.style.transform = `translate3d(${event.clientX}px,${event.clientY}px,0)`;
+      if (previousPoint) {
+        const dx = event.clientX - previousPoint.x, dy = event.clientY - previousPoint.y;
+        const distance = Math.hypot(dx, dy);
+        const now = performance.now();
+        if (distance > 3 && now - lastSpark > 24) {
+          for (let i = 0; i < 3; i++) emitSpark(event.clientX, event.clientY, dx, dy);
+          lastSpark = now;
+        }
+      }
+      previousPoint = { x: event.clientX, y: event.clientY };
+    }
     const hint = target?.matches('.photo-open,.mood-photo') ? w().open : target?.matches('.mood-save,[data-save-interest]') ? (target.getAttribute('aria-pressed') === 'true' ? w().remove : w().save) : target?.matches('a') ? w().hint : '';
     cursor.classList.toggle('is-visible', !!hint && !inDialog); cursor.textContent = hint;
     const card = event.target.closest(tiltSelector);
     if (card !== tiltTarget) resetTilt();
     if (card) { tiltTarget = card; const r = card.getBoundingClientRect(); card.style.setProperty('--play-tilt', `${((event.clientX - r.left) / r.width - .5) * 3}deg`); card.classList.add('play-tilting'); }
   }
-  document.addEventListener('pointermove', event => { if (event.pointerType !== 'mouse' || api.motionPaused || !fine.matches) return; lastPointer = event; if (!cursorFrame) cursorFrame = requestAnimationFrame(updatePointer); }, { passive: true });
+  document.addEventListener('pointermove', event => { if (event.pointerType !== 'mouse' || api.motionPaused || !fine.matches) { clearPointer(); return; } lastPointer = event; if (!cursorFrame) cursorFrame = requestAnimationFrame(updatePointer); }, { passive: true });
   document.documentElement.addEventListener('pointerleave', clearPointer);
   document.addEventListener('keydown', clearPointer); window.addEventListener('blur', clearPointer);
   window.addEventListener('scroll', clearPointer, { passive: true });
   document.addEventListener('visibilitychange', clearPointer);
+  window.addEventListener('pagehide', clearPointer);
   document.addEventListener('click', event => {
     if (api.motionPaused || !event.detail || event.target.closest('dialog') || !event.target.closest('.mood-chip,.mood-surprise,.mood-save,[data-save-interest],[data-stack-next]')) return;
     for (let i = 0; i < 5; i++) {
