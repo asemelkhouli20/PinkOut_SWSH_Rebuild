@@ -18,3 +18,7 @@ The PinkOut wordmark/favicon are existing project brand assets. No SWSH logos, v
 ## Hero background film
 
 User-supplied Mixkit clip: `mixkit-pair-of-female-friends-having-fun-on-a-night-out-42299-hd-ready.mp4`. Bundled as `assets/video/hero-night-out.mp4` with a matching still poster. Illustrative footage, not a past PinkOut event. Muted looping inline playback, a bilingual play/pause control, offscreen/hidden-tab pausing, and poster fallback for reduced motion, data saving or blocked autoplay. No third-party player or external video request.
+
+## Stickers (`assets/images/stickers/`)
+
+Twelve 3D sticker illustrations (boba tea, lipstick, makeup compact, nail polish, matcha, pottery vase, headphones, roller skate, shopping tote, instant camera, perfume, painting palette), 280×280 WebP with transparent backgrounds. Reused from the previous PinkOut website (pinkoutsa.com/assets/stickers/), where they were PinkOut project assets.

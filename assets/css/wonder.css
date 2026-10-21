@@ -1,0 +1,115 @@
+/* PinkOut "new world" layer: stickers, portal, ribbons, polaroid, sparkles and scroll progress.
+   Everything here is decorative; without JavaScript it renders in its settled, still state. */
+
+/* Scroll progress: a pink ribbon with a heart riding its tip. */
+.scroll-progress{position:fixed;top:0;left:0;right:0;z-index:95;height:4px;pointer-events:none}
+.scroll-progress>i{display:block;height:100%;transform:scaleX(var(--p,0));transform-origin:left;background:linear-gradient(90deg,#ff9cc6,#df004c 55%,#b58aff)}
+html[dir=rtl] .scroll-progress>i{transform-origin:right}
+.scroll-progress>b{position:absolute;top:-5px;left:calc(var(--p,0) * 100%);translate:-50% 0;font:12px/1 Arial,sans-serif;color:#df004c;opacity:calc(var(--p,0) * 40)}
+html[dir=rtl] .scroll-progress>b{left:auto;right:calc(var(--p,0) * 100%);translate:50% 0}
+
+/* Stickers */
+.sticker-field{display:block;position:absolute;inset:0;z-index:0;pointer-events:none}
+.sticker{position:absolute;display:block;width:var(--s,110px);aspect-ratio:1;rotate:var(--r,0deg);pointer-events:auto;cursor:grab;-webkit-user-select:none;user-select:none}
+.sticker-bob{display:block;width:100%;height:100%;animation:sticker-bob var(--d,6s) ease-in-out infinite alternate}
+.sticker img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 14px 16px #7d163f2e);-webkit-user-drag:none}
+.sticker:hover .sticker-bob,.sticker.is-wiggle .sticker-bob{animation:sticker-wiggle .7s cubic-bezier(.3,1.6,.5,1)}
+@keyframes sticker-bob{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-12px) rotate(4deg)}}
+@keyframes sticker-wiggle{0%{transform:scale(1) rotate(0)}30%{transform:scale(1.18) rotate(-12deg)}60%{transform:scale(.96) rotate(9deg)}100%{transform:scale(1) rotate(0)}}
+.sticker:nth-child(2n) .sticker-bob{--d:7.5s;animation-delay:-2s}
+.sticker:nth-child(3n) .sticker-bob{--d:5.2s;animation-delay:-4s}
+.sticker-heart{position:fixed;z-index:96;pointer-events:none;font:18px/1 Arial,sans-serif;color:#df004c}
+
+/* About: the portal into the PinkOut world. */
+/* contain:paint keeps tilted entrances (cards, polaroid) from widening the page on phones. */
+.about{position:relative;isolation:isolate;padding-bottom:40px;contain:paint}
+.product-scene{contain:paint}
+.about>:not(.sticker-field):not(.about-portal){position:relative;z-index:1}
+.about-portal{position:absolute;inset:0;z-index:-1;pointer-events:none;background-color:#ffe6f0;background-image:radial-gradient(#ffcfe1 19%,transparent 21%);background-size:30px 30px;clip-path:circle(var(--portal,62%) at 50% 34%)}
+.about .st-1{--s:120px;--r:10deg;top:56px;inset-inline-end:9%}
+.about .st-2{--s:84px;--r:-16deg;top:190px;inset-inline-start:13%}
+.about .st-3{--s:140px;--r:8deg;top:350px;inset-inline-start:4%}
+.about .st-4{--s:128px;--r:-9deg;top:360px;inset-inline-end:4%}
+.about .st-5{--s:84px;--r:-6deg;top:40px;inset-inline-start:27%}
+.about .st-6{--s:96px;--r:14deg;top:104px;inset-inline-end:12%}
+
+/* Ribbons */
+/* contain:paint keeps the rotated ribbons from widening the page on phones (overflow:clip alone does not). */
+.ribbon-band{display:block;position:relative;z-index:6;height:190px;margin-block:-20px;overflow:clip;contain:paint;pointer-events:none}
+.ribbon{position:absolute;left:-10vw;right:-10vw;top:50%;padding:16px 0;direction:ltr;white-space:nowrap;overflow:hidden;box-shadow:0 10px 30px #7d163f1f}
+.ribbon-a{background:#df004c;color:#fff;transform:translateY(-62%) rotate(-4deg)}
+.ribbon-b{background:#ffc9de;color:#7d163f;transform:translateY(-38%) rotate(3deg)}
+.ribbon-run{display:inline-flex;will-change:transform}
+.ribbon-run>span{display:inline-flex;align-items:center;padding-inline:26px;font:700 clamp(18px,2vw,27px)/1.25 var(--font);unicode-bidi:isolate}
+.ribbon-a .ribbon-run>span{direction:rtl}
+html[dir=ltr] .ribbon-a .ribbon-run>span{direction:ltr;font-family:Arial,Helvetica,sans-serif}
+.ribbon-b .ribbon-run>span{font-family:Arial,Helvetica,sans-serif;letter-spacing:.02em;text-transform:uppercase}
+.ribbon-run>span::after{content:'✿';margin-inline-start:52px;font-size:.8em;color:#ffc9de}
+.ribbon-b .ribbon-run>span::after{content:'♡';color:#df004c}
+
+/* Community stickers */
+.community{position:relative;isolation:isolate}
+.community>:not(.sticker-field){position:relative;z-index:1}
+.community .st-1{--s:118px;--r:-10deg;top:60px;inset-inline-end:10%}
+.community .st-2{--s:104px;--r:12deg;top:220px;inset-inline-start:8%}
+.community .st-3{--s:72px;--r:-14deg;top:30px;inset-inline-start:17%}
+.community .st-4{--s:112px;--r:6deg;top:250px;inset-inline-end:5%}
+
+/* First event: a taped polaroid. */
+.polaroid{position:relative;z-index:1;margin:0;padding:14px 14px 0;background:#fff;border-radius:6px;box-shadow:0 26px 60px #7d163f2e;transform:rotate(-3deg)}
+.polaroid::before{content:'';position:absolute;top:-16px;left:50%;width:128px;height:34px;translate:-50% 0;rotate:-3deg;background:#ffc9decc;box-shadow:0 2px 6px #7d163f14}
+.polaroid img{width:100%;aspect-ratio:4/5;border-radius:3px}
+.polaroid figcaption{padding:16px 4px 20px;text-align:center;font:700 16px/1 Arial,Helvetica,sans-serif;letter-spacing:.06em;color:#7d163f}
+.event-photo .sticker{display:block}
+.event-photo .st-camera{--s:132px;--r:12deg;z-index:2;bottom:64px;inset-inline-end:-34px}
+.event-photo .st-tote{--s:96px;--r:-12deg;z-index:2;top:-8px;inset-inline-start:-18px}
+
+/* FAQ stickers peek over the card edge. */
+.faq{position:relative}
+.faq .st-1{--s:122px;--r:-12deg;top:-34px;inset-inline-start:7%;z-index:2}
+.faq .st-2{--s:96px;--r:10deg;top:38%;inset-inline-end:5%;z-index:2}
+
+/* Rising sparkles */
+.sparkles{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;border-radius:inherit}
+.sparkles>i{position:absolute;bottom:-20px;font-style:normal;font-size:var(--z,16px);color:var(--c,#df004c);opacity:0;animation:sparkle-rise var(--t,9s) linear var(--w,0s) infinite}
+@keyframes sparkle-rise{0%{transform:translateY(0) rotate(0) scale(.6);opacity:0}12%{opacity:.85}80%{opacity:.6}100%{transform:translateY(-110vh) rotate(200deg) scale(1);opacity:0}}
+.product-scene>.event-layout,.closing>.closing-copy{position:relative;z-index:1}
+
+/* Title words rise in one by one; JS adds .word spans. Arabic words stay whole. */
+.word{display:inline-block}
+.word-in{display:inline-block;will-change:transform}
+
+/* Calm states */
+.motion-paused .sticker-bob,.motion-paused .sparkles{animation:none}
+.motion-paused .sparkles{display:none}
+@media(prefers-reduced-motion:reduce){.sticker-bob,.sparkles>i{animation:none}.sparkles{display:none}}
+
+@media(max-width:1300px){.about .st-6{display:none}}
+
+@media(max-width:1100px){
+  .about .st-1{--s:96px}.about .st-3{--s:104px;top:300px}.about .st-4{--s:100px;top:320px}
+  .about .st-5{--s:68px;inset-inline-start:22%}.about .st-6{display:none}.about .st-2{--s:70px;top:150px;inset-inline-start:6%}
+  .community .st-1{--s:92px}.community .st-2{--s:84px}.community .st-4{--s:88px;top:300px}
+}
+
+@media(max-width:800px){
+  .about{padding-top:118px}
+  .about .st-1{--s:72px;top:20px;inset-inline-end:5%}
+  .about .st-2{--s:54px;top:34px;inset-inline-start:7%}
+  .about .st-5{--s:50px;top:16px;inset-inline-start:30%}
+  .about .st-3,.about .st-4,.about .st-6{display:none}
+  .about-portal{clip-path:circle(var(--portal,80%) at 50% 24%)}
+  .ribbon-band{height:130px;margin-block:-10px}
+  .ribbon{padding:11px 0}
+  .ribbon-run>span{padding-inline:16px}
+  .ribbon-run>span::after{margin-inline-start:32px}
+  .community{padding-top:110px}
+  .community .st-1{--s:66px;top:18px;inset-inline-end:6%}
+  .community .st-3{--s:48px;top:14px;inset-inline-start:8%}
+  .community .st-2,.community .st-4{display:none}
+  .polaroid img{aspect-ratio:1}
+  .event-photo .st-camera{--s:92px;bottom:56px;inset-inline-end:-8px}
+  .event-photo .st-tote{--s:70px;top:auto;bottom:70px;inset-inline-start:-4px}
+  .faq .st-1{--s:76px;top:-26px;inset-inline-start:5%}
+  .faq .st-2{display:none}
+}

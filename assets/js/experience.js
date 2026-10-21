@@ -23,13 +23,14 @@
   document.querySelector('.menu-toggle')?.addEventListener('click', () => closePanels());
   const track = document.querySelector('.results-track');
   const previous = document.querySelector('[data-carousel-prev]'), next = document.querySelector('[data-carousel-next]');
-  function updateCarousel() { const max = Math.max(0, track.scrollWidth - track.clientWidth); previous.disabled = track.scrollLeft <= 2; next.disabled = track.scrollLeft >= max - 2; }
+  // The results carousel is optional; the homepage may not include it.
+  function updateCarousel() { if (!track) return; const max = Math.max(0, track.scrollWidth - track.clientWidth); previous.disabled = track.scrollLeft <= 2; next.disabled = track.scrollLeft >= max - 2; }
   function moveCarousel(direction) {
     const card = track.querySelector('.result-card'); const amount = (card?.getBoundingClientRect().width || track.clientWidth * .8) + 16;
     if (track.scrollBy) track.scrollBy({ left: direction * amount, behavior: api.motionPaused ? 'instant' : 'smooth' }); else track.scrollLeft += direction * amount;
     updateCarousel();
   }
-  previous.addEventListener('click', () => moveCarousel(-1)); next.addEventListener('click', () => moveCarousel(1)); track.addEventListener('scroll', updateCarousel, { passive: true });
+  if (track) { previous.addEventListener('click', () => moveCarousel(-1)); next.addEventListener('click', () => moveCarousel(1)); track.addEventListener('scroll', updateCarousel, { passive: true }); }
   const stage = document.querySelector('.world-stage');
   const choices = Array.from(document.querySelectorAll('[data-stage-world]'));
   const worldImages = Array.from(document.querySelectorAll('.world-story .world-photo img'));
@@ -83,8 +84,8 @@
     if (index !== stageStep) { stageStep = index; chooseWorld(index, !api.motionPaused); }
   }
   function language() {
-    closePanels(); previous.setAttribute('aria-label', api.t('previous')); next.setAttribute('aria-label', api.t('next'));
-    track.setAttribute('aria-label', api.t('allWorlds'));
+    closePanels();
+    if (track) { previous.setAttribute('aria-label', api.t('previous')); next.setAttribute('aria-label', api.t('next')); track.setAttribute('aria-label', api.t('allWorlds')); }
     document.querySelector('.cinema-a').textContent = api.t('cinemaFirst'); document.querySelector('.cinema-b').textContent = api.t('cinemaSecond');
     chooseWorld(selected, false);
   }
@@ -154,7 +155,7 @@
         entered = true;
         const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
         intro.from(hero.querySelectorAll('.hero-core h1>span'), { y: 20, duration: 1, stagger: .12, clearProps: 'transform' }, .1)
-          .from(hero.querySelectorAll('.announcement,.hero-actions'), { y: 12, duration: .8, stagger: .15, clearProps: 'transform' }, .4);
+          .from(hero.querySelectorAll('.brand-tagline,.hero-intro'), { y: 12, duration: .8, stagger: .15, clearProps: 'transform' }, .4);
       }
       if (fine && !lighter) {
         const previewFrame = stage.querySelector('.stage-preview');
@@ -252,7 +253,7 @@
   document.querySelectorAll('img').forEach(image => { if (!image.complete) image.addEventListener('load', refreshLayout, { once: true }); });
   document.querySelectorAll('.faq-item').forEach(item => item.addEventListener('toggle', refreshLayout));
   if ('ResizeObserver' in window) {
-    const observer = new ResizeObserver(() => { updateCarousel(); layoutStage(); }); observer.observe(track); observer.observe(stage);
+    const observer = new ResizeObserver(() => { updateCarousel(); layoutStage(); }); if (track) observer.observe(track); observer.observe(stage);
   }
   window.addEventListener('pagehide', () => { clearTimeout(resizeTimer); cancelAnimationFrame(languageFrame); cancelAnimationFrame(refreshFrame); cancelAnimationFrame(scrollFrame); cancelAnimationFrame(navigationFrame); ++generation; swap?.progress(1); swap?.kill(); previewTween?.kill(); pageSuspended = true; syncLoops(); });
   window.addEventListener('pageshow', () => { pageSuspended = false; scrollState(); if (ready && !context) build(); else { ST?.refresh(); ST?.update(); if (heroScene) { reconcileHero(); } gsap?.ticker.wake(); syncLoops(); } });

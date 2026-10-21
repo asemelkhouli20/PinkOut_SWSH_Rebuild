@@ -95,3 +95,15 @@ The active hero now uses `hero-pinkout-beach.mp4` (desktop, 1280×720) and `hero
 Both montages and each outer loop are silent H.264, 24fps, with crossfades at the loop boundary and matching local JPG posters. Responsive framing keeps people and the tower arch visible. Existing lazy loading, shared wall pause, offscreen pausing and reduced-motion fallbacks remain in use. Current source credits and edit information are in `assets/video/saudi-friendly.sources.json` and `credits.html`; older source manifests describe archived revisions.
 
 The phone hero has its own 540×960 edit, with scene-specific crops and a matching poster. Video sources switch at 800px, including live viewport changes; desktop keeps the full landscape montage.
+
+### Clarity and polish revision — 21 October 2026
+
+The homepage now reads in one order: hero (with a one-line description) → video wall → about (three principles) → mood stage, mood picker and the seven-experience catalog → first event → FAQ → closing → footer. Sections that repeated the catalog were removed: the results carousel (whose RTL arrows never moved it), feature tiles, conceptual phone screens, the vision panel, story panels and the future-ideas grid. The first-event section follows the catalog, so interests saved there pre-fill the interest form. A soft band appears behind the floating header once the page scrolls, so section text never sits under the logo or buttons.
+
+`assets/css/polish.css` loads last on every page and holds this revision's spacing, type-size and layout rules. `experience.js` treats the carousel as optional. New or changed copy lives in `copy.js` (`heroIntro`, catalog/storage notes, interest-form wording, shorter English save labels); all other new text reuses existing approved entries.
+
+### "New world" scroll layer — 21 October 2026
+
+`assets/css/wonder.css` and `assets/js/wonder.js` add the playful scroll layer, inspired by the previous pinkoutsa.com stickers, Museum of Ice Cream's colour blocks and SWSH's scroll storytelling: a polka-dot portal that blooms open behind "About", twelve 3D stickers that pop in, drift with scroll, bob, and wiggle with hearts when tapped, two crossing ribbons whose speed and direction follow the scroll, whole-word title reveals (Arabic words are never split), a taped polaroid for the first event, rising sparkles, and a pink scroll-progress ribbon.
+
+Without `wonder.css` the decorations stay hidden (`polish.css` hides them by default). `contain: paint` on the about section, the event card and the ribbon band stops tilted entrances from widening the page on phones. Reduced motion, the motion toggle and data saving leave every element visible in its settled state.

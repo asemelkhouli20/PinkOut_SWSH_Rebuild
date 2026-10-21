@@ -22,16 +22,19 @@
       <link rel="stylesheet" href="assets/css/hero.css?v=47">
       <link rel="stylesheet" href="assets/css/playful.css?v=61">
       <link rel="stylesheet" href="assets/css/brand-typography.css?v=58">
+      <link rel="stylesheet" href="assets/css/polish.css?v=3">
+      <link rel="stylesheet" href="assets/css/wonder.css?v=5">
       <script defer="" src="assets/js/config.js"></script>
-      <script defer="" src="assets/js/copy.js?v=46"></script>
+      <script defer="" src="assets/js/copy.js?v=47"></script>
       <script defer="" src="assets/js/app.js?v=46"></script>
       <script defer="" src="assets/js/vendor/gsap.min.js"></script>
       <script defer="" src="assets/js/vendor/ScrollTrigger.min.js"></script>
-      <script defer="" src="assets/js/experience.js?v=46"></script>
+      <script defer="" src="assets/js/experience.js?v=48"></script>
       <script defer="" src="assets/js/hero-video.js?v=46"></script>
       <script defer src="assets/js/cinema-video.js?v=46"></script>
       <script defer src="assets/js/hero-series.js?v=58"></script>
       <script defer="" src="assets/js/playful.js?v=61"></script>
+      <script defer src="assets/js/wonder.js?v=2"></script>
       <link rel="preload" as="image" media="(min-width:801px)" href="assets/images/hero-pinkout-beach-poster.jpg">
       <link rel="preload" as="image" media="(max-width:800px)" href="assets/images/hero-pinkout-beach-mobile-poster.jpg">
 </head>
@@ -92,26 +95,25 @@
                                     decoding="async"><span data-copy="world7Label">ندخل عالم ثاني</span></a></div>
             </div>
             <div class="nav-panel nav-simple" id="nav-panel-community" hidden="">
-                  <p data-copy="communityMenuIntro">للمتعة والتجربة والسوالف اللي تجي بعفوية.</p><a class="button "
-                        href="#your-way"><span data-copy="brandAbout">عن PinkOut</span><span class="arrow"
-                              aria-hidden="true">↗</span></a><a class="button " href="#worlds"><span
+                  <p data-copy="communityMenuIntro">للمتعة والتجربة والسوالف اللي تجي بعفوية.</p><a class="button"
+                        href="#about"><span data-copy="brandAbout">عن PinkOut</span><span class="arrow"
+                              aria-hidden="true">↗</span></a><a class="button" href="#worlds"><span
                               data-copy="allWorlds">كل التجارب</span><span class="arrow" aria-hidden="true">↗</span></a>
             </div>
             <div class="nav-panel nav-simple" id="nav-panel-details" hidden="">
-                  <p data-copy="detailMenuIntro">كل اللي تحتاجين تعرفينه قبل أول لقاء.</p><a class="button "
+                  <p data-copy="detailMenuIntro">كل اللي تحتاجين تعرفينه قبل أول لقاء.</p><a class="button"
                         href="#first-event"><span data-copy="navEvent">أول لقاء</span><span class="arrow"
-                              aria-hidden="true">↗</span></a><a class="button " href="#questions"><span
+                              aria-hidden="true">↗</span></a><a class="button" href="#questions"><span
                               data-copy="faqReplicaTitle">عندك سؤال؟</span><span class="arrow"
                               aria-hidden="true">↗</span></a>
             </div>
-            <nav id="mobile-menu" class="mobile-menu" hidden="" aria-label="القائمة"><a class="button "
-                        href="#first-event"><span data-copy="navEvent">أول لقاء</span><span class="arrow"
-                              aria-hidden="true">↗</span></a><a class="button " href="#worlds"><span
-                              data-copy="navWorlds">التجارب</span><span class="arrow" aria-hidden="true">↗</span></a><a
-                        class="button " href="#your-way"><span data-copy="brandAbout">عن PinkOut</span><span
-                              class="arrow" aria-hidden="true">↗</span></a><a class="button " href="#questions"><span
-                              data-copy="faqReplicaTitle">عندك سؤال؟</span><span class="arrow"
-                              aria-hidden="true">↗</span></a><button class="motion-toggle" type="button">إيقاف
+            <nav id="mobile-menu" class="mobile-menu" hidden="" aria-label="القائمة"><a class="button" href="#about"><span
+                              data-copy="brandAbout">عن PinkOut</span><span class="arrow" aria-hidden="true">↗</span></a><a
+                        class="button" href="#worlds"><span data-copy="navWorlds">التجارب</span><span class="arrow"
+                              aria-hidden="true">↗</span></a><a class="button" href="#first-event"><span
+                              data-copy="navEvent">أول لقاء</span><span class="arrow" aria-hidden="true">↗</span></a><a
+                        class="button" href="#questions"><span data-copy="faqReplicaTitle">عندك سؤال؟</span><span
+                              class="arrow" aria-hidden="true">↗</span></a><button class="motion-toggle" type="button">إيقاف
                         الحركة</button></nav>
       </header>
       <main id="main">
@@ -134,6 +136,7 @@
                                           <span class="out-series-line" dir="ltr" aria-hidden="true"><span>PINK</span><span class="out-series-slot"><span class="out-series-word"></span></span><span class="out-series-out">OUT</span></span>
                                     </h1>
                                     <p class="brand-tagline" lang="en" dir="ltr">THE WORLD IS OUT THERE.</p>
+                                    <p class="hero-intro" data-copy="heroIntro">مجتمع نسائي للطلعات والتجارب · نبدأ من الرياض</p>
                               </div>
                               <div class="hero-footer"><button type="button" class="hero-video-toggle"
                                           aria-controls="hero-background-video"><span class="video-control-icon"
@@ -214,104 +217,43 @@
                         </section>
                   </div>
             </div>
-            <section class="results section-shell" aria-labelledby="results-title">
-                  <p class="eyebrow" data-copy="resultsLabel">البداية</p>
-                  <h2 class="section-title reveal-title" id="results-title" data-copy="resultsTitle">نبدأ بلقاء.
+            <section class="about section-shell" id="about" aria-labelledby="about-title">
+                  <div class="about-portal" aria-hidden="true"></div>
+                  <div class="sticker-field" aria-hidden="true">
+                        <span class="sticker st-1"><span class="sticker-bob"><img src="assets/images/stickers/boba-tea.webp" width="280" height="280" alt="" loading="lazy" decoding="async"></span></span>
+                        <span class="sticker st-2"><span class="sticker-bob"><img src="assets/images/stickers/lipstick.webp" width="280" height="280" alt="" loading="lazy" decoding="async"></span></span>
+                        <span class="sticker st-3"><span class="sticker-bob"><img src="assets/images/stickers/painting-palette.webp" width="280" height="280" alt="" loading="lazy" decoding="async"></span></span>
+                        <span class="sticker st-4"><span class="sticker-bob"><img src="assets/images/stickers/instant-camera.webp" width="280" height="280" alt="" loading="lazy" decoding="async"></span></span>
+                        <span class="sticker st-5"><span class="sticker-bob"><img src="assets/images/stickers/perfume.webp" width="280" height="280" alt="" loading="lazy" decoding="async"></span></span>
+                        <span class="sticker st-6"><span class="sticker-bob"><img src="assets/images/stickers/roller-skate.webp" width="280" height="280" alt="" loading="lazy" decoding="async"></span></span>
+                  </div>
+                  <p class="eyebrow" data-copy="brandAbout">عن PinkOut</p>
+                  <h2 class="section-title reveal-title" id="about-title" data-copy="resultsTitle">نبدأ بلقاء.
                         ونكبر مع كل طلعة.</h2>
                   <p class="section-intro" data-copy="resultsCopy">PinkOut مجتمع نسائي للطلعات والتجارب واللحظات اللي
                         تستاهل. هذي بعض الأجواء اللي نبنيها معك.</p>
-                  <div class="result-actions"><a class="button " href="#worlds"><span data-copy="allWorlds">كل
-                                    التجارب</span><span class="arrow" aria-hidden="true">↗</span></a>
-                        <div class="carousel-controls"><button type="button" data-carousel-prev=""
-                                    aria-label="السابق">←</button><button type="button" data-carousel-next=""
-                                    aria-label="التالي">→</button></div>
-                  </div>
-                  <div class="results-track" tabindex="0" role="region" aria-label="كل التجارب">
-                        <article class="result-card"><a href="#world-1"><img class=""
-                                          src="assets/images/creative-table-900.webp"
-                                          srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
-                                          alt="امرأتان تعملان على تشكيل الطين" loading="lazy" decoding="async">
-                                    <h3 dir="ltr">Make Studio</h3>
-                              </a>
-                              <div class="result-metrics">
-                                    <div><small data-copy="ideaLabel">الفكرة</small><strong data-copy="world1Label">نصنع
-                                                بأيدينا</strong></div>
-                                    <div><small data-copy="vibeLabel">الجو</small><strong data-copy="makeVibe">نجرّب
-                                                ونصنع</strong></div>
-                              </div>
-                        </article>
-                        <article class="result-card"><a href="#world-2"><img class=""
-                                          src="assets/images/women-cafe-900.webp"
-                                          srcset="assets/images/women-cafe-480.webp 480w, assets/images/women-cafe-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
-                                          alt="امرأتان تتبادلان الحديث مع القهوة" loading="lazy" decoding="async">
-                                    <h3 dir="ltr">Rose Hub</h3>
-                              </a>
-                              <div class="result-metrics">
-                                    <div><small data-copy="ideaLabel">الفكرة</small><strong data-copy="world2Label">نروق
-                                                على قهوة</strong></div>
-                                    <div><small data-copy="vibeLabel">الجو</small><strong data-copy="coffeeVibe">نروق
-                                                ونسولف</strong></div>
-                              </div>
-                        </article>
-                        <article class="result-card"><a href="#world-3"><img class=""
-                                          src="assets/images/movement-900.webp"
-                                          srcset="assets/images/movement-480.webp 480w, assets/images/movement-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
-                                          alt="نساء في استوديو حركة" loading="lazy" decoding="async">
-                                    <h3 dir="ltr">Move Studio</h3>
-                              </a>
-                              <div class="result-metrics">
-                                    <div><small data-copy="ideaLabel">الفكرة</small><strong
-                                                data-copy="world3Label">نغيّر الجو بالحركة</strong></div>
-                                    <div><small data-copy="vibeLabel">الجو</small><strong data-copy="moveVibe">نغيّر
-                                                الإيقاع</strong></div>
-                              </div>
-                        </article>
-                        <article class="result-card"><a href="#world-4"><img class=""
-                                          src="assets/images/fragrance-900.webp"
-                                          srcset="assets/images/fragrance-480.webp 480w, assets/images/fragrance-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
-                                          alt="تجربة روائح باستخدام شرائط عطرية" loading="lazy" decoding="async">
-                                    <h3 dir="ltr">Beauty Lab</h3>
-                              </a>
-                              <div class="result-metrics">
-                                    <div><small data-copy="ideaLabel">الفكرة</small><strong
-                                                data-copy="world4Label">نجرّب حواسّنا</strong></div>
-                                    <div><small data-copy="vibeLabel">الجو</small><strong data-copy="makeVibe">نجرّب
-                                                ونصنع</strong></div>
-                              </div>
-                        </article>
-                        <article class="result-card"><a href="#world-5"><img class=""
-                                          src="assets/images/market-900.webp"
-                                          srcset="assets/images/market-480.webp 480w, assets/images/market-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
-                                          alt="استكشاف المجوهرات في سوق" loading="lazy" decoding="async">
-                                    <h3 dir="ltr">Pink Market</h3>
-                              </a>
-                              <div class="result-metrics">
-                                    <div><small data-copy="ideaLabel">الفكرة</small><strong data-copy="world5Label">نلقى
-                                                أشياء حلوة</strong></div>
-                                    <div><small data-copy="vibeLabel">الجو</small><strong data-copy="coffeeVibe">نروق
-                                                ونسولف</strong></div>
-                              </div>
-                        </article>
-                        <article class="result-card"><a href="#world-6"><img class="" src="assets/images/dj-900.webp"
-                                          srcset="assets/images/dj-480.webp 480w, assets/images/dj-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
-                                          alt="امرأة تؤدي عرض موسيقى" loading="lazy" decoding="async">
-                                    <h3 dir="ltr">PinkOut Live</h3>
-                              </a>
-                              <div class="result-metrics">
-                                    <div><small data-copy="ideaLabel">الفكرة</small><strong data-copy="world6Label">نعيش
-                                                اللحظة</strong></div>
-                                    <div><small data-copy="vibeLabel">الجو</small><strong data-copy="moveVibe">نغيّر
-                                                الإيقاع</strong></div>
-                              </div>
-                        </article>
-                  </div>
+                  <ul class="about-points" role="list">
+                        <li class="about-point"><span class="about-number" aria-hidden="true">01</span>
+                              <h3 data-copy="eventP1">تجربة تستاهل تجين لها</h3>
+                              <p data-copy="eventP1body">شيء فعلي تجرّبينه، واكتشاف صغير يغيّر روتين الطلعة.</p>
+                        </li>
+                        <li class="about-point"><span class="about-number" aria-hidden="true">02</span>
+                              <h3 data-copy="eventP2">مساحة لك، بطريقتك</h3>
+                              <p data-copy="eventP2body">مع صاحباتك أو لحالك. تختارين المشاركة اللي تناسبك.</p>
+                        </li>
+                        <li class="about-point"><span class="about-number" aria-hidden="true">03</span>
+                              <h3 data-copy="eventP3">فضول للي بعده</h3>
+                              <p data-copy="eventP3body">البداية تعرّفك بعالم يستمر، مو مناسبة وتنتهي.</p>
+                        </li>
+                  </ul>
+                  <div class="about-actions"><a class="button" href="#worlds"><span data-copy="allWorlds">كل
+                                    التجارب</span><span class="arrow" aria-hidden="true">↗</span></a><a class="text-link"
+                              href="#first-event"><span data-copy="Hero action">اكتشفي أول لقاء</span></a></div>
             </section>
+            <div class="ribbon-band" aria-hidden="true">
+                  <div class="ribbon ribbon-a"><div class="ribbon-run"><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span></div></div>
+                  <div class="ribbon ribbon-b"><div class="ribbon-run" dir="ltr"><span>Make Studio</span><span>Rose Hub</span><span>Move Studio</span><span>Beauty Lab</span><span>Pink Market</span><span>PinkOut Live</span><span>Pink Passage</span><span>Make Studio</span><span>Rose Hub</span><span>Move Studio</span><span>Beauty Lab</span><span>Pink Market</span><span>PinkOut Live</span><span>Pink Passage</span></div></div>
+            </div>
             <section class="world-stage section-shell" aria-labelledby="stage-heading">
                   <div class="stage-background" aria-hidden="true"><img class="stage-photo"
                               src="assets/images/creative-table-900.webp"
@@ -328,7 +270,7 @@
                               فيه تجربة لك.</h2>
                         <div>
                               <p data-copy="stageCopy">مرّري لتكتشفي الأجواء، من أول ورشة إلى آخر سوالف القهوة. ولكل جو
-                                    تجربة.</p><a class="button " href="#worlds"><span data-copy="stageCTA">خذي لك
+                                    تجربة.</p><a class="button" href="#worlds"><span data-copy="stageCTA">خذي لك
                                           لفة</span><span class="arrow" aria-hidden="true">↗</span></a>
                         </div>
                   </div>
@@ -350,131 +292,26 @@
                                     اللحظة</span></button><button type="button" data-stage-world="7"
                               aria-pressed="false"><span data-copy="world7Label">ندخل عالم ثاني</span></button></div>
             </section>
-            <section class="product-scene section-shell" id="first-event" aria-labelledby="event-title">
-                  <p class="product-brand" dir="ltr">PinkOut<span> / THE FIRST CHAPTER</span></p>
-                  <h2 class="section-title reveal-title" id="event-title" data-copy="eventReplicaTitle">نجرّب، نضحك،
-                        ونرجع نعيدها.</h2>
-                  <p class="section-intro" data-copy="eventReplicaCopy">أول لقاء يعرّفك على PinkOut. الرياض هي البداية؛
-                        الموعد والمكان والبرنامج يُعلن عنها بعد التأكيد.</p><button type="button" class="button"
-                        data-open-interest=""><span data-copy="firstEventCTA">راجعي نموذج الاهتمام</span><span
-                              class="arrow" aria-hidden="true">↗</span></button>
-                  <div class="device-scene">
-                        <div class="device device-1" aria-hidden="true">
-                              <div class="notch"></div>
-                              <div class="phone-status" dir="ltr"><span>9:41</span><span>▰ ▮</span></div>
-                              <div class="phone-brand" dir="ltr">PinkOut</div>
-                              <div class="phone-cover"><img class="" src="assets/images/creative-table-900.webp"
-                                          srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
-                                          loading="lazy" decoding="async"></div><strong>Make Studio</strong>
-                              <div class="phone-tags"><span>PinkOut</span><span data-copy="world1Label">نصنع
-                                          بأيدينا</span></div>
-                              <div class="phone-grid"><img class="" src="assets/images/fragrance-900.webp"
-                                          srcset="assets/images/fragrance-480.webp 480w, assets/images/fragrance-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
-                                          loading="lazy" decoding="async"><img class=""
-                                          src="assets/images/market-900.webp"
-                                          srcset="assets/images/market-480.webp 480w, assets/images/market-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
-                                          loading="lazy" decoding="async"><img class="" src="assets/images/dj-900.webp"
-                                          srcset="assets/images/dj-480.webp 480w, assets/images/dj-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
-                                          loading="lazy" decoding="async"></div>
-                              <div class="phone-bottom"><span>⌂</span><span>♡</span><span>＋</span></div>
-                        </div>
-                        <div class="device device-2" aria-hidden="true">
-                              <div class="notch"></div>
-                              <div class="phone-status" dir="ltr"><span>9:41</span><span>▰ ▮</span></div>
-                              <div class="phone-brand" dir="ltr">PinkOut</div>
-                              <div class="phone-cover"><img class="" src="assets/images/women-cafe-900.webp"
-                                          srcset="assets/images/women-cafe-480.webp 480w, assets/images/women-cafe-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
-                                          loading="lazy" decoding="async"></div><strong>Rose Hub</strong>
-                              <div class="phone-tags"><span>PinkOut</span><span data-copy="world2Label">نروق على
-                                          قهوة</span></div>
-                              <div class="phone-grid"><img class="" src="assets/images/market-900.webp"
-                                          srcset="assets/images/market-480.webp 480w, assets/images/market-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
-                                          loading="lazy" decoding="async"><img class="" src="assets/images/dj-900.webp"
-                                          srcset="assets/images/dj-480.webp 480w, assets/images/dj-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
-                                          loading="lazy" decoding="async"><img class=""
-                                          src="assets/images/passage-900.webp"
-                                          srcset="assets/images/passage-480.webp 480w, assets/images/passage-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
-                                          loading="lazy" decoding="async"></div>
-                              <div class="phone-bottom"><span>⌂</span><span>♡</span><span>＋</span></div>
-                        </div>
-                        <div class="device device-3" aria-hidden="true">
-                              <div class="notch"></div>
-                              <div class="phone-status" dir="ltr"><span>9:41</span><span>▰ ▮</span></div>
-                              <div class="phone-brand" dir="ltr">PinkOut</div>
-                              <div class="phone-cover"><img class="" src="assets/images/movement-900.webp"
-                                          srcset="assets/images/movement-480.webp 480w, assets/images/movement-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
-                                          loading="lazy" decoding="async"></div><strong>Move Studio</strong>
-                              <div class="phone-tags"><span>PinkOut</span><span data-copy="world3Label">نغيّر الجو
-                                          بالحركة</span></div>
-                              <div class="phone-grid"><img class="" src="assets/images/dj-900.webp"
-                                          srcset="assets/images/dj-480.webp 480w, assets/images/dj-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
-                                          loading="lazy" decoding="async"><img class=""
-                                          src="assets/images/passage-900.webp"
-                                          srcset="assets/images/passage-480.webp 480w, assets/images/passage-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
-                                          loading="lazy" decoding="async"><img class=""
-                                          src="assets/images/creative-table-900.webp"
-                                          srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
-                                          loading="lazy" decoding="async"></div>
-                              <div class="phone-bottom"><span>⌂</span><span>♡</span><span>＋</span></div>
-                        </div>
-                        <div class="device-tag dt-one"><span data-copy="moodMake">أبدع</span></div>
-                        <div class="device-tag dt-two"><span data-copy="moodPause">أروق</span></div>
-                        <div class="device-tag dt-three"><span data-copy="moodMove">أتحرّك</span></div>
-                  </div>
-                  <p class="concept-note" data-copy="conceptNote">تصوّر بصري للتجارب، وليس تطبيقًا متاحًا أو برنامجًا
-                        مؤكّدًا.</p>
-                  <div class="gathering-facts">
-                        <div><small data-copy="eventCityLabel">البداية المخطط لها</small><strong
-                                    data-copy="eventCity">الرياض</strong></div>
-                        <div><small data-copy="eventWhenLabel">الموعد والمكان</small><strong
-                                    data-copy="eventWhen">نعلنها قريبًا</strong></div>
-                        <div><small data-copy="eventBookingLabel">المشاركة</small><strong data-copy="eventBooking">الحجز
-                                    لم يُفتح</strong></div>
-                  </div>
-                  <div class="event-bottom">
-                        <p data-copy="eventInterestNote">الإرسال لم يُفتح بعد. النموذج للمراجعة فقط.</p><button
-                              class="text-link" data-share="" type="button"><span data-copy="Share event">شاركي
-                                    البداية</span></button>
-                  </div>
-                  <div class="share-fallback" hidden=""><label data-copy="copyManual" for="share-url">انسخي الرابط من
-                              الحقل</label><input dir="ltr" id="share-url" readonly=""></div>
-            </section>
-            <div class="feature-tiles section-shell"><a href="#your-way" class="feature-tile">
-                        <h3 data-copy="featureSolo">تجين لحالك.</h3><span class="round-arrow"
-                              aria-hidden="true">↗</span>
-                  </a><a href="#your-way" class="feature-tile">
-                        <h3 data-copy="featureFriends">أو مع صاحباتك.</h3><span class="round-arrow"
-                              aria-hidden="true">↗</span>
-                  </a><a href="#your-way" class="feature-tile">
-                        <h3 data-copy="featureWay">وتعيشينها بطريقتك.</h3><span class="round-arrow"
-                              aria-hidden="true">↗</span>
-                  </a></div>
             <section class="community section-shell" id="your-way" aria-labelledby="community-title">
+                  <div class="sticker-field" aria-hidden="true">
+                        <span class="sticker st-1"><span class="sticker-bob"><img src="assets/images/stickers/headphones.webp" width="280" height="280" alt="" loading="lazy" decoding="async"></span></span>
+                        <span class="sticker st-2"><span class="sticker-bob"><img src="assets/images/stickers/matcha.webp" width="280" height="280" alt="" loading="lazy" decoding="async"></span></span>
+                        <span class="sticker st-3"><span class="sticker-bob"><img src="assets/images/stickers/nail-polish.webp" width="280" height="280" alt="" loading="lazy" decoding="async"></span></span>
+                        <span class="sticker st-4"><span class="sticker-bob"><img src="assets/images/stickers/pottery-vase.webp" width="280" height="280" alt="" loading="lazy" decoding="async"></span></span>
+                  </div>
                   <h2 class="section-title reveal-title" id="community-title" data-copy="communityTitle">تجارب مختلفة.
                         وشيء يجمعنا.</h2>
                   <p class="section-intro" data-copy="communityCopy">ما تحتاجين خطة كاملة. ابدئي باللي يحمّسك، واحفظي
-                        الأشياء اللي ودّك تجرّبينها. كل الأوصاف هنا، على راحتك.</p><a class="button "
+                        التجارب اللي ودّك تجرّبينها.</p><a class="button"
                         href="#worlds"><span data-copy="communityCTA">خلّي مزاجك يختار</span><span class="arrow"
                               aria-hidden="true">↗</span></a>
                   <div class="world-catalog" id="worlds">
                         <div class="catalog-header">
-                              <h2 data-copy="catalogTitle">عالم PinkOut</h2><span data-copy="catalogNote">تصوّر التجارب
-                                    · البرنامج يُعلن لاحقًا</span>
+                              <h2 data-copy="catalogTitle">عالم PinkOut</h2><span data-copy="catalogNote">اضغطي ♡ لحفظ التجارب اللي
+                                    تهمّك</span>
                         </div>
                         <article class="world-story world-row" id="world-1">
-                              <div class="world-photo"><img class="" src="assets/images/creative-table-900.webp"
+                              <div class="world-photo"><img src="assets/images/creative-table-900.webp"
                                           srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
                                           alt="امرأتان تعملان على تشكيل الطين" loading="lazy" decoding="async"></div>
@@ -488,7 +325,7 @@
                                           class="save-symbol" aria-hidden="true">♡</span></button>
                         </article>
                         <article class="world-story world-row" id="world-2">
-                              <div class="world-photo"><img class="" src="assets/images/women-cafe-900.webp"
+                              <div class="world-photo"><img src="assets/images/women-cafe-900.webp"
                                           srcset="assets/images/women-cafe-480.webp 480w, assets/images/women-cafe-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
                                           alt="امرأتان تتبادلان الحديث مع القهوة" loading="lazy" decoding="async"></div>
@@ -502,7 +339,7 @@
                                           class="save-symbol" aria-hidden="true">♡</span></button>
                         </article>
                         <article class="world-story world-row" id="world-3">
-                              <div class="world-photo"><img class="" src="assets/images/movement-900.webp"
+                              <div class="world-photo"><img src="assets/images/movement-900.webp"
                                           srcset="assets/images/movement-480.webp 480w, assets/images/movement-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
                                           alt="نساء في استوديو حركة" loading="lazy" decoding="async"></div>
@@ -516,7 +353,7 @@
                                           class="save-symbol" aria-hidden="true">♡</span></button>
                         </article>
                         <article class="world-story world-row" id="world-4">
-                              <div class="world-photo"><img class="" src="assets/images/fragrance-900.webp"
+                              <div class="world-photo"><img src="assets/images/fragrance-900.webp"
                                           srcset="assets/images/fragrance-480.webp 480w, assets/images/fragrance-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
                                           alt="تجربة روائح باستخدام شرائط عطرية" loading="lazy" decoding="async"></div>
@@ -530,7 +367,7 @@
                                           class="save-symbol" aria-hidden="true">♡</span></button>
                         </article>
                         <article class="world-story world-row" id="world-5">
-                              <div class="world-photo"><img class="" src="assets/images/market-900.webp"
+                              <div class="world-photo"><img src="assets/images/market-900.webp"
                                           srcset="assets/images/market-480.webp 480w, assets/images/market-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
                                           alt="استكشاف المجوهرات في سوق" loading="lazy" decoding="async"></div>
@@ -544,7 +381,7 @@
                                           class="save-symbol" aria-hidden="true">♡</span></button>
                         </article>
                         <article class="world-story world-row" id="world-6">
-                              <div class="world-photo"><img class="" src="assets/images/dj-900.webp"
+                              <div class="world-photo"><img src="assets/images/dj-900.webp"
                                           srcset="assets/images/dj-480.webp 480w, assets/images/dj-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
                                           alt="امرأة تؤدي عرض موسيقى" loading="lazy" decoding="async"></div>
@@ -558,7 +395,7 @@
                                           class="save-symbol" aria-hidden="true">♡</span></button>
                         </article>
                         <article class="world-story world-row" id="world-7">
-                              <div class="world-photo"><img class="" src="assets/images/passage-900.webp"
+                              <div class="world-photo"><img src="assets/images/passage-900.webp"
                                           srcset="assets/images/passage-480.webp 480w, assets/images/passage-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
                                           alt="عمل فني من الزجاج الملون؛ ليس موقع PinkOut" loading="lazy"
@@ -573,159 +410,63 @@
                                           class="save-symbol" aria-hidden="true">♡</span></button>
                         </article>
                         <div class="catalog-footer">
-                              <p data-copy="storageNotice">تم الحفظ على هذا الجهاز فقط.</p><button type="button"
+                              <p data-copy="storageNotice">اختياراتك تُحفظ على هذا الجهاز فقط.</p><button type="button"
                                     data-clear-saved=""><span data-copy="Clear saved">مسح الاختيارات</span></button>
                         </div>
                   </div>
             </section>
-            <section class="vision section-shell" aria-labelledby="vision-title">
-                  <div class="vision-image" aria-hidden="true"><img class="" src="assets/images/creative-table-900.webp"
-                              srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
-                              sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt="" loading="lazy"
-                              decoding="async"></div>
-                  <div class="vision-content">
-                        <h2 class="section-title reveal-title" id="vision-title" data-copy="visionTitle">أول لقاء،
-                              والباقي حكايات.</h2>
-                        <p data-copy="visionCopy">ورشة مختلفة. ليلة على ذوقك. اكتشاف ما كان على البال. PinkOut أكبر من
-                              يوم واحد.</p><a class="button" href="#first-event"><span data-copy="visionCTA">تفاصيل أول
-                                    لقاء</span><span class="arrow" aria-hidden="true">↗</span></a>
+            <section class="product-scene section-shell" id="first-event" aria-labelledby="event-title">
+                  <div class="event-layout">
+                        <div class="event-copy">
+                              <p class="product-brand" dir="ltr">PinkOut<span> / THE FIRST CHAPTER</span></p>
+                              <h2 class="section-title reveal-title" id="event-title" data-copy="eventReplicaTitle">نجرّب، نضحك،
+                                    ونرجع نعيدها.</h2>
+                              <p class="section-intro" data-copy="eventReplicaCopy">أول لقاء يعرّفك على PinkOut. الرياض هي
+                                    البداية؛ الموعد والمكان والبرنامج يُعلن عنها بعد التأكيد.</p>
+                              <dl class="gathering-facts">
+                                    <div><dt data-copy="eventCityLabel">البداية المخطط لها</dt><dd
+                                                data-copy="eventCity">الرياض</dd></div>
+                                    <div><dt data-copy="eventWhenLabel">الموعد والمكان</dt><dd
+                                                data-copy="eventWhen">نعلنها قريبًا</dd></div>
+                                    <div><dt data-copy="eventBookingLabel">المشاركة</dt><dd
+                                                data-copy="eventBooking">الحجز لم يُفتح</dd></div>
+                              </dl>
+                              <p class="event-practical" data-copy="eventPracticalCopy">نساء فقط. مع صاحباتك أو لحالك.
+                                    تفاصيل الدخول والتصوير والمشاركة تتوضح مع البرنامج، قبل أي حجز.</p>
+                              <div class="event-actions"><button type="button" class="button" data-open-interest=""><span
+                                                data-copy="firstEventCTA">استعرضي نموذج الاهتمام</span><span class="arrow"
+                                                aria-hidden="true">↗</span></button><button class="text-link" data-share=""
+                                          type="button"><span data-copy="Share event">شاركي البداية</span></button></div>
+                              <p class="event-note" data-copy="eventInterestNote">التسجيل لم يُفتح بعد. النموذج للمعاينة فقط،
+                                    ولا تُرسل بياناتك.</p>
+                              <div class="share-fallback" hidden=""><label data-copy="copyManual" for="share-url">انسخي
+                                          الرابط من الحقل</label><input dir="ltr" id="share-url" readonly=""></div>
+                        </div>
+                        <div class="event-photo">
+                              <figure class="polaroid"><img src="assets/images/creative-laugh-900.webp" srcset="assets/images/creative-laugh-480.webp 480w, assets/images/creative-laugh-900.webp 900w" sizes="(max-width:900px) 92vw, 45vw" width="900" height="600" alt="نساء يعرضن لوحاتهن في ورشة إبداعية" loading="lazy" decoding="async"><figcaption dir="ltr">PinkOut ♡ Riyadh</figcaption></figure>
+                              <span class="sticker st-camera" aria-hidden="true"><span class="sticker-bob"><img
+                                                src="assets/images/stickers/instant-camera.webp" width="280" height="280" alt=""
+                                                loading="lazy" decoding="async"></span></span>
+                              <span class="sticker st-tote" aria-hidden="true"><span class="sticker-bob"><img
+                                                src="assets/images/stickers/shopping-tote.webp" width="280" height="280" alt=""
+                                                loading="lazy" decoding="async"></span></span>
+                        </div>
                   </div>
             </section>
-            <section class="stories section-shell" aria-labelledby="stories-title">
-                  <p class="eyebrow" data-copy="storiesLabel">التجربة</p>
-                  <h2 class="section-title reveal-title" id="stories-title" data-copy="storiesTitle">لحظات على ذوقك.
-                  </h2>
-                  <p class="section-intro" data-copy="storiesCopy">شيء تصنعينه. جلسة تطوّل. أو إيقاع يغيّر المود. لكل
-                        تجربة حكايتها.</p><a class="button " href="#worlds"><span data-copy="allWorlds">كل
-                              التجارب</span><span class="arrow" aria-hidden="true">↗</span></a>
-                  <div class="story-panels">
-                        <article class="story-panel sp-1">
-                              <div class="story-photo"><img class="" src="assets/images/creative-table-900.webp"
-                                          srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
-                                          alt="امرأتان تعملان على تشكيل الطين" loading="lazy" decoding="async"></div>
-                              <div class="story-copy">
-                                    <p dir="ltr">Make Studio</p>
-                                    <h3 data-copy="storyOne">شيء من صنعك.
-                                          وذكرى لك.</h3><a class="button " href="#world-1"><span
-                                                data-copy="storyAction">استكشفي التجربة</span><span class="arrow"
-                                                aria-hidden="true">↗</span></a>
-                              </div>
-                        </article>
-                        <article class="story-panel sp-2">
-                              <div class="story-photo"><img class="" src="assets/images/women-cafe-900.webp"
-                                          srcset="assets/images/women-cafe-480.webp 480w, assets/images/women-cafe-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
-                                          alt="امرأتان تتبادلان الحديث مع القهوة" loading="lazy" decoding="async"></div>
-                              <div class="story-copy">
-                                    <p dir="ltr">Rose Hub</p>
-                                    <h3 data-copy="storyTwo">قهوة، وسوالف
-                                          تجي بعفوية.</h3><a class="button " href="#world-2"><span
-                                                data-copy="storyAction">استكشفي التجربة</span><span class="arrow"
-                                                aria-hidden="true">↗</span></a>
-                              </div>
-                        </article>
-                        <article class="story-panel sp-3">
-                              <div class="story-photo"><img class="" src="assets/images/movement-900.webp"
-                                          srcset="assets/images/movement-480.webp 480w, assets/images/movement-900.webp 900w"
-                                          sizes="(max-width:700px) 90vw, 50vw" width="900" height="600"
-                                          alt="نساء في استوديو حركة" loading="lazy" decoding="async"></div>
-                              <div class="story-copy">
-                                    <p dir="ltr">Move Studio</p>
-                                    <h3 data-copy="storyThree">خذي نفس.
-                                          وغيّري الإيقاع.</h3><a class="button " href="#world-3"><span
-                                                data-copy="storyAction">استكشفي التجربة</span><span class="arrow"
-                                                aria-hidden="true">↗</span></a>
-                              </div>
-                        </article>
-                  </div><a class="all-stories" href="#worlds"><span data-copy="allWorlds">كل التجارب</span><span
-                              class="arrow" aria-hidden="true">↗</span></a>
-            </section>
-            <section class="news section-shell" aria-labelledby="news-title">
-                  <p class="eyebrow" data-copy="newsLabel">للجاي</p>
-                  <h2 class="section-title reveal-title" id="news-title" data-copy="newsTitle">أفكار ما تخلص.</h2>
-                  <p class="section-intro" data-copy="newsCopy">أفكار نتخيّلها للمستقبل، وليست فعاليات معلنة أو متاحة
-                        للحجز.</p>
-                  <div class="news-grid"><a class="news-card" href="#world-1">
-                              <div class="news-card-media"><img class="" src="assets/images/pottery-900.webp"
-                                          srcset="assets/images/pottery-480.webp 480w, assets/images/pottery-900.webp 900w"
-                                          sizes="(max-width:600px) 95vw, (max-width:1000px) 48vw, 32vw" width="900"
-                                          height="600" alt="امرأتان تعملان على تشكيل الطين" loading="lazy"
-                                          decoding="async"></div>
-                              <div class="news-card-content"><small dir="ltr">Make Studio</small>
-                                    <h3 data-copy="news1">شوي طين، وكثير إبداع</h3>
-                                    <p class="news-description" data-copy="newsDesc1">طين، وألوان، وقطعة تحمل لمستك.</p>
-                                    <div class="news-card-footer"><span data-copy="newsExplore">استكشفي
-                                                الفكرة</span><span class="arrow" aria-hidden="true">↗</span></div>
-                              </div>
-                        </a><a class="news-card" href="#world-2">
-                              <div class="news-card-media"><img class="" src="assets/images/women-cafe-900.webp"
-                                          srcset="assets/images/women-cafe-480.webp 480w, assets/images/women-cafe-900.webp 900w"
-                                          sizes="(max-width:600px) 95vw, (max-width:1000px) 48vw, 32vw" width="900"
-                                          height="600" alt="امرأتان تتبادلان الحديث مع القهوة" loading="lazy"
-                                          decoding="async"></div>
-                              <div class="news-card-content"><small dir="ltr">Rose Hub</small>
-                                    <h3 data-copy="news2">قهوة ولمسة إبداع</h3>
-                                    <p class="news-description" data-copy="newsDesc2">قهوة، وسوالف، ومساحة للتعارف على
-                                          راحتك.</p>
-                                    <div class="news-card-footer"><span data-copy="newsExplore">استكشفي
-                                                الفكرة</span><span class="arrow" aria-hidden="true">↗</span></div>
-                              </div>
-                        </a><a class="news-card" href="#world-3">
-                              <div class="news-card-media"><img class="" src="assets/images/movement-900.webp"
-                                          srcset="assets/images/movement-480.webp 480w, assets/images/movement-900.webp 900w"
-                                          sizes="(max-width:600px) 95vw, (max-width:1000px) 48vw, 32vw" width="900"
-                                          height="600" alt="نساء في استوديو حركة" loading="lazy" decoding="async"></div>
-                              <div class="news-card-content"><small dir="ltr">Move Studio</small>
-                                    <h3 data-copy="news3">إيقاع على مزاجك</h3>
-                                    <p class="news-description" data-copy="newsDesc3">حركة خفيفة وموسيقى تغيّر جوّك.</p>
-                                    <div class="news-card-footer"><span data-copy="newsExplore">استكشفي
-                                                الفكرة</span><span class="arrow" aria-hidden="true">↗</span></div>
-                              </div>
-                        </a><a class="news-card" href="#world-4">
-                              <div class="news-card-media"><img class="" src="assets/images/fragrance-900.webp"
-                                          srcset="assets/images/fragrance-480.webp 480w, assets/images/fragrance-900.webp 900w"
-                                          sizes="(max-width:600px) 95vw, (max-width:1000px) 48vw, 32vw" width="900"
-                                          height="600" alt="تجربة روائح باستخدام شرائط عطرية" loading="lazy"
-                                          decoding="async"></div>
-                              <div class="news-card-content"><small dir="ltr">Beauty Lab</small>
-                                    <h3 data-copy="news4">اكتشافات في عالم الجمال</h3>
-                                    <p class="news-description" data-copy="newsDesc4">ألوان وروائح تفتح لك باب التجربة.
-                                    </p>
-                                    <div class="news-card-footer"><span data-copy="newsExplore">استكشفي
-                                                الفكرة</span><span class="arrow" aria-hidden="true">↗</span></div>
-                              </div>
-                        </a><a class="news-card" href="#world-5">
-                              <div class="news-card-media"><img class="" src="assets/images/market-900.webp"
-                                          srcset="assets/images/market-480.webp 480w, assets/images/market-900.webp 900w"
-                                          sizes="(max-width:600px) 95vw, (max-width:1000px) 48vw, 32vw" width="900"
-                                          height="600" alt="استكشاف المجوهرات في سوق" loading="lazy" decoding="async">
-                              </div>
-                              <div class="news-card-content"><small dir="ltr">Pink Market</small>
-                                    <h3 data-copy="news5">سوق صغير، ومفاجآت</h3>
-                                    <p class="news-description" data-copy="newsDesc5">قطع صغيرة وحكايات تستاهل
-                                          تكتشفينها.</p>
-                                    <div class="news-card-footer"><span data-copy="newsExplore">استكشفي
-                                                الفكرة</span><span class="arrow" aria-hidden="true">↗</span></div>
-                              </div>
-                        </a><a class="news-card" href="#world-6">
-                              <div class="news-card-media"><img class="" src="assets/images/dj-900.webp"
-                                          srcset="assets/images/dj-480.webp 480w, assets/images/dj-900.webp 900w"
-                                          sizes="(max-width:600px) 95vw, (max-width:1000px) 48vw, 32vw" width="900"
-                                          height="600" alt="امرأة تؤدي عرض موسيقى" loading="lazy" decoding="async">
-                              </div>
-                              <div class="news-card-content"><small dir="ltr">PinkOut Live</small>
-                                    <h3 data-copy="news6">تجربة خارج المعتاد</h3>
-                                    <p class="news-description" data-copy="newsDesc6">موسيقى ولحظات نعيشها سوا.</p>
-                                    <div class="news-card-footer"><span data-copy="newsExplore">استكشفي
-                                                الفكرة</span><span class="arrow" aria-hidden="true">↗</span></div>
-                              </div>
-                        </a></div>
-            </section>
             <section class="faq section-shell" id="questions" aria-labelledby="faq-title">
-                  <p class="eyebrow" dir="ltr">FAQ</p>
+                  <div class="sticker-field" aria-hidden="true">
+                        <span class="sticker st-1"><span class="sticker-bob"><img src="assets/images/stickers/makeup-compact.webp" width="280" height="280" alt="" loading="lazy" decoding="async"></span></span>
+                        <span class="sticker st-2"><span class="sticker-bob"><img src="assets/images/stickers/perfume.webp" width="280" height="280" alt="" loading="lazy" decoding="async"></span></span>
+                  </div>
+                  <p class="eyebrow" data-copy="FAQ eyebrow">قبل ما تطلعين</p>
                   <h2 class="section-title reveal-title" id="faq-title" data-copy="faqReplicaTitle">عندك سؤال؟</h2>
                   <div class="faq-list">
+                        <details class="faq-item">
+                              <summary><span data-copy="FAQ 1">وش PinkOut بالضبط؟</span><span aria-hidden="true"
+                                          class="disclosure-sign"></span></summary>
+                              <p data-copy="FAQ 1 answer">مجتمع وعالم تجارب للنساء، يجمع المتعة والإبداع والحركة والترفيه.
+                                    نبدأ بأول لقاء، ونبني تجارب نرجع لها.</p>
+                        </details>
                         <details class="faq-item">
                               <summary><span data-copy="FAQ 2">أقدر أجي لحالي؟</span><span aria-hidden="true"
                                           class="disclosure-sign"></span></summary>
@@ -755,49 +496,49 @@
             <section class="closing section-shell" aria-labelledby="closing-title">
                   <div class="closing-media" aria-hidden="true">
                         <div class="closing-photo cp-1">
-                              <div class="floaty"><img class="" src="assets/images/creative-table-900.webp"
+                              <div class="floaty"><img src="assets/images/creative-table-900.webp"
                                           srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
                                           loading="lazy" decoding="async"></div>
                         </div>
                         <div class="closing-photo cp-2">
-                              <div class="floaty"><img class="" src="assets/images/women-cafe-900.webp"
+                              <div class="floaty"><img src="assets/images/women-cafe-900.webp"
                                           srcset="assets/images/women-cafe-480.webp 480w, assets/images/women-cafe-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
                                           loading="lazy" decoding="async"></div>
                         </div>
                         <div class="closing-photo cp-3">
-                              <div class="floaty"><img class="" src="assets/images/movement-900.webp"
+                              <div class="floaty"><img src="assets/images/movement-900.webp"
                                           srcset="assets/images/movement-480.webp 480w, assets/images/movement-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
                                           loading="lazy" decoding="async"></div>
                         </div>
                         <div class="closing-photo cp-4">
-                              <div class="floaty"><img class="" src="assets/images/fragrance-900.webp"
+                              <div class="floaty"><img src="assets/images/fragrance-900.webp"
                                           srcset="assets/images/fragrance-480.webp 480w, assets/images/fragrance-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
                                           loading="lazy" decoding="async"></div>
                         </div>
                         <div class="closing-photo cp-5">
-                              <div class="floaty"><img class="" src="assets/images/market-900.webp"
+                              <div class="floaty"><img src="assets/images/market-900.webp"
                                           srcset="assets/images/market-480.webp 480w, assets/images/market-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
                                           loading="lazy" decoding="async"></div>
                         </div>
                         <div class="closing-photo cp-6">
-                              <div class="floaty"><img class="" src="assets/images/dj-900.webp"
+                              <div class="floaty"><img src="assets/images/dj-900.webp"
                                           srcset="assets/images/dj-480.webp 480w, assets/images/dj-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
                                           loading="lazy" decoding="async"></div>
                         </div>
                         <div class="closing-photo cp-7">
-                              <div class="floaty"><img class="" src="assets/images/passage-900.webp"
+                              <div class="floaty"><img src="assets/images/passage-900.webp"
                                           srcset="assets/images/passage-480.webp 480w, assets/images/passage-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
                                           loading="lazy" decoding="async"></div>
                         </div>
                         <div class="closing-photo cp-8">
-                              <div class="floaty"><img class="" src="assets/images/creative-table-900.webp"
+                              <div class="floaty"><img src="assets/images/creative-table-900.webp"
                                           srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
                                           sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt=""
                                           loading="lazy" decoding="async"></div>
@@ -806,7 +547,7 @@
                   <div class="closing-copy">
                         <h2 class="section-title reveal-title" id="closing-title" data-copy="closeReplicaTitle">الطلعة
                               الجاية،
-                              خلّيها PinkOut.</h2><a class="button " href="#first-event"><span
+                              خلّيها PinkOut.</h2><a class="button" href="#first-event"><span
                                     data-copy="closeReplicaCTA">شوفي أول لقاء</span><span class="arrow"
                                     aria-hidden="true">↗</span></a>
                   </div>
@@ -814,26 +555,20 @@
       </main>
       <footer class="site-footer section-shell">
             <div class="footer-columns">
-                  <div>
-                        <h2 data-copy="footerExplore">استكشفي</h2><a href="#worlds"><span
-                                    data-copy="navWorlds">التجارب</span></a><a href="#stories-title"><span
-                                    data-copy="storiesLabel">التجربة</span></a><a href="#news-title"><span
-                                    data-copy="newsLabel">للجاي</span></a>
+                  <div class="footer-brand"><img src="assets/images/logo-cherry.svg" width="180" height="64"
+                              alt="PinkOut" loading="lazy">
+                        <p data-copy="Footer statement">طلعة اليوم، حكاية بكرة.</p>
                   </div>
                   <div>
-                        <h2 data-copy="footerCommunity">المجتمع</h2><a href="#your-way"><span data-copy="brandAbout">عن
-                                    PinkOut</span></a><a href="#first-event"><span data-copy="navEvent">أول
-                                    لقاء</span></a>
+                        <h2 data-copy="footerExplore">استكشفي</h2><a href="#about"><span data-copy="brandAbout">عن
+                                    PinkOut</span></a><a href="#worlds"><span data-copy="navWorlds">التجارب</span></a><a
+                              href="#first-event"><span data-copy="navEvent">أول لقاء</span></a>
                   </div>
                   <div>
                         <h2 data-copy="footerDetails">التفاصيل</h2><a href="#questions"><span
                                     data-copy="faqReplicaTitle">عندك سؤال؟</span></a><a href="privacy.html"><span
                                     data-copy="Privacy link">الخصوصية</span></a><a href="credits.html"><span
                                     data-copy="photoCredits">عن الصور</span></a>
-                  </div>
-                  <div>
-                        <h2 data-copy="footerMore">PinkOut</h2><a href="#top"><span data-copy="heroSignature">عوالم
-                                    كثيرة. على مزاجك.</span></a>
                   </div>
             </div>
             <div class="footer-bottom"><span dir="ltr">© 2026 PinkOut</span>
@@ -842,43 +577,43 @@
                               data-copy="Back to top">للأعلى</span> ↑</a>
             </div>
             <div class="footer-balls" aria-hidden="true">
-                  <div class="photo-ball pb-1"><img class="" src="assets/images/creative-table-900.webp"
+                  <div class="photo-ball pb-1"><img src="assets/images/creative-table-900.webp"
                               srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
                               sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt="" loading="lazy"
                               decoding="async"></div>
-                  <div class="photo-ball pb-2"><img class="" src="assets/images/women-cafe-900.webp"
+                  <div class="photo-ball pb-2"><img src="assets/images/women-cafe-900.webp"
                               srcset="assets/images/women-cafe-480.webp 480w, assets/images/women-cafe-900.webp 900w"
                               sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt="" loading="lazy"
                               decoding="async"></div>
-                  <div class="photo-ball pb-3"><img class="" src="assets/images/movement-900.webp"
+                  <div class="photo-ball pb-3"><img src="assets/images/movement-900.webp"
                               srcset="assets/images/movement-480.webp 480w, assets/images/movement-900.webp 900w"
                               sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt="" loading="lazy"
                               decoding="async"></div>
-                  <div class="photo-ball pb-4"><img class="" src="assets/images/fragrance-900.webp"
+                  <div class="photo-ball pb-4"><img src="assets/images/fragrance-900.webp"
                               srcset="assets/images/fragrance-480.webp 480w, assets/images/fragrance-900.webp 900w"
                               sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt="" loading="lazy"
                               decoding="async"></div>
-                  <div class="photo-ball pb-5"><img class="" src="assets/images/market-900.webp"
+                  <div class="photo-ball pb-5"><img src="assets/images/market-900.webp"
                               srcset="assets/images/market-480.webp 480w, assets/images/market-900.webp 900w"
                               sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt="" loading="lazy"
                               decoding="async"></div>
-                  <div class="photo-ball pb-6"><img class="" src="assets/images/dj-900.webp"
+                  <div class="photo-ball pb-6"><img src="assets/images/dj-900.webp"
                               srcset="assets/images/dj-480.webp 480w, assets/images/dj-900.webp 900w"
                               sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt="" loading="lazy"
                               decoding="async"></div>
-                  <div class="photo-ball pb-7"><img class="" src="assets/images/passage-900.webp"
+                  <div class="photo-ball pb-7"><img src="assets/images/passage-900.webp"
                               srcset="assets/images/passage-480.webp 480w, assets/images/passage-900.webp 900w"
                               sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt="" loading="lazy"
                               decoding="async"></div>
-                  <div class="photo-ball pb-8"><img class="" src="assets/images/women-cafe-900.webp"
+                  <div class="photo-ball pb-8"><img src="assets/images/women-cafe-900.webp"
                               srcset="assets/images/women-cafe-480.webp 480w, assets/images/women-cafe-900.webp 900w"
                               sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt="" loading="lazy"
                               decoding="async"></div>
-                  <div class="photo-ball pb-9"><img class="" src="assets/images/market-900.webp"
+                  <div class="photo-ball pb-9"><img src="assets/images/market-900.webp"
                               srcset="assets/images/market-480.webp 480w, assets/images/market-900.webp 900w"
                               sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt="" loading="lazy"
                               decoding="async"></div>
-                  <div class="photo-ball pb-10"><img class="" src="assets/images/creative-table-900.webp"
+                  <div class="photo-ball pb-10"><img src="assets/images/creative-table-900.webp"
                               srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
                               sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt="" loading="lazy"
                               decoding="async"></div>
