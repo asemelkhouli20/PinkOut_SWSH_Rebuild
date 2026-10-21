@@ -69,13 +69,40 @@ html[dir] .has-hero-video .hero-core.brand-typography #hero-title {
   letter-spacing: .2em;
 }
 
+.brand-concept-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background-size: 144px 144px;
+  background-repeat: repeat;
+  background-position: center;
+  opacity: .75;
+  pointer-events: none;
+}
+.brand-concept-pattern::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg,#2510200d,#2510208c 38%,#2510208c 62%,#2510200d);
+}
+.has-hero-video .hero-core.brand-typography,
+.has-hero-video .brand-typography .brand-tagline { color: #fff; }
+.has-hero-video .brand-typography #hero-title { text-shadow: 0 2px 12px #210d2870; }
+.has-hero-video #hero-title .out-series-slot {
+  background: #ffd5e52e;
+  box-shadow: inset 0 0 0 1px #ffffff45;
+}
+.has-hero-video #hero-title .out-series-word { color: #fff; }
+
 /* A burst of unboxed icons radiates from the panel's centre. */
 .brand-floaters {
   position: absolute;
   inset: 0;
   pointer-events: none;
   user-select: none;
-  z-index: 0;
+  z-index: 1;
 }
 .has-hero-video .brand-typography :is(h1, .brand-tagline) { position: relative; z-index: 1; }
 .brand-floater {
@@ -96,6 +123,7 @@ html[dir] .has-hero-video .hero-core.brand-typography #hero-title {
 .brand-floater:nth-child(4n + 2) { color: #b58aff; }
 .brand-floater:nth-child(4n + 3) { color: #54d7b0; }
 @media(max-width:800px) {
+  .brand-concept-pattern { background-size: 112px 112px; }
   .brand-floater { width: 24px; height: 24px; margin: -12px 0 0 -12px; }
 }
 @media(prefers-reduced-motion:reduce) { .brand-floaters { display: none; } }

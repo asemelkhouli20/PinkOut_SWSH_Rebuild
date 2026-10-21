@@ -66,12 +66,12 @@ body[data-page="home"] .mobile-menu{top:68px;right:0}
   width:min(780px,100%);
   max-width:780px;
   padding:clamp(16px,1.5vw,22px) clamp(20px,4vw,56px);
-  border:1px solid #ffffffd9;
+  border:1px solid #ffffff80;
   border-radius:32px;
-  background:linear-gradient(145deg,#fffafcf7,#fff3f8ed);
-  box-shadow:0 24px 70px #57102f24,inset 0 1px 0 #fff;
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
+  background:linear-gradient(145deg,#522039a6,#32182799);
+  box-shadow:0 24px 70px #57102f30,inset 0 1px 0 #ffffff80;
+  backdrop-filter:blur(24px) saturate(140%);
+  -webkit-backdrop-filter:blur(24px) saturate(140%);
 }
 .has-hero-video:has(.invitation-copy--title-only) .hero-shade{
   background:linear-gradient(180deg,#49112b12 0%,transparent 40%,#7d163f14 65%,#ffa4c6b3 100%);

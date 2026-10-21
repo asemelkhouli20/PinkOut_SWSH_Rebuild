@@ -24,6 +24,16 @@
   const paths = middle.querySelectorAll('.out-series-icon path');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const hero = title.closest('.has-hero-video');
+  // Transparent illustrated tiles echo each word's icon without obscuring the glass.
+  const conceptPatterns = Object.fromEntries(words.map(word => [word, `patterns/${word.toLowerCase()}.svg`]));
+  let conceptPattern;
+  if (hero) {
+    conceptPattern = document.createElement('div');
+    conceptPattern.className = 'brand-concept-pattern';
+    conceptPattern.setAttribute('aria-hidden', 'true');
+    conceptPattern.style.backgroundImage = `url("assets/images/${conceptPatterns.STEP}")`;
+    title.closest('.brand-typography').append(conceptPattern);
+  }
   // A radial icon burst belongs to the homepage panel, not the compact embed.
   const floaters = [];
   if (hero) {
@@ -65,6 +75,7 @@
     measuredWidth = middle.getBoundingClientRect().width;
     const width = `${measuredWidth}px`;
     const timing = { duration: 5200, fill: 'both', easing: 'linear' };
+    if (conceptPattern) conceptPattern.style.backgroundImage = `url("assets/images/${conceptPatterns[words[index]]}")`;
     const panelRect = hero ? title.closest('.brand-typography').getBoundingClientRect() : null;
     const heroRect = hero?.getBoundingClientRect();
     floatAnimations = floaters.map((sticker, i) => {
@@ -94,6 +105,14 @@
         { opacity: 0, transform: pose(1, spin, .15), offset: 1 }
       ], timing);
     });
+    if (conceptPattern) floatAnimations.push(conceptPattern.animate([
+      { opacity: 0, offset: 0 },
+      { opacity: 0, offset: .13, easing: 'ease-out' },
+      { opacity: .75, offset: .35 },
+      { opacity: .75, offset: .7, easing: 'ease-in' },
+      { opacity: 0, offset: .92 },
+      { opacity: 0, offset: 1 }
+    ], timing));
     gapAnimation = slot.animate([
       { width: '0px', offset: 0 },
       { width: '0px', offset: .13, easing: 'cubic-bezier(.45,0,.2,1)' },
