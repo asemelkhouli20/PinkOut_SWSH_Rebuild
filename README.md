@@ -107,3 +107,11 @@ The homepage now reads in one order: hero (with a one-line description) → vide
 `assets/css/wonder.css` and `assets/js/wonder.js` add the playful scroll layer, inspired by the previous pinkoutsa.com stickers, Museum of Ice Cream's colour blocks and SWSH's scroll storytelling: a polka-dot portal that blooms open behind "About", twelve 3D stickers that pop in, drift with scroll, bob, and wiggle with hearts when tapped, two crossing ribbons whose speed and direction follow the scroll, whole-word title reveals (Arabic words are never split), a taped polaroid for the first event, rising sparkles, and a pink scroll-progress ribbon.
 
 Without `wonder.css` the decorations stay hidden (`polish.css` hides them by default). `contain: paint` on the about section, the event card and the ribbon band stops tilted entrances from widening the page on phones. Reduced motion, the motion toggle and data saving leave every element visible in its settled state.
+
+### Mood stage and mood mixer redesign — 21 October 2026
+
+`assets/css/worlds.css` restyles both sections under new class names (`.mood-stage` / `ms-*`, `.mood-mixer` / `mm-*`), so the older stage and planner rules no longer apply.
+
+**Mood stage.** The section is now a rounded colour block that changes pastel for each of the seven worlds. The photo sits in a white arch, with that world's sticker, a "01 / 07" counter and small sparkles. Below the arch, the world's name, heading and description come from the catalog, so they follow the language switch. A giant watermark of the world name drifts with the scroll, and the choices are cherry pills. `experience.js` still picks the world from the scroll position; `wonder.js` follows its `aria-pressed` choice. On phones the stage stacks into one screen. On short phones (≤700px tall) the choices become numbered circles whose names remain available to screen readers.
+
+**Mood mixer.** `playful.js` builds four sticker mood tiles and a "Surprise me" pill, plus a route of three tilted polaroids along a dashed trail, dealt in when the mood changes. On phones the route becomes a swipeable row. Saved picks show as an always-visible row of chips.

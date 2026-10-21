@@ -5,12 +5,13 @@
   const catalog = document.querySelector('.world-catalog');
   if (!api || !catalog) return;
   const words = {
-    ar: { eyebrow: 'YOUR MOOD. YOUR PINKOUT.', title: 'وش جوّك اليوم؟', intro: 'اختاري إحساسك، ونرتّب لك ثلاث تجارب تستكشفينها.', moods: ['أبدع', 'أروق', 'أتحرّك', 'أكتشف'], surprise: 'اختاري لي ✿', route: 'جولتك المقترحة', explore: 'استكشفي', save: 'احفظي', saved: 'محفوظة', picks: 'اختياراتي', empty: 'اضغطي على القلب واحفظي التجارب اللي تشبهك.', note: 'للاكتشاف والإلهام · البرنامج والمواعيد تُعلن لاحقًا', open: 'افتحي الصورة', close: 'إغلاق الصور', previous: 'الصورة السابقة', next: 'الصورة التالية', gallery: 'لحظات PinkOut', caption: 'صور تعبّر عن الأجواء، وليست توثيقًا لفعاليات PinkOut.', hint: 'اكتشفي', updated: 'تغيّرت جولتك إلى', remove: 'إزالة' },
-    en: { eyebrow: 'YOUR MOOD. YOUR PINKOUT.', title: 'What’s your mood?', intro: 'Pick a feeling. Find three experiences to make it yours.', moods: ['Create', 'Unwind', 'Move', 'Discover'], surprise: 'Surprise me ✿', route: 'Your suggested route', explore: 'Explore', save: 'Save', saved: 'Saved', picks: 'My picks', empty: 'Tap a heart to collect the experiences that feel like you.', note: 'Ideas to explore · Programme and dates to be announced', open: 'Open photo', close: 'Close photos', previous: 'Previous photo', next: 'Next photo', gallery: 'PinkOut moments', caption: 'Images illustrate the mood, not past PinkOut events.', hint: 'Explore', updated: 'Your route is now', remove: 'Remove' }
+    ar: { eyebrow: 'YOUR MOOD. YOUR PINKOUT.', title: 'وش جوّك اليوم؟', intro: 'اختاري إحساسك، ونرتّب لك جولة من ثلاث تجارب.', moods: ['أبدع', 'أروق', 'أتحرّك', 'أكتشف'], surprise: 'فاجئيني ✿', route: 'جولتك المقترحة', explore: 'استكشفي', save: 'احفظي', saved: 'محفوظة', picks: 'اختياراتي', empty: 'اضغطي ♡ على أي تجربة وتنحفظ هنا.', open: 'افتحي الصورة', close: 'إغلاق الصور', previous: 'الصورة السابقة', next: 'الصورة التالية', gallery: 'لحظات PinkOut', caption: 'صور تعبّر عن الأجواء، وليست توثيقًا لفعاليات PinkOut.', hint: 'اكتشفي', updated: 'تغيّرت جولتك إلى', remove: 'إزالة' },
+    en: { eyebrow: 'YOUR MOOD. YOUR PINKOUT.', title: 'What’s your mood?', intro: 'Pick a feeling and we’ll map a route through three experiences.', moods: ['Create', 'Unwind', 'Move', 'Discover'], surprise: 'Surprise me ✿', route: 'Your suggested route', explore: 'Explore', save: 'Save', saved: 'Saved', picks: 'My picks', empty: 'Tap ♡ on any experience to keep it here.', open: 'Open photo', close: 'Close photos', previous: 'Previous photo', next: 'Next photo', gallery: 'PinkOut moments', caption: 'Images illustrate the mood, not past PinkOut events.', hint: 'Explore', updated: 'Your route is now', remove: 'Remove' }
   };
   const w = () => words[api.language];
   const worlds = [...catalog.querySelectorAll('.world-story')];
   const routes = [[1,4,2], [2,4,7], [3,6,2], [7,5,1]];
+  const moodStickers = ['painting-palette', 'boba-tea', 'roller-skate', 'instant-camera'];
   const source = id => worlds[id - 1];
   const worldName = id => source(id).querySelector('.world-copy > p').textContent;
   const worldImage = id => source(id).querySelector('.world-photo img');
@@ -23,38 +24,51 @@
     node.animate(frames, { duration: 420, easing: 'cubic-bezier(.2,.8,.2,1)', ...options });
   };
   document.querySelector('[data-copy="communityCTA"]')?.closest('a')?.setAttribute('href', '#mood-picker');
+
+  // Mood mixer: four sticker moods, a route of three polaroid stops, and the visitor's saved picks.
   let mood = 0;
-  const planner = el('section', 'mood-planner');
+  const planner = el('section', 'mood-mixer');
   planner.id = 'mood-picker'; planner.setAttribute('aria-labelledby', 'mood-title');
-  const intro = el('div', 'mood-intro');
-  const eyebrow = el('p', 'mood-eyebrow'); eyebrow.dir = 'ltr';
-  const title = el('h3'); title.id = 'mood-title';
-  const description = el('p', 'mood-description');
-  const flower = el('span', 'mood-flower', '✿'); flower.setAttribute('aria-hidden', 'true');
-  const controls = el('div', 'mood-controls'); controls.setAttribute('role', 'group');
+  const decor = el('div', 'mm-dots'); decor.setAttribute('aria-hidden', 'true');
+  const head = el('div', 'mm-head');
+  const eyebrow = el('p', 'mm-eyebrow'); eyebrow.dir = 'ltr';
+  const title = el('h3', 'mm-title'); title.id = 'mood-title';
+  const description = el('p', 'mm-intro');
+  head.append(eyebrow, title, description);
+  const controls = el('div', 'mm-moods'); controls.setAttribute('role', 'group');
   const chips = routes.map((_, index) => {
-    const chip = button('mood-chip');
-    chip.addEventListener('click', () => selectMood(index)); controls.append(chip); return chip;
+    const chip = button('mm-mood');
+    const art = el('span', 'mm-mood-art'); art.setAttribute('aria-hidden', 'true');
+    const icon = el('img'); icon.src = `assets/images/stickers/${moodStickers[index]}.webp`; icon.alt = ''; icon.width = icon.height = 280; icon.decoding = 'async';
+    art.append(icon);
+    const label = el('span', 'mm-mood-label');
+    chip.append(art, label);
+    chip.addEventListener('click', () => selectMood(index)); controls.append(chip);
+    return { chip, art, label };
   });
-  const surprise = button('mood-surprise');
+  const surprise = button('mm-surprise');
   surprise.addEventListener('click', () => selectMood((mood + 1 + Math.floor(Math.random() * 3)) % 4));
-  intro.append(eyebrow, title, description, controls, surprise, flower);
-  const route = el('div', 'mood-route');
-  const routeLabel = el('p', 'mood-route-label');
-  const cards = el('div', 'mood-cards');
-  const note = el('p', 'mood-note');
+  controls.append(surprise);
+  const route = el('div', 'mm-route');
+  const routeLabel = el('p', 'mm-route-label');
+  const trail = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  trail.setAttribute('class', 'mm-trail'); trail.setAttribute('viewBox', '0 0 1000 120'); trail.setAttribute('preserveAspectRatio', 'none'); trail.setAttribute('aria-hidden', 'true');
+  trail.innerHTML = '<path d="M30 80 C180 -10 330 140 500 60 S820 -10 970 80"/>';
+  const cards = el('div', 'mm-stops');
+  route.append(routeLabel, trail, cards);
+  const foot = el('div', 'mm-foot');
+  const picksLabel = el('p', 'mm-picks-label');
+  const collectionList = el('div', 'mm-picks');
+  foot.append(picksLabel, collectionList);
   const status = el('p', 'sr-only'); status.setAttribute('role', 'status');
-  const collection = el('details', 'mood-collection');
-  const collectionSummary = el('summary');
-  const collectionList = el('div', 'mood-saved-list'); collection.append(collectionSummary, collectionList);
-  route.append(routeLabel, cards, note, collection, status); planner.append(intro, route); catalog.before(planner);
+  planner.append(decor, head, controls, route, foot, status); catalog.before(planner);
   const routeCards = Array.from({ length: 3 }, (_, index) => {
-    const card = el('article', 'mood-card');
-    const photo = button('mood-photo'); const img = el('img'); img.loading = 'lazy'; img.width = 480; img.height = 320;
-    const number = el('span', 'mood-number', `0${index + 1}`); number.setAttribute('aria-hidden', 'true');
+    const card = el('article', 'mm-stop');
+    const photo = button('mm-photo'); const img = el('img'); img.loading = 'lazy'; img.width = 480; img.height = 320;
+    const number = el('span', 'mm-num', `0${index + 1}`); number.setAttribute('aria-hidden', 'true');
     photo.append(img, number);
-    const info = el('div', 'mood-card-info'); const name = el('h4'); name.dir = 'ltr';
-    const actions = el('div', 'mood-card-actions'); const link = el('a'); const save = button('mood-save');
+    const info = el('div', 'mm-stop-info'); const name = el('h4'); name.dir = 'ltr';
+    const actions = el('div', 'mm-stop-actions'); const link = el('a', 'mm-explore'); const save = button('mm-save');
     photo.addEventListener('click', () => openGallery(routes[mood][index] - 1, photo));
     save.addEventListener('click', () => source(routes[mood][index]).querySelector('[data-save-interest]').click());
     actions.append(link, save); info.append(name, actions); card.append(photo, info); cards.append(card);
@@ -62,14 +76,14 @@
   });
   let refreshFrame;
   function refreshLayout() { cancelAnimationFrame(refreshFrame); refreshFrame = requestAnimationFrame(() => window.ScrollTrigger?.refresh()); }
-  collection.addEventListener('toggle', refreshLayout);
   function renderCollection() {
     const saved = worlds.map((_, i) => i + 1).filter(isSaved);
-    collectionSummary.textContent = `${w().picks} (${saved.length}) ♡`;
+    picksLabel.replaceChildren(el('span', '', w().picks), el('b', 'mm-picks-count', `♥ ${saved.length}`));
+    const before = collectionList.offsetHeight;
     collectionList.replaceChildren();
-    if (!saved.length) collectionList.append(el('p', '', w().empty));
-    saved.forEach(id => { const link = el('a', '', `${worldName(id)} ↗`); link.href = `#world-${id}`; collectionList.append(link); });
-    if (collection.open) refreshLayout();
+    if (!saved.length) collectionList.append(el('p', 'mm-picks-empty', w().empty));
+    saved.forEach(id => { const link = el('a', 'mm-pick', worldName(id)); link.href = `#world-${id}`; link.dir = 'ltr'; collectionList.append(link); });
+    if (collectionList.offsetHeight !== before) refreshLayout();
     routeCards.forEach((item, i) => {
       const id = routes[mood][i]; const saved = isSaved(id);
       item.save.textContent = saved ? '♥' : '♡'; item.save.setAttribute('aria-pressed', String(saved));
@@ -78,20 +92,21 @@
   }
   function renderRoute(moving = false) {
     planner.dataset.mood = String(mood);
-    chips.forEach((chip, i) => { chip.textContent = w().moods[i]; chip.setAttribute('aria-pressed', String(i === mood)); });
-    routeLabel.textContent = `${w().route} / ${w().moods[mood]}`;
+    chips.forEach(({ chip, label }, i) => { label.textContent = w().moods[i]; chip.setAttribute('aria-pressed', String(i === mood)); });
+    routeLabel.replaceChildren(el('span', '', w().route), el('b', '', w().moods[mood]));
     routeCards.forEach((item, i) => {
       const id = routes[mood][i]; const image = worldImage(id);
       item.img.src = image.getAttribute('src').replace('-900.', '-480.'); item.img.alt = image.alt;
       item.photo.setAttribute('aria-label', `${w().open}: ${worldName(id)}`);
       item.name.textContent = worldName(id); item.link.href = `#world-${id}`; item.link.textContent = `${w().explore} ↗`;
-      if (moving) animate(item.card, [{ opacity: .4, translate: '0 14px', rotate: `${i - 1}deg` }, { opacity: 1, translate: '0 0', rotate: '0deg' }], { delay: i * 55 });
+      // Polaroids are dealt onto the table one after another.
+      if (moving) animate(item.card, [{ opacity: 0, transform: `translateY(46px) rotate(${(i - 1) * 14}deg) scale(.82)` }, { opacity: 1, transform: 'none' }], { delay: i * 90, duration: 620, easing: 'cubic-bezier(.3,1.4,.5,1)', fill: 'backwards' });
     });
     renderCollection();
   }
   function selectMood(index) {
     mood = index; renderRoute(true); status.textContent = `${w().updated} ${w().moods[mood]}`;
-    animate(flower, [{ transform: 'rotate(0deg)' }, { transform: 'rotate(180deg)' }], { duration: 650 });
+    animate(chips[mood].art, [{ transform: 'translateY(0) rotate(0)' }, { transform: 'translateY(-16px) rotate(-14deg) scale(1.12)', offset: .45 }, { transform: 'none' }], { duration: 650 });
   }
 
   // One native dialog keeps focus, Escape and assistive-technology behavior predictable.
@@ -132,7 +147,7 @@
   function translate() {
     status.textContent = '';
     eyebrow.textContent = w().eyebrow; title.textContent = w().title; description.textContent = w().intro;
-    surprise.textContent = w().surprise; note.textContent = w().note; controls.setAttribute('aria-label', w().title);
+    surprise.textContent = w().surprise; controls.setAttribute('aria-label', w().title);
     close.setAttribute('aria-label', w().close); previous.setAttribute('aria-label', w().previous); next.setAttribute('aria-label', w().next); caption.textContent = w().caption;
     photoButtons.forEach(({open, index}) => open.setAttribute('aria-label', `${w().open}: ${worldName(index + 1)}`));
     renderRoute(); if (gallery.open) showPhoto();
@@ -198,7 +213,7 @@
   }
   let tiltTarget; let cursorFrame = 0; let lastPointer;
   const interactive = 'a,button,summary';
-  const tiltSelector = '.result-card,.feature-tile,.mood-card';
+  const tiltSelector = '.result-card,.feature-tile';
   function resetTilt() { if (tiltTarget) { tiltTarget.style.removeProperty('--play-tilt'); tiltTarget.classList.remove('play-tilting'); tiltTarget = null; } }
   function clearPointer() {
     cursor.classList.remove('is-visible'); cursorFlower.classList.remove('is-visible');
@@ -227,7 +242,7 @@
       }
       previousPoint = { x: event.clientX, y: event.clientY };
     }
-    const hint = target?.matches('.photo-open,.mood-photo') ? w().open : target?.matches('.mood-save,[data-save-interest]') ? (target.getAttribute('aria-pressed') === 'true' ? w().remove : w().save) : target?.matches('a') ? w().hint : '';
+    const hint = target?.matches('.photo-open,.mm-photo') ? w().open : target?.matches('.mm-save,[data-save-interest]') ? (target.getAttribute('aria-pressed') === 'true' ? w().remove : w().save) : target?.matches('a') ? w().hint : '';
     cursor.classList.toggle('is-visible', !!hint && !inDialog); cursor.textContent = hint;
     const card = event.target.closest(tiltSelector);
     if (card !== tiltTarget) resetTilt();
@@ -240,7 +255,7 @@
   document.addEventListener('visibilitychange', clearPointer);
   window.addEventListener('pagehide', clearPointer);
   document.addEventListener('click', event => {
-    if (api.motionPaused || !event.detail || event.target.closest('dialog') || !event.target.closest('.mood-chip,.mood-surprise,.mood-save,[data-save-interest],[data-stack-next]')) return;
+    if (api.motionPaused || !event.detail || event.target.closest('dialog') || !event.target.closest('.mm-mood,.mm-surprise,.mm-save,[data-save-interest],[data-stack-next]')) return;
     for (let i = 0; i < 5; i++) {
       const petal = el('span', 'click-petal', '✿'); petal.setAttribute('aria-hidden', 'true'); petal.style.left = `${event.clientX}px`; petal.style.top = `${event.clientY}px`; document.body.append(petal);
       const angle = (i / 5) * Math.PI * 2;

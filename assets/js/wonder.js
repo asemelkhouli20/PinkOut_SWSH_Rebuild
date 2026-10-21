@@ -90,6 +90,52 @@
     }
   }));
 
+  // Mood stage: every world brings its own colour, sticker and description.
+  // experience.js picks the world from the scroll position; this follows its aria-pressed choice.
+  const stage = document.querySelector('.mood-stage');
+  if (stage) {
+    const stageStickers = ['painting-palette', 'boba-tea', 'roller-skate', 'perfume', 'shopping-tote', 'headphones', 'instant-camera'];
+    const choiceButtons = Array.from(stage.querySelectorAll('[data-stage-world]'));
+    const part = selector => stage.querySelector(selector);
+    const sticker = part('.ms-sticker img'), count = part('.ms-count b'), mark = part('.ms-watermark');
+    const detail = part('.ms-detail'), arch = part('.ms-arch');
+    let current = 0, preloaded = false;
+    function showWorld(index, animateIn) {
+      const story = document.getElementById(`world-${index + 1}`);
+      if (!story) return;
+      const brand = story.querySelector('.world-copy > p').textContent;
+      stage.dataset.world = String(index + 1);
+      count.textContent = String(index + 1).padStart(2, '0');
+      mark.textContent = brand; part('.ms-name').textContent = brand;
+      part('.ms-heading').textContent = story.querySelector('h3').textContent;
+      part('.ms-text').textContent = story.querySelector('.world-story-description').textContent;
+      sticker.src = `assets/images/stickers/${stageStickers[index]}.webp`;
+      if (!animateIn || api.motionPaused || !sticker.animate) return;
+      const spring = 'cubic-bezier(.3,1.4,.5,1)';
+      sticker.animate([{ transform: 'scale(.2) rotate(-50deg)', opacity: 0 }, { transform: 'scale(1.12) rotate(8deg)', opacity: 1, offset: .6 }, { transform: 'none', opacity: 1 }], { duration: 640, easing: spring });
+      arch.animate([{ transform: 'rotate(-2.5deg) scale(.96)' }, { transform: 'none' }], { duration: 560, easing: spring });
+      detail.animate([{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.2,.8,.2,1)' });
+      mark.animate([{ opacity: 0, transform: 'translateY(25%)' }, { opacity: .5, transform: 'none' }], { duration: 520, easing: 'ease-out' });
+    }
+    const follow = new MutationObserver(() => {
+      const index = choiceButtons.findIndex(button => button.getAttribute('aria-pressed') === 'true');
+      if (index < 0 || index === current) return;
+      current = index; showWorld(index, true);
+    });
+    choiceButtons.forEach(button => follow.observe(button, { attributes: true, attributeFilter: ['aria-pressed'] }));
+    // Fetch the other six stickers once the stage is close, so each swap is instant.
+    if ('IntersectionObserver' in window) {
+      const near = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting || preloaded) return;
+        preloaded = true; near.disconnect();
+        stageStickers.forEach(name => { const image = new Image(); image.src = `assets/images/stickers/${name}.webp`; });
+      }, { rootMargin: '800px 0px' });
+      near.observe(stage);
+    }
+    document.addEventListener('pinkout:language', () => showWorld(current, false));
+    showWorld(0, false);
+  }
+
   let context, loops = [], revealed = new WeakSet(), ready = false;
   function build() {
     if (!ready) return;

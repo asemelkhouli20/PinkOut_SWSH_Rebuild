@@ -22,8 +22,9 @@
       <link rel="stylesheet" href="assets/css/hero.css?v=47">
       <link rel="stylesheet" href="assets/css/playful.css?v=61">
       <link rel="stylesheet" href="assets/css/brand-typography.css?v=58">
-      <link rel="stylesheet" href="assets/css/polish.css?v=3">
+      <link rel="stylesheet" href="assets/css/polish.css?v=4">
       <link rel="stylesheet" href="assets/css/wonder.css?v=5">
+      <link rel="stylesheet" href="assets/css/worlds.css?v=8">
       <script defer="" src="assets/js/config.js"></script>
       <script defer="" src="assets/js/copy.js?v=47"></script>
       <script defer="" src="assets/js/app.js?v=46"></script>
@@ -33,8 +34,8 @@
       <script defer="" src="assets/js/hero-video.js?v=46"></script>
       <script defer src="assets/js/cinema-video.js?v=46"></script>
       <script defer src="assets/js/hero-series.js?v=58"></script>
-      <script defer="" src="assets/js/playful.js?v=61"></script>
-      <script defer src="assets/js/wonder.js?v=2"></script>
+      <script defer="" src="assets/js/playful.js?v=62"></script>
+      <script defer src="assets/js/wonder.js?v=4"></script>
       <link rel="preload" as="image" media="(min-width:801px)" href="assets/images/hero-pinkout-beach-poster.jpg">
       <link rel="preload" as="image" media="(max-width:800px)" href="assets/images/hero-pinkout-beach-mobile-poster.jpg">
 </head>
@@ -254,7 +255,7 @@
                   <div class="ribbon ribbon-a"><div class="ribbon-run"><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span></div></div>
                   <div class="ribbon ribbon-b"><div class="ribbon-run" dir="ltr"><span>Make Studio</span><span>Rose Hub</span><span>Move Studio</span><span>Beauty Lab</span><span>Pink Market</span><span>PinkOut Live</span><span>Pink Passage</span><span>Make Studio</span><span>Rose Hub</span><span>Move Studio</span><span>Beauty Lab</span><span>Pink Market</span><span>PinkOut Live</span><span>Pink Passage</span></div></div>
             </div>
-            <section class="world-stage section-shell" aria-labelledby="stage-heading">
+            <section class="world-stage mood-stage section-shell" aria-labelledby="stage-heading" data-world="1">
                   <div class="stage-background" aria-hidden="true"><img class="stage-photo"
                               src="assets/images/creative-table-900.webp"
                               srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
@@ -264,33 +265,49 @@
                               srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
                               sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt="" loading="lazy"
                               decoding="async"></div>
-                  <div class="stage-shade" aria-hidden="true"></div>
-                  <div class="stage-copy">
+                  <div class="ms-dots" aria-hidden="true"></div>
+                  <p class="ms-watermark" aria-hidden="true" dir="ltr">Make Studio</p>
+                  <div class="ms-copy">
+                        <p class="eyebrow ms-eyebrow" data-copy="World eyebrow">سبعة عوالم. مزاجك يختار.</p>
                         <h2 class="section-title reveal-title" id="stage-heading" data-copy="stageTitle">مهما كان جوّك،
                               فيه تجربة لك.</h2>
-                        <div>
-                              <p data-copy="stageCopy">مرّري لتكتشفي الأجواء، من أول ورشة إلى آخر سوالف القهوة. ولكل جو
-                                    تجربة.</p><a class="button" href="#worlds"><span data-copy="stageCTA">خذي لك
-                                          لفة</span><span class="arrow" aria-hidden="true">↗</span></a>
-                        </div>
+                        <p class="ms-lead" data-copy="stageCopy">مرّري لتكتشفي الأجواء، من أول ورشة إلى آخر سوالف القهوة. ولكل جو
+                              تجربة.</p><a class="button" href="#worlds"><span data-copy="stageCTA">خذي لك لفة</span><span class="arrow"
+                                    aria-hidden="true">↗</span></a>
                   </div>
-                  <div class="stage-preview" aria-hidden="true"><img class=""
-                              src="assets/images/creative-table-900.webp"
-                              srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
-                              sizes="(max-width:700px) 90vw, 50vw" width="900" height="600" alt="" loading="lazy"
-                              decoding="async"></div>
-                  <div class="stage-choices" role="group" aria-labelledby="stage-heading"><button type="button"
-                              data-stage-world="1" aria-pressed="true"><span data-copy="world1Label">نصنع
-                                    بأيدينا</span></button><button type="button" data-stage-world="2"
-                              aria-pressed="false"><span data-copy="world2Label">نروق على قهوة</span></button><button
-                              type="button" data-stage-world="3" aria-pressed="false"><span
-                                    data-copy="world3Label">نغيّر الجو بالحركة</span></button><button type="button"
-                              data-stage-world="4" aria-pressed="false"><span data-copy="world4Label">نجرّب
-                                    حواسّنا</span></button><button type="button" data-stage-world="5"
-                              aria-pressed="false"><span data-copy="world5Label">نلقى أشياء حلوة</span></button><button
-                              type="button" data-stage-world="6" aria-pressed="false"><span data-copy="world6Label">نعيش
-                                    اللحظة</span></button><button type="button" data-stage-world="7"
-                              aria-pressed="false"><span data-copy="world7Label">ندخل عالم ثاني</span></button></div>
+                  <div class="ms-window" aria-hidden="true">
+                        <div class="ms-arch">
+                              <div class="stage-preview"><img src="assets/images/creative-table-900.webp"
+                                          srcset="assets/images/creative-table-480.webp 480w, assets/images/creative-table-900.webp 900w"
+                                          sizes="(max-width:800px) 60vw, 30vw" width="900" height="600" alt="" loading="lazy"
+                                          decoding="async"></div>
+                        </div>
+                        <span class="ms-sticker"><img src="assets/images/stickers/painting-palette.webp" width="280" height="280" alt=""
+                                    decoding="async"></span>
+                        <span class="ms-count" dir="ltr"><b>01</b> / 07</span>
+                        <span class="ms-spark ms-spark-1">✦</span><span class="ms-spark ms-spark-2">♡</span><span class="ms-spark ms-spark-3">✿</span>
+                  </div>
+                  <div class="ms-detail" aria-hidden="true">
+                        <p class="ms-name" dir="ltr">Make Studio</p>
+                        <h3 class="ms-heading">شيء من صنعك. وذكرى لك.</h3>
+                        <p class="ms-text">إكسسوار تختارين تفاصيله، أو قطعة تعطينها طابعك. في عالم الصنع، الفكرة تبدأ بسيطة وتطلع بشيء يشبهك.</p>
+                  </div>
+                  <div class="ms-choices" role="group" aria-labelledby="stage-heading">
+                        <button type="button" data-stage-world="1" aria-pressed="true"><span class="ms-num"
+                                    aria-hidden="true">01</span><span data-copy="world1Label">نصنع بأيدينا</span></button>
+                        <button type="button" data-stage-world="2" aria-pressed="false"><span class="ms-num"
+                                    aria-hidden="true">02</span><span data-copy="world2Label">نروق على قهوة</span></button>
+                        <button type="button" data-stage-world="3" aria-pressed="false"><span class="ms-num"
+                                    aria-hidden="true">03</span><span data-copy="world3Label">نغيّر الجو بالحركة</span></button>
+                        <button type="button" data-stage-world="4" aria-pressed="false"><span class="ms-num"
+                                    aria-hidden="true">04</span><span data-copy="world4Label">نجرّب حواسّنا</span></button>
+                        <button type="button" data-stage-world="5" aria-pressed="false"><span class="ms-num"
+                                    aria-hidden="true">05</span><span data-copy="world5Label">نلقى أشياء حلوة</span></button>
+                        <button type="button" data-stage-world="6" aria-pressed="false"><span class="ms-num"
+                                    aria-hidden="true">06</span><span data-copy="world6Label">نعيش اللحظة</span></button>
+                        <button type="button" data-stage-world="7" aria-pressed="false"><span class="ms-num"
+                                    aria-hidden="true">07</span><span data-copy="world7Label">ندخل عالم ثاني</span></button>
+                  </div>
             </section>
             <section class="community section-shell" id="your-way" aria-labelledby="community-title">
                   <div class="sticker-field" aria-hidden="true">

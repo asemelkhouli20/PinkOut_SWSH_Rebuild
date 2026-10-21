@@ -104,7 +104,6 @@ body:not([data-page=home]) .footer-top p{font-size:16px}
   .world-row{grid-template-columns:84px minmax(0,1fr);gap:16px}
   .world-photo{height:84px}
   .world-copy>p:first-child{font-size:12px}
-  .mood-eyebrow,.mood-note{font-size:12px}
   .has-hero-video .brand-typography .brand-tagline{font-size:11px;letter-spacing:.16em}
   .world-copy h3{font-size:19px}
   .world-story-description{font-size:14px}
