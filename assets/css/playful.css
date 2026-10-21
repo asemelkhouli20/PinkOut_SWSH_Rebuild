@@ -56,8 +56,36 @@ body[data-page="home"] .mobile-menu{top:68px;right:0}
 .motion-paused .news .news-card:hover{translate:none}.motion-paused .news .news-card:hover img{scale:1}
 @media(prefers-reduced-motion:reduce){.news .news-card:hover{translate:none}.news .news-card:hover img{scale:1}}
 
-/* Title-only hero invitation, aligned with the lower edge of the film. */
-.has-hero-video:has(.invitation-copy--title-only){padding-bottom:22px}
-.has-hero-video .hero-core.invitation-copy--title-only{align-self:end;padding-block:16px}
+/* Give the brand room to breathe while keeping the film in view. */
+.has-hero-video:has(.invitation-copy--title-only){
+  grid-template-rows:minmax(240px,1fr) auto;
+  padding:104px clamp(20px,4vw,64px) clamp(88px,12svh,132px);
+}
+.has-hero-video .hero-core.invitation-copy--title-only{
+  align-self:end;
+  width:min(780px,100%);
+  max-width:780px;
+  padding:clamp(28px,3vw,42px) clamp(20px,4vw,56px);
+  border:1px solid #ffffffd9;
+  border-radius:32px;
+  background:linear-gradient(145deg,#fffafcf7,#fff3f8ed);
+  box-shadow:0 24px 70px #57102f24,inset 0 1px 0 #fff;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+.has-hero-video:has(.invitation-copy--title-only) .hero-shade{
+  background:linear-gradient(180deg,#49112b12 0%,transparent 40%,#7d163f14 65%,#ffa4c6b3 100%);
+}
 .has-hero-video .invitation-copy--title-only #hero-title{margin:0}
-@media(max-width:800px){.has-hero-video:has(.invitation-copy--title-only){padding-bottom:78px}}
+.has-hero-video .hero-video-toggle{border-color:#ffffffc9;background:#fff8f2e6;box-shadow:0 4px 18px #57102f14}
+@media(max-width:800px){
+  .has-hero-video:has(.invitation-copy--title-only){grid-template-rows:minmax(220px,1fr) auto;padding:88px 20px 88px}
+  .has-hero-video .hero-core.invitation-copy--title-only{padding:30px 22px;border-radius:26px}
+}
+@media(max-width:374px){
+  .has-hero-video:has(.invitation-copy--title-only){padding-inline:14px}
+  .has-hero-video .hero-core.invitation-copy--title-only{padding:26px 16px;border-radius:22px}
+}
+@media(max-height:600px) and (min-width:801px){
+  .has-hero-video:has(.invitation-copy--title-only){min-height:600px;padding-bottom:80px}
+}

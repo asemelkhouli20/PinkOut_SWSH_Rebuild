@@ -60,7 +60,14 @@ html[dir] .has-hero-video .hero-core.brand-typography #hero-title {
   letter-spacing: .14em;
   direction: ltr;
 }
-.has-hero-video .hero-core.brand-typography { width: min(600px, 100%); }
+html[dir] .has-hero-video .hero-core.brand-typography #hero-title {
+  font-size: clamp(19px, 7.8cqi, 64px);
+}
+.has-hero-video .brand-typography .brand-tagline {
+  margin-top: 18px;
+  font-size: clamp(10px, 2cqi, 13px);
+  letter-spacing: .2em;
+}
 
 /* This document can be embedded at any width without external dependencies. */
 .brand-embed {
