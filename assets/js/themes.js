@@ -13,6 +13,7 @@
   const steps = Array.from(room.querySelectorAll('[data-step]'));
   const calm = () => window.PinkOut?.motionPaused || matchMedia('(prefers-reduced-motion: reduce)').matches;
   const rtl = () => document.documentElement.dir === 'rtl';
+  const phone = matchMedia('(max-width: 900px)');
   let current = Math.max(0, tabs.findIndex(tab => tab.getAttribute('aria-selected') === 'true'));
   let enterTimer = 0;
 
@@ -28,8 +29,10 @@
 
   function layout() {
     const height = room.offsetHeight;
+    // Phones centre the room in the space between the header and a 12px bottom gap.
     // Short screens let the top of the room slide under the header rather than hiding the tickets.
-    top = Math.min(84, innerHeight - height - 12);
+    const spare = innerHeight - 84 - height;
+    top = phone.matches && spare >= 0 ? 72 + Math.round(spare / 2) : Math.min(84, innerHeight - height - 12);
     const step = Math.max(240, Math.round(innerHeight * .5));
     const nextTravel = step * (count - 1);
     shell.style.setProperty('--room-top', `${top}px`);

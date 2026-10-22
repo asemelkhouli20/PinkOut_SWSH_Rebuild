@@ -76,7 +76,7 @@
   function setFilter(next) {
     filter = next; renderFilter();
     const list = picked();
-    if (list?.length) activate(list[0]);
+    if (list?.length) show(list[0]);
     const chip = chips.find(c => c.filter === next);
     animate(chip.art || chip.chip, [{ transform: 'translateY(0)' }, { transform: 'translateY(-6px) scale(1.08)', offset: .45 }, { transform: 'none' }], { duration: 520 });
   }
@@ -95,18 +95,50 @@
     renderNote();
   }
 
-  // Phones stack the panels; keep the one just opened in view while the others fold away.
-  function reveal(panel) {
-    if (desktop.matches) return;
-    setTimeout(() => {
-      const top = panel.getBoundingClientRect().top;
-      if (top < 80 || top > innerHeight * .6) panel.scrollIntoView({ block: 'start', behavior: api.motionPaused ? 'instant' : 'smooth' });
-    }, api.motionPaused ? 0 : 420);
+  // Phones pin the stacked panels below the header, and each stretch of scrolling opens the next destination.
+  // Taps, keys, chips and #world links scroll to that stretch, so the scroll position stays the single source of truth.
+  const panelBox = board.querySelector('.wb-panels');
+  const shell = el('div', 'wb-scroll-shell');
+  panelBox.before(shell); shell.append(panelBox);
+  const pinTop = 72;
+  let travel = 0;
+  function layoutPanels() {
+    board.classList.toggle('wb-pinned', !desktop.matches);
+    // The pinned box is sized in svh, so its height (and the travel) stays put while a phone's address bar slides.
+    const nextTravel = desktop.matches ? 0 : Math.max(200, Math.round(panelBox.offsetHeight * .45)) * (panels.length - 1);
+    shell.style.setProperty('--wb-top', `${pinTop}px`);
+    shell.style.height = nextTravel ? `${panelBox.offsetHeight + nextTravel}px` : '';
+    if (nextTravel !== travel) { travel = nextTravel; window.ScrollTrigger?.refresh(); }
+    followScroll();
   }
+  // The scroll position itself drives how open each panel is (--open, 0–1), so the motion follows the finger.
+  // Each destination holds fully open around the middle of its stretch and hands over to the next in between.
+  const calm = () => api.motionPaused || matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function followScroll() {
+    if (!travel) return;
+    const progress = Math.max(0, Math.min(1, (pinTop - shell.getBoundingClientRect().top) / travel));
+    const at = Math.max(0, Math.min(panels.length - 1, progress * panels.length - .5));
+    const base = Math.min(panels.length - 2, Math.floor(at)), f = at - base;
+    const u = Math.max(0, Math.min(1, (f - .25) / .5));
+    const handover = calm() ? (f >= .5 ? 1 : 0) : u * u * (3 - 2 * u);
+    panels.forEach((panel, i) => panel.style.setProperty('--open', i === base ? 1 - handover : i === base + 1 ? handover : 0));
+    activate(handover >= .5 ? base + 1 : base);
+  }
+  function show(index) {
+    if (!travel) { activate(index); return; }
+    const target = scrollY + shell.getBoundingClientRect().top - pinTop + travel * (index + .5) / panels.length;
+    window.scrollTo({ top: target, behavior: api.motionPaused ? 'instant' : 'smooth' });
+  }
+  let scrollFrame = 0;
+  addEventListener('scroll', () => { if (!scrollFrame) scrollFrame = requestAnimationFrame(() => { scrollFrame = 0; followScroll(); }); }, { passive: true });
+  addEventListener('resize', layoutPanels);
+  desktop.addEventListener('change', layoutPanels);
+  layoutPanels();
+
   let hoverTimer;
   panels.forEach((panel, i) => {
     const opener = panel.querySelector('.wb-open');
-    opener.addEventListener('click', () => { activate(i); reveal(panel); });
+    opener.addEventListener('click', () => show(i));
     opener.addEventListener('focus', () => { if (desktop.matches) activate(i); });
     opener.addEventListener('keydown', event => {
       // Arrow keys follow the reading direction: in Arabic the next destination sits to the left.
@@ -115,7 +147,7 @@
       if (!step) return;
       event.preventDefault();
       const next = (i + step + panels.length) % panels.length;
-      panels[next].querySelector('.wb-open').focus(); activate(next);
+      panels[next].querySelector('.wb-open').focus(); show(next);
     });
     // Desktop: resting on a panel opens it; a short delay ignores a pointer just passing through.
     panel.addEventListener('pointerenter', event => {
@@ -130,7 +162,7 @@
     const match = /^#world-([1-7])$/.exec(hash || '');
     if (!match) return;
     if (filter !== 'all') { filter = 'all'; renderFilter(); }
-    activate(Number(match[1]) - 1);
+    show(Number(match[1]) - 1);
   }
   addEventListener('hashchange', () => openFromHash(location.hash));
   document.addEventListener('click', event => {
