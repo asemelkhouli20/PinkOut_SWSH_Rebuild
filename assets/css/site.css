@@ -102,7 +102,7 @@ html[dir=rtl] .po-menu-chip{padding:6px 16px 6px 6px}
 /* ---------------------------------------------------------------- Footer */
 .po-footer{margin-top:90px;padding:0 16px 16px}
 .po-footer-card{position:relative;isolation:isolate;contain:paint;overflow:hidden;padding:clamp(56px,7vw,100px) clamp(22px,5vw,72px) 26px;border-radius:32px;background:var(--po-berry);color:#ffe0ec}
-.po-footer-card::before{content:'';position:absolute;inset:0;z-index:-1;background-image:radial-gradient(#ffffff12 18%,transparent 20%);background-size:30px 30px;pointer-events:none}
+.po-footer-card::before{content:'';position:absolute;inset:0;z-index:-1;background:url(../images/patterns/footer-icons.svg) 0 0/240px 240px;pointer-events:none}
 .po-footer-cta{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:18px;max-width:1100px;margin:0 auto;text-align:center}
 .po-footer-big{margin:0;color:#fff;font:700 clamp(38px,6.2vw,90px)/1.12 var(--font);letter-spacing:-.02em;white-space:pre-line}
 html[dir=ltr] .po-footer-big{font-family:Arial,Helvetica,sans-serif;font-size:clamp(34px,5.6vw,84px);letter-spacing:-.045em;line-height:1}
@@ -157,7 +157,7 @@ html[dir=rtl] .polaroid figcaption{font-family:var(--font);letter-spacing:0;font
 /* ---------------------------------------------------------------- App teaser */
 .app-teaser{padding-top:90px}
 .app-card{position:relative;isolation:isolate;contain:paint;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:clamp(24px,4vw,64px);max-width:1360px;margin:0 auto;padding:clamp(36px,5vw,76px);border-radius:36px;background:var(--po-lilac)}
-.app-card::before{content:'';position:absolute;inset:0;z-index:-1;background-image:radial-gradient(#ffffff80 18%,transparent 20%);background-size:30px 30px;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,#000,transparent 70%);mask-image:linear-gradient(90deg,#000,transparent 70%)}
+.app-card::before{content:'';position:absolute;inset:0;z-index:-1;background:url(../images/patterns/app-icons.svg) 0 0/240px 240px;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,#000,transparent 70%);mask-image:linear-gradient(90deg,#000,transparent 70%)}
 .app-copy{display:flex;flex-direction:column;align-items:flex-start;gap:16px;text-align:start}
 .app-copy .eyebrow,.app-copy .section-title,.app-copy .section-intro{margin:0;text-align:start}
 .app-copy .section-intro{max-width:520px}
@@ -177,7 +177,7 @@ html[dir=rtl] .polaroid figcaption{font-family:var(--font);letter-spacing:0;font
 /* ---------------------------------------------------------------- Partners */
 .partners{padding-top:90px}
 .partners-card{position:relative;isolation:isolate;contain:paint;max-width:1360px;margin:0 auto;padding:clamp(44px,6vw,92px) clamp(20px,5vw,72px);border-radius:36px;background:var(--po-mint);text-align:center}
-.partners-card::before{content:'';position:absolute;inset:0;z-index:-1;background-image:radial-gradient(#ffffff8c 18%,transparent 20%);background-size:30px 30px;pointer-events:none}
+.partners-card::before{content:'';position:absolute;inset:0;z-index:-1;background:url(../images/patterns/partners-icons.svg) 0 0/240px 240px;pointer-events:none}
 .partners-card>:not(.sticker-field){position:relative;z-index:1}
 .partners-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:880px;margin:30px auto 32px;padding:0;list-style:none}
 .partners-chips li{padding:12px 20px;border-radius:999px;background:#fff;color:var(--po-berry);font-size:16px;font-weight:600;box-shadow:0 2px 0 #7d163f12;transition:transform .35s var(--po-ease)}

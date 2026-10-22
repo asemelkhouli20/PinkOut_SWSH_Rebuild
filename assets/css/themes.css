@@ -15,15 +15,15 @@
 .theme-room[data-theme=camping]{--ink:#fff4e0;--soft:#e9dcc2;--accent:#ff9b4a;--on-accent:#0f2a20;--motif:#ffd28a;--motif2:#8fd19e;--tab:#ffffff1c;--tab-line:#ffffff33;--frame:#fff4e0}
 .theme-room[data-theme=horror]{--ink:#f5edff;--soft:#d9c8f2;--accent:#ff8a3d;--on-accent:#150b22;--motif:#b6ff5c;--motif2:#ff8a3d;--tab:#ffffff1c;--tab-line:#ffffff33;--frame:#f5edff}
 
-/* Backgrounds crossfade: one layer per theme, colour plus its own pattern. */
-.room-bg[data-bg=kpop]{background:radial-gradient(#ffffff26 1.5px,transparent 2px) 0 0/26px 26px,linear-gradient(135deg,#2a0f5c,#6a1b9a 55%,#b0175a)}
+/* Backgrounds crossfade: one layer per theme, colour plus its own pattern (themed line doodles where there were dots). */
+.room-bg[data-bg=kpop]{background:url(../images/patterns/room-kpop.svg) 0 0/240px 240px,linear-gradient(135deg,#2a0f5c,#6a1b9a 55%,#b0175a)}
 .room-bg[data-bg=movie]{background:repeating-linear-gradient(90deg,#00000038 0 22px,transparent 22px 44px),radial-gradient(ellipse at 50% 0,#7a1426,#260a12 70%)}
-.room-bg[data-bg=henna]{background:radial-gradient(#b4441a26 2px,transparent 2.5px) 0 0/24px 24px,radial-gradient(circle at 80% 20%,#fbeedb,#efd8b8)}
-.room-bg[data-bg=princess]{background:radial-gradient(#ffffffd9 1.6px,transparent 2px) 0 0/22px 22px,linear-gradient(135deg,#ffe1f1,#efd9ff)}
+.room-bg[data-bg=henna]{background:url(../images/patterns/room-henna.svg) 0 0/240px 240px,radial-gradient(circle at 80% 20%,#fbeedb,#efd8b8)}
+.room-bg[data-bg=princess]{background:url(../images/patterns/room-princess.svg) 0 0/240px 240px,linear-gradient(135deg,#ffe1f1,#efd9ff)}
 .room-bg[data-bg=pajama]{background:repeating-linear-gradient(90deg,#ffffffa6 0 16px,transparent 16px 44px),#d7e3ff}
 .room-bg[data-bg=japan]{background:radial-gradient(circle at 0 100%,transparent 9px,#f6c3cf 10px 11px,transparent 12px) 0 0/28px 14px,#fff1f4}
-.room-bg[data-bg=camping]{background:radial-gradient(#fff6 1px,transparent 1.6px) 0 0/34px 34px,radial-gradient(#fff3 1px,transparent 1.6px) 17px 17px/34px 34px,linear-gradient(#0d241b,#23472f)}
-.room-bg[data-bg=horror]{background:radial-gradient(#b6ff5c1f 1.5px,transparent 2px) 0 0/24px 24px,radial-gradient(ellipse at 50% 0,#3b1d5e,#140a21 72%)}
+.room-bg[data-bg=camping]{background:url(../images/patterns/room-camping.svg) 0 0/240px 240px,linear-gradient(#0d241b,#23472f)}
+.room-bg[data-bg=horror]{background:url(../images/patterns/room-horror.svg) 0 0/240px 240px,radial-gradient(ellipse at 50% 0,#3b1d5e,#140a21 72%)}
 
 /* ---------- Room ---------- */
 .theme-room{position:relative;isolation:isolate;contain:paint;max-width:1360px;margin:54px auto 0;padding:clamp(26px,4vw,56px) clamp(20px,4vw,56px) clamp(22px,3vw,34px);border-radius:36px;overflow:hidden;color:var(--ink);transition:color .5s ease}
