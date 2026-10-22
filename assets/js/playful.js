@@ -2,20 +2,18 @@
 (() => {
   'use strict';
   const api = window.PinkOut;
-  const catalog = document.querySelector('.world-catalog');
-  if (!api || !catalog) return;
+  const board = document.querySelector('.world-board');
+  if (!api || !board) return;
   const words = {
-    ar: { eyebrow: 'YOUR MOOD. YOUR PINKOUT.', title: 'وش جوّك اليوم؟', intro: 'اختاري إحساسك، ونرتّب لك جولة من ثلاث تجارب.', moods: ['أبدع', 'أروق', 'أتحرّك', 'أكتشف'], surprise: 'فاجئيني ✿', route: 'جولتك المقترحة', explore: 'استكشفي', save: 'احفظي', saved: 'محفوظة', picks: 'اختياراتي', empty: 'اضغطي ♡ على أي تجربة وتنحفظ هنا.', open: 'افتحي الصورة', close: 'إغلاق الصور', previous: 'الصورة السابقة', next: 'الصورة التالية', gallery: 'لحظات PinkOut', caption: 'صور تعبّر عن الأجواء، وليست توثيقًا لفعاليات PinkOut.', hint: 'اكتشفي', updated: 'تغيّرت جولتك إلى', remove: 'إزالة' },
-    en: { eyebrow: 'YOUR MOOD. YOUR PINKOUT.', title: 'What’s your mood?', intro: 'Pick a feeling and we’ll map a route through three experiences.', moods: ['Create', 'Unwind', 'Move', 'Discover'], surprise: 'Surprise me ✿', route: 'Your suggested route', explore: 'Explore', save: 'Save', saved: 'Saved', picks: 'My picks', empty: 'Tap ♡ on any experience to keep it here.', open: 'Open photo', close: 'Close photos', previous: 'Previous photo', next: 'Next photo', gallery: 'PinkOut moments', caption: 'Images illustrate the mood, not past PinkOut events.', hint: 'Explore', updated: 'Your route is now', remove: 'Remove' }
+    ar: { label: 'وش جوّك اليوم؟', all: 'الكل', moods: ['أبدع', 'أروق', 'أتحرّك', 'أكتشف'], picks: 'اختياراتي', hint: 'اختاري أي وجهة وتنفتح لك.', route: 'جولتك المقترحة', empty: 'اضغطي ♡ على أي وجهة وتنحفظ هنا.', saved: 'وجهاتك المحفوظة', open: 'افتحي', save: 'احفظي', remove: 'إزالة', hint2: 'اكتشفي', then: ' ← ', comma: '، ' },
+    en: { label: 'What’s your mood?', all: 'All', moods: ['Create', 'Unwind', 'Move', 'Discover'], picks: 'My picks', hint: 'Pick any destination to open it.', route: 'Your suggested route', empty: 'Tap ♡ on any destination to keep it here.', saved: 'Your saved destinations', open: 'Open', save: 'Save', remove: 'Remove', hint2: 'Explore', then: ' → ', comma: ', ' }
   };
   const w = () => words[api.language];
-  const worlds = [...catalog.querySelectorAll('.world-story')];
+  const panels = [...board.querySelectorAll('.wb-panel')];
   const routes = [[1,4,2], [2,4,7], [3,6,2], [7,5,1]];
   const moodStickers = ['painting-palette', 'boba-tea', 'roller-skate', 'instant-camera'];
-  const source = id => worlds[id - 1];
-  const worldName = id => source(id).querySelector('.world-copy > p').textContent;
-  const worldImage = id => source(id).querySelector('.world-photo img');
-  const isSaved = id => source(id).querySelector('[data-save-interest]').getAttribute('aria-pressed') === 'true';
+  const worldName = i => panels[i].querySelector('.wb-name').textContent;
+  const isSaved = i => panels[i].querySelector('[data-save-interest]').getAttribute('aria-pressed') === 'true';
   const el = (tag, cls, text) => { const node = document.createElement(tag); if (cls) node.className = cls; if (text !== undefined) node.textContent = text; return node; };
   const button = (cls, text) => { const node = el('button', cls, text); node.type = 'button'; return node; };
   const animate = (node, frames, options) => {
@@ -23,137 +21,137 @@
     node.getAnimations().forEach(a => a.cancel());
     node.animate(frames, { duration: 420, easing: 'cubic-bezier(.2,.8,.2,1)', ...options });
   };
-  document.querySelector('[data-copy="communityCTA"]')?.closest('a')?.setAttribute('href', '#mood-picker');
+  const desktop = matchMedia('(min-width: 901px)');
 
-  // Mood mixer: four sticker moods, a route of three polaroid stops, and the visitor's saved picks.
-  let mood = 0;
-  const planner = el('section', 'mood-mixer');
-  planner.id = 'mood-picker'; planner.setAttribute('aria-labelledby', 'mood-title');
-  const decor = el('div', 'mm-dots'); decor.setAttribute('aria-hidden', 'true');
-  const head = el('div', 'mm-head');
-  const eyebrow = el('p', 'mm-eyebrow'); eyebrow.dir = 'ltr';
-  const title = el('h3', 'mm-title'); title.id = 'mood-title';
-  const description = el('p', 'mm-intro');
-  head.append(eyebrow, title, description);
-  const controls = el('div', 'mm-moods'); controls.setAttribute('role', 'group');
-  const chips = routes.map((_, index) => {
-    const chip = button('mm-mood');
-    const art = el('span', 'mm-mood-art'); art.setAttribute('aria-hidden', 'true');
-    const icon = el('img'); icon.src = `assets/images/stickers/${moodStickers[index]}.webp`; icon.alt = ''; icon.width = icon.height = 280; icon.decoding = 'async';
-    art.append(icon);
-    const label = el('span', 'mm-mood-label');
-    chip.append(art, label);
-    chip.addEventListener('click', () => selectMood(index)); controls.append(chip);
-    return { chip, art, label };
+  // World board: mood chips light up a route, and the chosen destination opens in place.
+  const bar = el('div', 'wb-bar'); bar.id = 'mood-picker';
+  const label = el('p', 'wb-label'); label.id = 'wb-label';
+  const group = el('div', 'wb-moods'); group.setAttribute('role', 'group'); group.setAttribute('aria-labelledby', 'wb-label');
+  const note = el('p', 'wb-note'); note.setAttribute('aria-live', 'polite');
+  const filters = ['all', 0, 1, 2, 3, 'saved'];
+  const chips = filters.map(filter => {
+    const chip = button('wb-chip'); const text = el('span', 'wb-chip-label'); let art, count;
+    if (typeof filter === 'number') {
+      art = el('span', 'wb-chip-art'); art.setAttribute('aria-hidden', 'true');
+      const icon = el('img'); icon.src = `assets/images/stickers/${moodStickers[filter]}.webp`; icon.alt = ''; icon.width = icon.height = 280; icon.decoding = 'async';
+      art.append(icon); chip.append(art);
+    }
+    chip.append(text);
+    if (filter === 'saved') { chip.classList.add('wb-chip-saved'); count = el('b', 'wb-chip-count'); chip.append(count); }
+    chip.addEventListener('click', () => setFilter(filter));
+    group.append(chip);
+    return { chip, text, art, count, filter };
   });
-  const surprise = button('mm-surprise');
-  surprise.addEventListener('click', () => selectMood((mood + 1 + Math.floor(Math.random() * 3)) % 4));
-  controls.append(surprise);
-  const route = el('div', 'mm-route');
-  const routeLabel = el('p', 'mm-route-label');
-  const trail = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  trail.setAttribute('class', 'mm-trail'); trail.setAttribute('viewBox', '0 0 1000 120'); trail.setAttribute('preserveAspectRatio', 'none'); trail.setAttribute('aria-hidden', 'true');
-  trail.innerHTML = '<path d="M30 80 C180 -10 330 140 500 60 S820 -10 970 80"/>';
-  const cards = el('div', 'mm-stops');
-  route.append(routeLabel, trail, cards);
-  const foot = el('div', 'mm-foot');
-  const picksLabel = el('p', 'mm-picks-label');
-  const collectionList = el('div', 'mm-picks');
-  foot.append(picksLabel, collectionList);
-  const status = el('p', 'sr-only'); status.setAttribute('role', 'status');
-  planner.append(decor, head, controls, route, foot, status); catalog.before(planner);
-  const routeCards = Array.from({ length: 3 }, (_, index) => {
-    const card = el('article', 'mm-stop');
-    const photo = button('mm-photo'); const img = el('img'); img.loading = 'lazy'; img.width = 480; img.height = 320;
-    const number = el('span', 'mm-num', `0${index + 1}`); number.setAttribute('aria-hidden', 'true');
-    photo.append(img, number);
-    const info = el('div', 'mm-stop-info'); const name = el('h4'); name.dir = 'ltr';
-    const actions = el('div', 'mm-stop-actions'); const link = el('a', 'mm-explore'); const save = button('mm-save');
-    photo.addEventListener('click', () => openGallery(routes[mood][index] - 1, photo));
-    save.addEventListener('click', () => source(routes[mood][index]).querySelector('[data-save-interest]').click());
-    actions.append(link, save); info.append(name, actions); card.append(photo, info); cards.append(card);
-    return { card, photo, img, name, link, save };
-  });
-  let refreshFrame;
-  function refreshLayout() { cancelAnimationFrame(refreshFrame); refreshFrame = requestAnimationFrame(() => window.ScrollTrigger?.refresh()); }
-  function renderCollection() {
-    const saved = worlds.map((_, i) => i + 1).filter(isSaved);
-    picksLabel.replaceChildren(el('span', '', w().picks), el('b', 'mm-picks-count', `♥ ${saved.length}`));
-    const before = collectionList.offsetHeight;
-    collectionList.replaceChildren();
-    if (!saved.length) collectionList.append(el('p', 'mm-picks-empty', w().empty));
-    saved.forEach(id => { const link = el('a', 'mm-pick', worldName(id)); link.href = `#world-${id}`; link.dir = 'ltr'; collectionList.append(link); });
-    if (collectionList.offsetHeight !== before) refreshLayout();
-    routeCards.forEach((item, i) => {
-      const id = routes[mood][i]; const saved = isSaved(id);
-      item.save.textContent = saved ? '♥' : '♡'; item.save.setAttribute('aria-pressed', String(saved));
-      item.save.setAttribute('aria-label', `${saved ? w().remove : w().save} ${worldName(id)}`);
+  bar.append(label, group, note); board.prepend(bar);
+  board.classList.add('wb-live');
+
+  let filter = 'all', active = -1;
+  const picked = () => filter === 'all' ? null : filter === 'saved' ? panels.map((_, i) => i).filter(isSaved) : routes[filter].map(id => id - 1);
+  function activate(index) {
+    if (index === active) return;
+    active = index;
+    panels.forEach((panel, i) => {
+      const open = i === index;
+      panel.classList.toggle('is-active', open);
+      panel.querySelector('.wb-open').setAttribute('aria-expanded', String(open));
+      panel.querySelector('.wb-body').inert = !open;
     });
   }
-  function renderRoute(moving = false) {
-    planner.dataset.mood = String(mood);
-    chips.forEach(({ chip, label }, i) => { label.textContent = w().moods[i]; chip.setAttribute('aria-pressed', String(i === mood)); });
-    routeLabel.replaceChildren(el('span', '', w().route), el('b', '', w().moods[mood]));
-    routeCards.forEach((item, i) => {
-      const id = routes[mood][i]; const image = worldImage(id);
-      item.img.src = image.getAttribute('src').replace(/-(900|960|1600)\./, '-480.'); item.img.alt = image.alt;
-      item.photo.setAttribute('aria-label', `${w().open}: ${worldName(id)}`);
-      item.name.textContent = worldName(id); item.link.href = `#world-${id}`; item.link.textContent = `${w().explore} ↗`;
-      // Polaroids are dealt onto the table one after another.
-      if (moving) animate(item.card, [{ opacity: 0, transform: `translateY(32px) rotate(${(i - 1) * 5}deg)` }, { opacity: 1, transform: 'none' }], { delay: i * 80, duration: 560, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'backwards' });
+  function renderNote() {
+    const list = picked();
+    if (!list) note.textContent = w().hint;
+    else if (!list.length) note.textContent = w().empty;
+    else note.replaceChildren(el('span', '', `${filter === 'saved' ? w().saved : w().route}: `), el('b', '', list.map(worldName).join(filter === 'saved' ? w().comma : w().then)));
+  }
+  function renderFilter() {
+    const list = picked();
+    chips.forEach(({ chip, filter: f }) => chip.setAttribute('aria-pressed', String(f === filter)));
+    panels.forEach((panel, i) => {
+      const stop = list ? list.indexOf(i) : -1;
+      panel.classList.toggle('is-match', !!list && stop >= 0);
+      panel.classList.toggle('is-dim', !!list && list.length > 0 && stop < 0);
     });
-    renderCollection();
+    renderNote();
   }
-  function selectMood(index) {
-    mood = index; renderRoute(true); status.textContent = `${w().updated} ${w().moods[mood]}`;
-    animate(chips[mood].art, [{ transform: 'translateY(0)' }, { transform: 'translateY(-10px) scale(1.06)', offset: .45 }, { transform: 'none' }], { duration: 560 });
+  function setFilter(next) {
+    filter = next; renderFilter();
+    const list = picked();
+    if (list?.length) activate(list[0]);
+    const chip = chips.find(c => c.filter === next);
+    animate(chip.art || chip.chip, [{ transform: 'translateY(0)' }, { transform: 'translateY(-6px) scale(1.08)', offset: .45 }, { transform: 'none' }], { duration: 520 });
   }
-
-  // One native dialog keeps focus, Escape and assistive-technology behavior predictable.
-  let galleryIndex = 0; let galleryOpener;
-  const gallery = el('dialog', 'moment-gallery'); gallery.setAttribute('aria-labelledby', 'moment-title');
-  const galleryHead = el('div', 'moment-head'); const galleryTitle = el('h2'); galleryTitle.id = 'moment-title';
-  const close = button('moment-close', '×'); close.addEventListener('click', () => gallery.close());
-  galleryHead.append(galleryTitle, close);
-  const galleryImg = el('img', 'moment-image'); galleryImg.src = worldImage(1).getAttribute('src'); galleryImg.alt = worldImage(1).alt; galleryImg.width = 900; galleryImg.height = 600;
-  const galleryFoot = el('div', 'moment-foot'); const previous = button('moment-nav', '←'); const next = button('moment-nav', '→');
-  const caption = el('p', 'moment-caption'); const counter = el('p', 'moment-counter'); counter.setAttribute('aria-live', 'polite');
-  galleryFoot.append(previous, counter, next); gallery.append(galleryHead, galleryImg, galleryFoot, caption); document.body.append(gallery);
-  function showPhoto() {
-    const image = worldImage(galleryIndex + 1);
-    galleryImg.src = image.getAttribute('src'); galleryImg.alt = image.alt;
-    galleryTitle.textContent = worldName(galleryIndex + 1); counter.textContent = `${galleryIndex + 1} / ${worlds.length}`;
-    animate(galleryImg, [{ opacity: .45, scale: '.98' }, { opacity: 1, scale: '1' }]);
+  function renderSaved() {
+    const total = panels.filter((_, i) => isSaved(i)).length;
+    chips.at(-1).count.textContent = `♥ ${total}`;
+    panels.forEach((panel, i) => {
+      panel.classList.toggle('is-saved', isSaved(i));
+      panel.querySelector('.save-symbol').textContent = isSaved(i) ? '♥' : '♡';
+    });
+    if (filter === 'saved') renderFilter();
   }
-  function openGallery(index, opener) {
-    galleryIndex = index; galleryOpener = opener; showPhoto(); gallery.showModal(); document.body.classList.add('gallery-open');
-  }
-  function stepPhoto(direction) { galleryIndex = (galleryIndex + direction + worlds.length) % worlds.length; showPhoto(); }
-  previous.addEventListener('click', () => stepPhoto(-1)); next.addEventListener('click', () => stepPhoto(1));
-  gallery.addEventListener('keydown', event => {
-    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); stepPhoto(event.key === 'ArrowRight' ? 1 : -1); }
-  });
-  gallery.addEventListener('click', event => { if (event.target !== gallery) return; const r = gallery.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) gallery.close(); });
-  gallery.addEventListener('close', () => { document.body.classList.remove('gallery-open'); galleryOpener?.focus({ preventScroll: true }); });
-  const photoButtons = [];
-  worlds.forEach((world, index) => {
-    const photo = world.querySelector('.world-photo'); const open = button('photo-open', '↗');
-    open.addEventListener('click', () => openGallery(index, open)); photo.append(open); photoButtons.push({ open, index });
-  });
-  document.querySelectorAll('.story-photo').forEach((photo, index) => {
-    const open = button('photo-open', '↗'); const id = [0,1,2][index];
-    open.addEventListener('click', () => openGallery(id, open)); photo.append(open); photoButtons.push({ open, index: id });
-  });
   function translate() {
-    status.textContent = '';
-    eyebrow.textContent = w().eyebrow; title.textContent = w().title; description.textContent = w().intro;
-    surprise.textContent = w().surprise; controls.setAttribute('aria-label', w().title);
-    close.setAttribute('aria-label', w().close); previous.setAttribute('aria-label', w().previous); next.setAttribute('aria-label', w().next); caption.textContent = w().caption;
-    photoButtons.forEach(({open, index}) => open.setAttribute('aria-label', `${w().open}: ${worldName(index + 1)}`));
-    renderRoute(); if (gallery.open) showPhoto();
+    label.textContent = w().label;
+    chips.forEach(({ text, filter: f }) => { text.textContent = f === 'all' ? w().all : f === 'saved' ? w().picks : w().moods[f]; });
+    renderNote();
+  }
+
+  // Phones stack the panels; keep the one just opened in view while the others fold away.
+  function reveal(panel) {
+    if (desktop.matches) return;
+    setTimeout(() => {
+      const top = panel.getBoundingClientRect().top;
+      if (top < 80 || top > innerHeight * .6) panel.scrollIntoView({ block: 'start', behavior: api.motionPaused ? 'instant' : 'smooth' });
+    }, api.motionPaused ? 0 : 420);
+  }
+  let hoverTimer;
+  panels.forEach((panel, i) => {
+    const opener = panel.querySelector('.wb-open');
+    opener.addEventListener('click', () => { activate(i); reveal(panel); });
+    opener.addEventListener('focus', () => { if (desktop.matches) activate(i); });
+    opener.addEventListener('keydown', event => {
+      // Arrow keys follow the reading direction: in Arabic the next destination sits to the left.
+      const rtl = document.documentElement.dir === 'rtl';
+      const step = { ArrowRight: rtl ? -1 : 1, ArrowLeft: rtl ? 1 : -1, ArrowDown: 1, ArrowUp: -1 }[event.key];
+      if (!step) return;
+      event.preventDefault();
+      const next = (i + step + panels.length) % panels.length;
+      panels[next].querySelector('.wb-open').focus(); activate(next);
+    });
+    // Desktop: resting on a panel opens it; a short delay ignores a pointer just passing through.
+    panel.addEventListener('pointerenter', event => {
+      if (event.pointerType !== 'mouse' || !desktop.matches) return;
+      clearTimeout(hoverTimer); hoverTimer = setTimeout(() => activate(i), 90);
+    });
+    panel.addEventListener('pointerleave', () => clearTimeout(hoverTimer));
+  });
+
+  // Links to #world-N open that destination, even when the hash is already in the address bar.
+  function openFromHash(hash) {
+    const match = /^#world-([1-7])$/.exec(hash || '');
+    if (!match) return;
+    if (filter !== 'all') { filter = 'all'; renderFilter(); }
+    activate(Number(match[1]) - 1);
+  }
+  addEventListener('hashchange', () => openFromHash(location.hash));
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href*="#world-"]');
+    if (link && link.pathname === location.pathname) openFromHash(link.hash);
+  });
+
+  // The first destination opens as the board arrives, so the expanding motion explains itself.
+  function intro() { if (active < 0) activate(0); }
+  if (/^#world-[1-7]$/.test(location.hash)) openFromHash(location.hash);
+  else if (api.motionPaused || !('IntersectionObserver' in window)) intro();
+  else {
+    const watch = new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting) return;
+      watch.disconnect(); setTimeout(intro, 650);
+    }, { rootMargin: '0px 0px -35% 0px' });
+    watch.observe(board.querySelector('.wb-panels'));
   }
   document.addEventListener('pinkout:language', translate);
-  document.addEventListener('pinkout:saved-change', renderCollection);
+  document.addEventListener('pinkout:saved-change', renderSaved);
+  translate(); renderFilter(); renderSaved();
 
   // A looping illustrated cursor; CSS pauses the loop whenever the cursor is hidden.
   const fine = matchMedia('(hover: hover) and (pointer: fine)');
@@ -242,7 +240,7 @@
       }
       previousPoint = { x: event.clientX, y: event.clientY };
     }
-    const hint = target?.matches('.photo-open,.mm-photo') ? w().open : target?.matches('.mm-save,[data-save-interest]') ? (target.getAttribute('aria-pressed') === 'true' ? w().remove : w().save) : target?.matches('a') ? w().hint : '';
+    const hint = target?.matches('.wb-open') && !target.closest('.is-active') ? w().open : target?.matches('[data-save-interest]') ? (target.getAttribute('aria-pressed') === 'true' ? w().remove : w().save) : target?.matches('a') ? w().hint2 : '';
     cursor.classList.toggle('is-visible', !!hint && !inDialog); cursor.textContent = hint;
     const card = event.target.closest(tiltSelector);
     if (card !== tiltTarget) resetTilt();
@@ -255,7 +253,7 @@
   document.addEventListener('visibilitychange', clearPointer);
   window.addEventListener('pagehide', clearPointer);
   document.addEventListener('click', event => {
-    if (api.motionPaused || !event.detail || event.target.closest('dialog') || !event.target.closest('.mm-mood,.mm-surprise,.mm-save,[data-save-interest],[data-stack-next]')) return;
+    if (api.motionPaused || !event.detail || event.target.closest('dialog') || !event.target.closest('.wb-chip,[data-save-interest],[data-stack-next]')) return;
     for (let i = 0; i < 5; i++) {
       const petal = el('span', 'click-petal', '✿'); petal.setAttribute('aria-hidden', 'true'); petal.style.left = `${event.clientX}px`; petal.style.top = `${event.clientY}px`; document.body.append(petal);
       const angle = (i / 5) * Math.PI * 2;
@@ -265,8 +263,8 @@
   });
   function motionState() {
     document.body.classList.toggle('playful-pointer', fine.matches && !api.motionPaused); clearPointer();
-    if (api.motionPaused) { planner.getAnimations({ subtree: true }).forEach(a => a.cancel()); gallery.getAnimations({ subtree: true }).forEach(a => a.cancel()); document.querySelectorAll('.click-petal').forEach(p => p.remove()); }
+    if (api.motionPaused) { board.getAnimations({ subtree: true }).forEach(a => a.cancel()); document.querySelectorAll('.click-petal').forEach(p => p.remove()); intro(); }
   }
   fine.addEventListener('change', motionState); document.addEventListener('pinkout:motion', motionState);
-  translate(); motionState();
+  motionState();
 })();

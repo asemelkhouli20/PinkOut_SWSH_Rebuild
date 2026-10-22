@@ -1,4 +1,4 @@
-/* PinkOut "new world" layer: stickers, portal, ribbons, polaroid, sparkles and scroll progress.
+/* PinkOut "new world" layer: stickers, portal, polaroid, sparkles and scroll progress.
    Everything here is decorative; without JavaScript it renders in its settled, still state. */
 
 /* Scroll progress: a pink ribbon with a heart riding its tip. */
@@ -32,20 +32,6 @@ html[dir=rtl] .scroll-progress>b{left:auto;right:calc(var(--p,0) * 100%);transla
 .about .st-4{--s:128px;--r:-9deg;top:360px;inset-inline-end:4%}
 .about .st-5{--s:84px;--r:-6deg;top:40px;inset-inline-start:27%}
 .about .st-6{--s:96px;--r:14deg;top:104px;inset-inline-end:12%}
-
-/* Ribbons */
-/* contain:paint keeps the rotated ribbons from widening the page on phones (overflow:clip alone does not). */
-.ribbon-band{display:block;position:relative;z-index:6;height:190px;margin-block:-20px;overflow:clip;contain:paint;pointer-events:none}
-.ribbon{position:absolute;left:-10vw;right:-10vw;top:50%;padding:16px 0;direction:ltr;white-space:nowrap;overflow:hidden;box-shadow:0 10px 30px #7d163f1f}
-.ribbon-a{background:#df004c;color:#fff;transform:translateY(-62%) rotate(-4deg)}
-.ribbon-b{background:#ffc9de;color:#7d163f;transform:translateY(-38%) rotate(3deg)}
-.ribbon-run{display:inline-flex;will-change:transform}
-.ribbon-run>span{display:inline-flex;align-items:center;padding-inline:26px;font:700 clamp(18px,2vw,27px)/1.25 var(--font);unicode-bidi:isolate}
-.ribbon-a .ribbon-run>span{direction:rtl}
-html[dir=ltr] .ribbon-a .ribbon-run>span{direction:ltr;font-family:Arial,Helvetica,sans-serif}
-.ribbon-b .ribbon-run>span{font-family:Arial,Helvetica,sans-serif;letter-spacing:.02em;text-transform:uppercase}
-.ribbon-run>span::after{content:'✿';margin-inline-start:52px;font-size:.8em;color:#ffc9de}
-.ribbon-b .ribbon-run>span::after{content:'♡';color:#df004c}
 
 /* Community stickers */
 .community{position:relative;isolation:isolate}
@@ -99,10 +85,6 @@ html[dir=ltr] .ribbon-a .ribbon-run>span{direction:ltr;font-family:Arial,Helveti
   .about .st-5{--s:50px;top:16px;inset-inline-start:30%}
   .about .st-3,.about .st-4,.about .st-6{display:none}
   .about-portal{clip-path:circle(var(--portal,80%) at 50% 24%)}
-  .ribbon-band{height:130px;margin-block:-10px}
-  .ribbon{padding:11px 0}
-  .ribbon-run>span{padding-inline:16px}
-  .ribbon-run>span::after{margin-inline-start:32px}
   .community{padding-top:110px}
   .community .st-1{--s:66px;top:18px;inset-inline-end:6%}
   .community .st-3{--s:48px;top:14px;inset-inline-start:8%}

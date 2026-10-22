@@ -18,13 +18,13 @@
       <link rel="canonical" href="https://pinkoutsa.com/">
       <link rel="icon" href="assets/images/favicon.svg">
       <link rel="stylesheet" href="assets/css/fonts.css">
-      <link rel="stylesheet" href="assets/css/theme.css?v=46">
+      <link rel="stylesheet" href="assets/css/theme.css?v=47">
       <link rel="stylesheet" href="assets/css/hero.css?v=51">
-      <link rel="stylesheet" href="assets/css/playful.css?v=61">
+      <link rel="stylesheet" href="assets/css/playful.css?v=62">
       <link rel="stylesheet" href="assets/css/brand-typography.css?v=58">
-      <link rel="stylesheet" href="assets/css/polish.css?v=5">
-      <link rel="stylesheet" href="assets/css/wonder.css?v=7">
-      <link rel="stylesheet" href="assets/css/worlds.css?v=10">
+      <link rel="stylesheet" href="assets/css/polish.css?v=6">
+      <link rel="stylesheet" href="assets/css/wonder.css?v=8">
+      <link rel="stylesheet" href="assets/css/worlds.css?v=11">
       <link rel="stylesheet" href="assets/css/site.css?v=8">
       <link rel="stylesheet" href="assets/css/themes.css?v=13">
       <script defer="" src="assets/js/config.js"></script>
@@ -32,12 +32,12 @@
       <script defer="" src="assets/js/app.js?v=48"></script>
       <script defer="" src="assets/js/vendor/gsap.min.js"></script>
       <script defer="" src="assets/js/vendor/ScrollTrigger.min.js"></script>
-      <script defer="" src="assets/js/experience.js?v=50"></script>
+      <script defer="" src="assets/js/experience.js?v=51"></script>
       <script defer="" src="assets/js/hero-video.js?v=46"></script>
       <script defer src="assets/js/cinema-video.js?v=47"></script>
       <script defer src="assets/js/hero-series.js?v=58"></script>
-      <script defer="" src="assets/js/playful.js?v=63"></script>
-      <script defer src="assets/js/wonder.js?v=8"></script>
+      <script defer="" src="assets/js/playful.js?v=64"></script>
+      <script defer src="assets/js/wonder.js?v=9"></script>
       <script defer src="assets/js/nav.js?v=1"></script>
       <script defer src="assets/js/themes.js?v=5"></script>
       <link rel="preload" as="image" media="(min-width:801px)" href="assets/images/hero-pinkout-fun-poster.jpg?v=2">
@@ -315,10 +315,6 @@
                                     class="arrow" aria-hidden="true">↗</span></a><a class="text-link" href="#coming-soon"><span
                                     data-copy="aboutSoon">قريباً في الرياض</span></a></div>
             </section>
-            <div class="ribbon-band" aria-hidden="true">
-                  <div class="ribbon ribbon-a"><div class="ribbon-run"><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span><span data-copy="Marquee">نجرّب. نضحك. نكتشف. ونرجع نعيدها.</span></div></div>
-                  <div class="ribbon ribbon-b"><div class="ribbon-run" dir="ltr"><span>Make Studio</span><span>Rose Hub</span><span>Move Studio</span><span>Beauty Lab</span><span>Pink Market</span><span>PinkOut Live</span><span>Pink Passage</span><span>Make Studio</span><span>Rose Hub</span><span>Move Studio</span><span>Beauty Lab</span><span>Pink Market</span><span>PinkOut Live</span><span>Pink Passage</span></div></div>
-            </div>
             <section class="world-stage mood-stage section-shell" aria-labelledby="stage-heading" data-world="1">
                   <div class="stage-background" aria-hidden="true"><img class="stage-photo" src="assets/images/worlds/make-480.webp" width="480" height="270" alt="" loading="lazy" decoding="async"><img class="stage-photo stage-photo-next" src="assets/images/worlds/make-480.webp" width="480" height="270" alt="" loading="lazy" decoding="async"></div>
                   <div class="ms-dots" aria-hidden="true"></div>
@@ -424,107 +420,110 @@
                   <h2 class="section-title reveal-title" id="community-title" data-copy="communityTitle">تجارب مختلفة.
                         وشيء يجمعنا.</h2>
                   <p class="section-intro" data-copy="communityCopy">ما تحتاجين خطة كاملة. ابدئي باللي يحمّسك، واحفظي
-                        التجارب اللي ودّك تجرّبينها.</p><a class="button"
-                        href="#worlds"><span data-copy="communityCTA">خلّي مزاجك يختار</span><span class="arrow"
-                              aria-hidden="true">↗</span></a>
-                  <div class="world-catalog" id="worlds">
-                        <div class="catalog-header">
-                              <h2 data-copy="catalogTitle">عالم PinkOut</h2><span data-copy="catalogNote">تصوّرات تصميمية · التفاصيل تُعلن قبل الافتتاح</span>
-                        </div>
-                        <article class="world-story world-row" id="world-1">
-                              <div class="world-photo"><img src="assets/images/worlds/make-960.webp"
+                        التجارب اللي ودّك تجرّبينها.</p>
+                  <div class="world-board" id="worlds">
+                        <div class="wb-panels">
+                              <article class="world-story wb-panel" id="world-1">
+                                    <img class="wb-photo" src="assets/images/worlds/make-960.webp"
                                           srcset="assets/images/worlds/make-480.webp 480w, assets/images/worlds/make-960.webp 960w, assets/images/worlds/make-1600.webp 1600w"
-                                          sizes="(max-width:900px) 60vw, 32vw" width="960" height="540"
-                                          alt="تصوّر تصميمي لـ Make Studio: نساء يصنعن إكسسوارات في ورشة وردية" data-alt="altMake" loading="lazy" decoding="async"></div>
-                              <div class="world-copy">
-                                    <p dir="ltr">Make Studio</p>
-                                    <h3 data-copy="World 1 heading">اصنعيها. خصّصيها. خذيها معك.</h3>
-                                    <p class="world-story-description" data-copy="World 1 text">ورشة إبداعية تصنعين فيها قطعتك: أساور وتعليقات، أغطية جوال، تطريز، حفر بالأسماء، وحلويات على ذوقك.</p>
-                              </div><button type="button" class="save-interest" data-save-interest="1"
-                                    aria-pressed="false"><span data-save-label="">هذا جوّي</span><span
-                                          class="save-symbol" aria-hidden="true">♡</span></button>
-                        </article>
-                        <article class="world-story world-row" id="world-2">
-                              <div class="world-photo"><img src="assets/images/worlds/hub-960.webp"
+                                          sizes="(max-width:900px) 100vw, 46vw" width="960" height="540"
+                                          alt="تصوّر تصميمي لـ Make Studio: نساء يصنعن إكسسوارات في ورشة وردية" data-alt="altMake" loading="lazy" decoding="async">
+                                    <button type="button" class="wb-open" aria-expanded="true" aria-controls="world-1-body"><span class="wb-num" dir="ltr" aria-hidden="true">01</span><span class="wb-name" dir="ltr">Make Studio</span></button>
+                                    <div class="wb-body" id="world-1-body">
+                                          <div class="wb-body-in">
+                                                <h3 class="wb-heading" data-copy="World 1 heading">اصنعيها. خصّصيها. خذيها معك.</h3>
+                                                <p class="wb-text" data-copy="World 1 text">ورشة إبداعية تصنعين فيها قطعتك: أساور وتعليقات، أغطية جوال، تطريز، حفر بالأسماء، وحلويات على ذوقك.</p>
+                                                <button type="button" class="save-interest wb-save" data-save-interest="1" aria-pressed="false"><span class="save-symbol" aria-hidden="true">♡</span><span data-save-label="">هذا جوّي</span></button>
+                                          </div>
+                                    </div>
+                              </article>
+                              <article class="world-story wb-panel" id="world-2">
+                                    <img class="wb-photo" src="assets/images/worlds/hub-960.webp"
                                           srcset="assets/images/worlds/hub-480.webp 480w, assets/images/worlds/hub-960.webp 960w, assets/images/worlds/hub-1600.webp 1600w"
-                                          sizes="(max-width:900px) 60vw, 32vw" width="960" height="540"
-                                          alt="تصوّر تصميمي لـ Rose Hub: مقهى PinkOut الوردي" data-alt="altHub" loading="lazy" decoding="async"></div>
-                              <div class="world-copy">
-                                    <p dir="ltr">Rose Hub</p>
-                                    <h3 data-copy="World 2 heading">قلب PinkOut.</h3>
-                                    <p class="world-story-description" data-copy="World 2 text">نقطة اللقاء: مقهى PinkOut بالماتشا والقهوة والمشروبات الموسمية، وجنبه مساحة تتغيّر بين إطلاقات وتجارب جديدة.</p>
-                              </div><button type="button" class="save-interest" data-save-interest="2"
-                                    aria-pressed="false"><span data-save-label="">هذا جوّي</span><span
-                                          class="save-symbol" aria-hidden="true">♡</span></button>
-                        </article>
-                        <article class="world-story world-row" id="world-3">
-                              <div class="world-photo"><img src="assets/images/worlds/move-960.webp"
+                                          sizes="(max-width:900px) 100vw, 46vw" width="960" height="540"
+                                          alt="تصوّر تصميمي لـ Rose Hub: مقهى PinkOut الوردي" data-alt="altHub" loading="lazy" decoding="async">
+                                    <button type="button" class="wb-open" aria-expanded="true" aria-controls="world-2-body"><span class="wb-num" dir="ltr" aria-hidden="true">02</span><span class="wb-name" dir="ltr">Rose Hub</span></button>
+                                    <div class="wb-body" id="world-2-body">
+                                          <div class="wb-body-in">
+                                                <h3 class="wb-heading" data-copy="World 2 heading">قلب PinkOut.</h3>
+                                                <p class="wb-text" data-copy="World 2 text">نقطة اللقاء: مقهى PinkOut بالماتشا والقهوة والمشروبات الموسمية، وجنبه مساحة تتغيّر بين إطلاقات وتجارب جديدة.</p>
+                                                <button type="button" class="save-interest wb-save" data-save-interest="2" aria-pressed="false"><span class="save-symbol" aria-hidden="true">♡</span><span data-save-label="">هذا جوّي</span></button>
+                                          </div>
+                                    </div>
+                              </article>
+                              <article class="world-story wb-panel" id="world-3">
+                                    <img class="wb-photo" src="assets/images/worlds/move-960.webp"
                                           srcset="assets/images/worlds/move-480.webp 480w, assets/images/worlds/move-960.webp 960w, assets/images/worlds/move-1600.webp 1600w"
-                                          sizes="(max-width:900px) 60vw, 32vw" width="960" height="540"
-                                          alt="تصوّر تصميمي لـ Move Studio: استوديو حركة بمرايا وإضاءة ناعمة" data-alt="altMove" loading="lazy" decoding="async"></div>
-                              <div class="world-copy">
-                                    <p dir="ltr">Move Studio</p>
-                                    <h3 data-copy="World 3 heading">حرّكي يومك.</h3>
-                                    <p class="world-story-description" data-copy="World 3 text">استوديو أهدأ للحركة والعافية: باليه، يوغا، رقص ولياقة، في كلاسات تجرّبين فيها شي جديد.</p>
-                              </div><button type="button" class="save-interest" data-save-interest="3"
-                                    aria-pressed="false"><span data-save-label="">هذا جوّي</span><span
-                                          class="save-symbol" aria-hidden="true">♡</span></button>
-                        </article>
-                        <article class="world-story world-row" id="world-4">
-                              <div class="world-photo"><img src="assets/images/worlds/beauty-960.webp"
+                                          sizes="(max-width:900px) 100vw, 46vw" width="960" height="540"
+                                          alt="تصوّر تصميمي لـ Move Studio: استوديو حركة بمرايا وإضاءة ناعمة" data-alt="altMove" loading="lazy" decoding="async">
+                                    <button type="button" class="wb-open" aria-expanded="true" aria-controls="world-3-body"><span class="wb-num" dir="ltr" aria-hidden="true">03</span><span class="wb-name" dir="ltr">Move Studio</span></button>
+                                    <div class="wb-body" id="world-3-body">
+                                          <div class="wb-body-in">
+                                                <h3 class="wb-heading" data-copy="World 3 heading">حرّكي يومك.</h3>
+                                                <p class="wb-text" data-copy="World 3 text">استوديو أهدأ للحركة والعافية: باليه، يوغا، رقص ولياقة، في كلاسات تجرّبين فيها شي جديد.</p>
+                                                <button type="button" class="save-interest wb-save" data-save-interest="3" aria-pressed="false"><span class="save-symbol" aria-hidden="true">♡</span><span data-save-label="">هذا جوّي</span></button>
+                                          </div>
+                                    </div>
+                              </article>
+                              <article class="world-story wb-panel" id="world-4">
+                                    <img class="wb-photo" src="assets/images/worlds/beauty-960.webp"
                                           srcset="assets/images/worlds/beauty-480.webp 480w, assets/images/worlds/beauty-960.webp 960w, assets/images/worlds/beauty-1600.webp 1600w"
-                                          sizes="(max-width:900px) 60vw, 32vw" width="960" height="540"
-                                          alt="تصوّر تصميمي لـ Beauty Lab: صالة جمال بركن علامات" data-alt="altBeauty" loading="lazy" decoding="async"></div>
-                              <div class="world-copy">
-                                    <p dir="ltr">Beauty Lab</p>
-                                    <h3 data-copy="World 4 heading">جمال على مقاسك.</h3>
-                                    <p class="world-story-description" data-copy="World 4 text">اكتشفي وجرّبي وخصّصي: أفكار لتجارب درجة الفاونديشن والعطور وألوان المكياج والأظافر، وركن لعلامات تتجدد.</p>
-                              </div><button type="button" class="save-interest" data-save-interest="4"
-                                    aria-pressed="false"><span data-save-label="">هذا جوّي</span><span
-                                          class="save-symbol" aria-hidden="true">♡</span></button>
-                        </article>
-                        <article class="world-story world-row" id="world-5">
-                              <div class="world-photo"><img src="assets/images/worlds/market-960.webp"
+                                          sizes="(max-width:900px) 100vw, 46vw" width="960" height="540"
+                                          alt="تصوّر تصميمي لـ Beauty Lab: صالة جمال بركن علامات" data-alt="altBeauty" loading="lazy" decoding="async">
+                                    <button type="button" class="wb-open" aria-expanded="true" aria-controls="world-4-body"><span class="wb-num" dir="ltr" aria-hidden="true">04</span><span class="wb-name" dir="ltr">Beauty Lab</span></button>
+                                    <div class="wb-body" id="world-4-body">
+                                          <div class="wb-body-in">
+                                                <h3 class="wb-heading" data-copy="World 4 heading">جمال على مقاسك.</h3>
+                                                <p class="wb-text" data-copy="World 4 text">اكتشفي وجرّبي وخصّصي: أفكار لتجارب درجة الفاونديشن والعطور وألوان المكياج والأظافر، وركن لعلامات تتجدد.</p>
+                                                <button type="button" class="save-interest wb-save" data-save-interest="4" aria-pressed="false"><span class="save-symbol" aria-hidden="true">♡</span><span data-save-label="">هذا جوّي</span></button>
+                                          </div>
+                                    </div>
+                              </article>
+                              <article class="world-story wb-panel" id="world-5">
+                                    <img class="wb-photo" src="assets/images/worlds/market-960.webp"
                                           srcset="assets/images/worlds/market-480.webp 480w, assets/images/worlds/market-960.webp 960w, assets/images/worlds/market-1600.webp 1600w"
-                                          sizes="(max-width:900px) 60vw, 32vw" width="960" height="540"
-                                          alt="تصوّر تصميمي لـ Pink Market: متاجر وردية صغيرة" data-alt="altMarket" loading="lazy" decoding="async"></div>
-                              <div class="world-copy">
-                                    <p dir="ltr">Pink Market</p>
-                                    <h3 data-copy="World 5 heading">سوق صغير مليان مفاجآت.</h3>
-                                    <p class="world-story-description" data-copy="World 5 text">متاجر مختارة، حلويات، أزياء وإكسسوارات لمصمّمات محليات، هدايا، وزوايا موسمية تتغيّر.</p>
-                              </div><button type="button" class="save-interest" data-save-interest="5"
-                                    aria-pressed="false"><span data-save-label="">هذا جوّي</span><span
-                                          class="save-symbol" aria-hidden="true">♡</span></button>
-                        </article>
-                        <article class="world-story world-row" id="world-6">
-                              <div class="world-photo"><img src="assets/images/worlds/live-960.webp"
+                                          sizes="(max-width:900px) 100vw, 46vw" width="960" height="540"
+                                          alt="تصوّر تصميمي لـ Pink Market: متاجر وردية صغيرة" data-alt="altMarket" loading="lazy" decoding="async">
+                                    <button type="button" class="wb-open" aria-expanded="true" aria-controls="world-5-body"><span class="wb-num" dir="ltr" aria-hidden="true">05</span><span class="wb-name" dir="ltr">Pink Market</span></button>
+                                    <div class="wb-body" id="world-5-body">
+                                          <div class="wb-body-in">
+                                                <h3 class="wb-heading" data-copy="World 5 heading">سوق صغير مليان مفاجآت.</h3>
+                                                <p class="wb-text" data-copy="World 5 text">متاجر مختارة، حلويات، أزياء وإكسسوارات لمصمّمات محليات، هدايا، وزوايا موسمية تتغيّر.</p>
+                                                <button type="button" class="save-interest wb-save" data-save-interest="5" aria-pressed="false"><span class="save-symbol" aria-hidden="true">♡</span><span data-save-label="">هذا جوّي</span></button>
+                                          </div>
+                                    </div>
+                              </article>
+                              <article class="world-story wb-panel" id="world-6">
+                                    <img class="wb-photo" src="assets/images/worlds/live-960.webp"
                                           srcset="assets/images/worlds/live-480.webp 480w, assets/images/worlds/live-960.webp 960w, assets/images/worlds/live-1600.webp 1600w"
-                                          sizes="(max-width:900px) 60vw, 32vw" width="960" height="540"
-                                          alt="تصوّر تصميمي لـ PinkOut Live: منصة عروض وجمهور" data-alt="altLive" loading="lazy" decoding="async"></div>
-                              <div class="world-copy">
-                                    <p dir="ltr">PinkOut Live</p>
-                                    <h3 data-copy="World 6 heading">المنصّة اللي تجمع الجو.</h3>
-                                    <p class="world-story-description" data-copy="World 6 text">عروض حية، جلسات DJ، حوارات وبودكاست، وإطلاقات منتجات، في برنامج يتغيّر.</p>
-                              </div><button type="button" class="save-interest" data-save-interest="6"
-                                    aria-pressed="false"><span data-save-label="">هذا جوّي</span><span
-                                          class="save-symbol" aria-hidden="true">♡</span></button>
-                        </article>
-                        <article class="world-story world-row" id="world-7">
-                              <div class="world-photo"><img src="assets/images/worlds/passage-960.webp"
+                                          sizes="(max-width:900px) 100vw, 46vw" width="960" height="540"
+                                          alt="تصوّر تصميمي لـ PinkOut Live: منصة عروض وجمهور" data-alt="altLive" loading="lazy" decoding="async">
+                                    <button type="button" class="wb-open" aria-expanded="true" aria-controls="world-6-body"><span class="wb-num" dir="ltr" aria-hidden="true">06</span><span class="wb-name" dir="ltr">PinkOut Live</span></button>
+                                    <div class="wb-body" id="world-6-body">
+                                          <div class="wb-body-in">
+                                                <h3 class="wb-heading" data-copy="World 6 heading">المنصّة اللي تجمع الجو.</h3>
+                                                <p class="wb-text" data-copy="World 6 text">عروض حية، جلسات DJ، حوارات وبودكاست، وإطلاقات منتجات، في برنامج يتغيّر.</p>
+                                                <button type="button" class="save-interest wb-save" data-save-interest="6" aria-pressed="false"><span class="save-symbol" aria-hidden="true">♡</span><span data-save-label="">هذا جوّي</span></button>
+                                          </div>
+                                    </div>
+                              </article>
+                              <article class="world-story wb-panel" id="world-7">
+                                    <img class="wb-photo" src="assets/images/worlds/passage-960.webp"
                                           srcset="assets/images/worlds/passage-480.webp 480w, assets/images/worlds/passage-960.webp 960w, assets/images/worlds/passage-1600.webp 1386w"
-                                          sizes="(max-width:900px) 60vw, 32vw" width="960" height="540"
-                                          alt="تصوّر تصميمي لـ Pink Passage: ممر أقواس وزهور" data-alt="altPassage" loading="lazy" decoding="async"></div>
-                              <div class="world-copy">
-                                    <p dir="ltr">Pink Passage</p>
-                                    <h3 data-copy="World 7 heading">من أول خطوة، عالم ثاني.</h3>
-                                    <p class="world-story-description" data-copy="World 7 text">مدخل فني من أقواس وضوء ومرايا يحوّل وصولك لبداية التجربة، ويودّعك بلحظة تبقى في البال.</p>
-                              </div><button type="button" class="save-interest" data-save-interest="7"
-                                    aria-pressed="false"><span data-save-label="">هذا جوّي</span><span
-                                          class="save-symbol" aria-hidden="true">♡</span></button>
-                        </article>
-                        <div class="catalog-footer">
-                              <p data-copy="storageNotice">اختياراتك تُحفظ على هذا الجهاز فقط.</p><button type="button"
-                                    data-clear-saved=""><span data-copy="Clear saved">مسح الاختيارات</span></button>
+                                          sizes="(max-width:900px) 100vw, 46vw" width="960" height="540"
+                                          alt="تصوّر تصميمي لـ Pink Passage: ممر أقواس وزهور" data-alt="altPassage" loading="lazy" decoding="async">
+                                    <button type="button" class="wb-open" aria-expanded="true" aria-controls="world-7-body"><span class="wb-num" dir="ltr" aria-hidden="true">07</span><span class="wb-name" dir="ltr">Pink Passage</span></button>
+                                    <div class="wb-body" id="world-7-body">
+                                          <div class="wb-body-in">
+                                                <h3 class="wb-heading" data-copy="World 7 heading">من أول خطوة، عالم ثاني.</h3>
+                                                <p class="wb-text" data-copy="World 7 text">مدخل فني من أقواس وضوء ومرايا يحوّل وصولك لبداية التجربة، ويودّعك بلحظة تبقى في البال.</p>
+                                                <button type="button" class="save-interest wb-save" data-save-interest="7" aria-pressed="false"><span class="save-symbol" aria-hidden="true">♡</span><span data-save-label="">هذا جوّي</span></button>
+                                          </div>
+                                    </div>
+                              </article>
+                        </div>
+                        <div class="wb-foot">
+                              <p><span data-copy="catalogNote">تصوّرات تصميمية · التفاصيل تُعلن قبل الافتتاح</span> · <span data-copy="storageNotice">اختياراتك تُحفظ على هذا الجهاز فقط.</span></p><button type="button" data-clear-saved=""><span data-copy="Clear saved">مسح الاختيارات</span></button>
                         </div>
                   </div>
             </section>

@@ -1,4 +1,4 @@
-/* PinkOut "new world" scroll layer: portal bloom, stickers, ribbons, word reveals, polaroid and sparkles.
+/* PinkOut "new world" scroll layer: portal bloom, stickers, word reveals, polaroid and sparkles.
    Decorative only. Paused motion, reduced motion and data saving leave everything in its settled state. */
 (() => {
   'use strict';
@@ -58,19 +58,6 @@
     });
   }
 
-  // Ribbons loop seamlessly: the run holds an even number of identical sets.
-  const ribbons = Array.from(document.querySelectorAll('.ribbon'));
-  ribbons.forEach(ribbon => { const run = ribbon.querySelector('.ribbon-run'); run.dataset.set = run.children.length; });
-  function fillRibbon(ribbon) {
-    const run = ribbon.querySelector('.ribbon-run');
-    const setSize = Number(run.dataset.set);
-    while (run.children.length > setSize) run.lastElementChild.remove();
-    const setWidth = run.scrollWidth || 1;
-    const copies = Math.max(1, Math.ceil(ribbon.offsetWidth / setWidth));
-    const base = Array.from(run.children);
-    for (let c = 1; c < copies * 2; c++) base.forEach(node => run.append(node.cloneNode(true)));
-  }
-
   // Tapping a sticker makes it wiggle and release a few hearts.
   document.querySelectorAll('.sticker').forEach(sticker => sticker.addEventListener('pointerdown', event => {
     sticker.classList.remove('is-wiggle'); void sticker.offsetWidth; sticker.classList.add('is-wiggle');
@@ -103,12 +90,12 @@
     function showWorld(index, animateIn) {
       const story = document.getElementById(`world-${index + 1}`);
       if (!story) return;
-      const brand = story.querySelector('.world-copy > p').textContent;
+      const brand = story.querySelector('.wb-name').textContent;
       stage.dataset.world = String(index + 1);
       count.textContent = String(index + 1).padStart(2, '0');
       mark.textContent = brand; part('.ms-name').textContent = brand;
-      part('.ms-heading').textContent = story.querySelector('h3').textContent;
-      part('.ms-text').textContent = story.querySelector('.world-story-description').textContent;
+      part('.ms-heading').textContent = story.querySelector('.wb-heading').textContent;
+      part('.ms-text').textContent = story.querySelector('.wb-text').textContent;
       sticker.src = `assets/images/stickers/${stageStickers[index]}.webp`;
       if (!animateIn || api.motionPaused || !sticker.animate) return;
       const ease = 'cubic-bezier(.2,.8,.2,1)';
@@ -136,11 +123,10 @@
     showWorld(0, false);
   }
 
-  let context, loops = [], revealed = new WeakSet(), ready = false;
+  let context, revealed = new WeakSet(), ready = false;
   function build() {
     if (!ready) return;
-    context?.revert(); context = null; loops = [];
-    ribbons.forEach(fillRibbon);
+    context?.revert(); context = null;
     updateProgress();
     titles.forEach(splitWords);
     if (calm()) {
@@ -148,7 +134,6 @@
       document.querySelectorAll('.visit-step').forEach(step => step.classList.add('is-on'));
       ST?.refresh(); return;
     }
-    const rtl = root.dir === 'rtl';
     context = gsap.context(() => {
       // Portal: a polka-dot world blooms open as the hero hands over to "About".
       gsap.fromTo('.about-portal', { '--portal': '6%' }, { '--portal': innerWidth <= 800 ? '80%' : '62%', ease: 'none',
@@ -179,9 +164,11 @@
         y: 0, autoAlpha: 1, duration: .9, stagger: .12, ease: 'power3.out', clearProps: 'transform,opacity,visibility',
         scrollTrigger: { trigger: '.about-points', start: 'top 88%', once: true } });
 
-      // Catalog rows slide in from the reading side.
-      ST.batch('.world-row', { start: 'top 92%', once: true, onEnter: batch => gsap.fromTo(batch,
-        { x: rtl ? 48 : -48, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: .7, stagger: .08, ease: 'power3.out', clearProps: 'transform,opacity,visibility' }) });
+      // World board: the mood chips pop in, then the seven panels rise one after another in reading order.
+      gsap.fromTo('.wb-chip', { y: 18, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .6, stagger: .05, ease: 'back.out(2)', clearProps: 'transform,opacity,visibility',
+        scrollTrigger: { trigger: '.wb-bar', start: 'top 90%', once: true } });
+      gsap.fromTo('.wb-panel', { y: 90, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .9, stagger: .07, ease: 'power4.out', clearProps: 'transform,opacity,visibility',
+        scrollTrigger: { trigger: '.wb-panels', start: 'top 88%', once: true } });
 
       // The polaroid straightens as it arrives.
       gsap.fromTo('.polaroid', { rotation: -9, y: 70 }, { rotation: -3, y: 0, ease: 'none',
@@ -229,23 +216,6 @@
       if (mark) gsap.fromTo(mark, { '--wm-track': '.3em', opacity: .06 }, { '--wm-track': '-.05em', opacity: .17, ease: 'none',
         scrollTrigger: { trigger: mark, start: 'top bottom', end: 'bottom bottom', scrub: .6 } });
 
-      // Ribbons run on their own and answer the scroll: faster with speed, reversing with direction.
-      ribbons.forEach((ribbon, i) => {
-        const loop = gsap.to(ribbon.querySelector('.ribbon-run'), { xPercent: -50, duration: 38 + i * 6, ease: 'none', repeat: -1,
-          onReverseComplete() { this.totalTime(this.rawTime() + this.duration() * 100); } });
-        loop.totalTime(loop.duration() * 100);
-        loop.timeScale(i ? -1 : 1); loops.push({ loop, sign: i ? -1 : 1 });
-      });
-      ST.create({ trigger: '.ribbon-band', start: 'top bottom', end: 'bottom top',
-        onToggle: self => loops.forEach(({ loop }) => loop.paused(!self.isActive)),
-        onUpdate: self => {
-          const boost = 1 + Math.min(Math.abs(self.getVelocity()) / 350, 5);
-          loops.forEach(({ loop, sign }) => {
-            gsap.to(loop, { timeScale: sign * self.direction * boost, duration: .2, overwrite: true });
-            gsap.to(loop, { timeScale: sign * self.direction, duration: 1, delay: .25 });
-          });
-        } });
-
       // Desktop: stickers lean gently toward the pointer.
       if (fine.matches) {
         const movers = Array.from(document.querySelectorAll('.sticker-bob')).map((bob, i) => ({
@@ -259,8 +229,6 @@
       }
     });
     ST.refresh();
-    const ribbonView = ST.getAll().find(trigger => trigger.vars.trigger === '.ribbon-band');
-    loops.forEach(({ loop }) => loop.paused(!ribbonView?.isActive));
   }
 
   let resizeTimer, lastWidth = innerWidth;
@@ -274,6 +242,5 @@
     requestAnimationFrame(build);
   });
   document.addEventListener('pinkout:motion', build);
-  addEventListener('pagehide', () => loops.forEach(({ loop }) => loop.pause()));
   Promise.resolve(document.fonts?.ready).then(() => { ready = true; build(); });
 })();

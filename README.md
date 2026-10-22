@@ -106,15 +106,15 @@ The phone hero has its own 540×960 edit, with scene-specific crops and a matchi
 
 ### Clarity and polish revision — 21 October 2026
 
-The homepage now reads in one order: hero (with a one-line description) → video wall → about (three principles) → mood stage, mood picker and the seven-experience catalog → first event → FAQ → closing → footer. Sections that repeated the catalog were removed: the results carousel (whose RTL arrows never moved it), feature tiles, conceptual phone screens, the vision panel, story panels and the future-ideas grid. The first-event section follows the catalog, so interests saved there pre-fill the interest form. A soft band appears behind the floating header once the page scrolls, so section text never sits under the logo or buttons.
+The homepage now reads in one order: hero (with a one-line description) → video wall → about (three principles) → mood stage, the world board (mood chips and seven expanding destinations) → first event → FAQ → closing → footer. Sections that repeated the catalog were removed: the results carousel (whose RTL arrows never moved it), feature tiles, conceptual phone screens, the vision panel, story panels and the future-ideas grid. The first-event section follows the catalog, so interests saved there pre-fill the interest form. A soft band appears behind the floating header once the page scrolls, so section text never sits under the logo or buttons.
 
 `assets/css/polish.css` loads last on every page and holds this revision's spacing, type-size and layout rules. `experience.js` treats the carousel as optional. New or changed copy lives in `copy.js` (`heroIntro`, catalog/storage notes, interest-form wording, shorter English save labels); all other new text reuses existing approved entries.
 
 ### "New world" scroll layer — 21 October 2026
 
-`assets/css/wonder.css` and `assets/js/wonder.js` add the playful scroll layer, inspired by the previous pinkoutsa.com stickers, Museum of Ice Cream's colour blocks and SWSH's scroll storytelling: a polka-dot portal that blooms open behind "About", twelve 3D stickers that pop in, drift with scroll, bob, and wiggle with hearts when tapped, two crossing ribbons whose speed and direction follow the scroll, whole-word title reveals (Arabic words are never split), a taped polaroid for the first event, rising sparkles, and a pink scroll-progress ribbon.
+`assets/css/wonder.css` and `assets/js/wonder.js` add the playful scroll layer, inspired by the previous pinkoutsa.com stickers, Museum of Ice Cream's colour blocks and SWSH's scroll storytelling: a polka-dot portal that blooms open behind "About", twelve 3D stickers that pop in, drift with scroll, bob, and wiggle with hearts when tapped, whole-word title reveals (Arabic words are never split), a taped polaroid for the first event, rising sparkles, and a pink scroll-progress ribbon.
 
-Without `wonder.css` the decorations stay hidden (`polish.css` hides them by default). `contain: paint` on the about section, the event card and the ribbon band stops tilted entrances from widening the page on phones. Reduced motion, the motion toggle and data saving leave every element visible in its settled state.
+Without `wonder.css` the decorations stay hidden (`polish.css` hides them by default). `contain: paint` on the about section, and the event card stops tilted entrances from widening the page on phones. Reduced motion, the motion toggle and data saving leave every element visible in its settled state.
 
 ### Mood stage and mood mixer redesign — 21 October 2026
 
@@ -122,7 +122,18 @@ Without `wonder.css` the decorations stay hidden (`polish.css` hides them by def
 
 **Mood stage.** The section is now a rounded colour block that changes pastel for each of the seven worlds. The photo sits in a white arch, with that world's sticker, a "01 / 07" counter and small sparkles. Below the arch, the world's name, heading and description come from the catalog, so they follow the language switch. A giant watermark of the world name drifts with the scroll, and the choices are cherry pills. `experience.js` still picks the world from the scroll position; `wonder.js` follows its `aria-pressed` choice. On phones the stage stacks into one screen. On short phones (≤700px tall) the choices become numbered circles whose names remain available to screen readers.
 
-**Mood mixer.** `playful.js` builds four sticker mood tiles and a "Surprise me" pill, plus a route of three tilted polaroids along a dashed trail, dealt in when the mood changes. On phones the route becomes a swipeable row. Saved picks show as an always-visible row of chips.
+**Mood mixer.** Replaced on 22 October 2026 by the world board below.
+
+### World board — 22 October 2026
+
+The client found the seven-row catalog dated, disliked the photo popup and felt "Different experiences" ran too long, so the mood mixer and the catalog are merged into one board (`.world-board`, `wb-*` in `worlds.css`; behaviour in `playful.js`). The section is now under half its earlier height.
+
+- **Panels.** The seven destinations sit side by side as photo panels, each with its number and its name running up the edge. Resting the pointer on a panel, tapping it, or focusing it opens it in place: it widens, the photo settles, and the heading, description and "That's my vibe" save button rise in one after another. Arrow keys move between panels in reading order. On phones (≤900px) the panels stack as an accordion of photo strips.
+- **Mood chips.** All / Create / Unwind / Move / Discover / My picks. A mood highlights its three-stop route, fades the other worlds, opens the first stop and names the route in one line. My picks does the same for saved worlds and shows a live count.
+- **No popup.** The native photo dialog and its "↗" buttons are removed everywhere, including the story photos.
+- **Motion.** `wonder.js` pops the chips in and raises the panels in sequence; the first destination then opens by itself, so the expanding motion explains the interaction. Reduced motion and the motion toggle remove the transitions.
+- **Links.** `#worlds`, `#world-1` … `#world-7` and `#mood-picker` still work; a `#world-N` link opens that destination. The mood stage and `experience.js` read names, copy and photos from the board.
+- Without JavaScript the board falls back to a plain grid with every story visible.
 
 ### Knowledge-base alignment, navigation and footer — 21 October 2026
 

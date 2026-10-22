@@ -21,7 +21,7 @@
   if (track) { previous.addEventListener('click', () => moveCarousel(-1)); next.addEventListener('click', () => moveCarousel(1)); track.addEventListener('scroll', updateCarousel, { passive: true }); }
   const stage = document.querySelector('.world-stage');
   const choices = Array.from(document.querySelectorAll('[data-stage-world]'));
-  const worldImages = Array.from(document.querySelectorAll('.world-story .world-photo img'));
+  const worldImages = Array.from(document.querySelectorAll('.world-story .wb-photo'));
   const base = stage.querySelector('.stage-photo'), incoming = stage.querySelector('.stage-photo-next'), preview = stage.querySelector('.stage-preview img');
   let selected = 0, swap, previewTween, generation = 0;
   function copyImage(to, from) { for (const key of ['src', 'srcset', 'sizes']) { const value = from.getAttribute(key); if (value) to.setAttribute(key, value); else to.removeAttribute(key); } }
@@ -188,7 +188,6 @@
         if (!lighter) {
           document.querySelectorAll('.device').forEach((phone, i) => gsap.fromTo(phone, { y: 0, scale: .96, rotation: i === 0 ? -7 : i === 2 ? 7 : 0 }, { y: 0, scale: 1, rotation: i === 0 ? -7 : i === 2 ? 7 : 0, ease: 'none', scrollTrigger: { trigger: '.device-scene', start: 'top 95%', end: 'center 45%', scrub: 1 } }));
           document.querySelectorAll('.device-tag').forEach((tag, i) => gsap.fromTo(tag, { y: 70 + i * 30 }, { y: -10, ease: 'none', scrollTrigger: { trigger: '.device-scene', start: 'top bottom', end: 'bottom top', scrub: 1 } }));
-          gsap.fromTo(document.querySelector('.world-catalog'), { y: 24, scale: 1 }, { y: 0, scale: 1, ease: 'none', scrollTrigger: { trigger: '.world-catalog', start: 'top 95%', end: 'top 30%', scrub: .8 } });
           document.querySelectorAll('.story-photo img,.vision-image img').forEach(image => gsap.fromTo(image, { scale: 1.12, yPercent: -2 }, { scale: 1.02, yPercent: 2, ease: 'none', scrollTrigger: { trigger: image.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1 } }));
           document.querySelectorAll('.closing-photo').forEach((photo, i) => {
             gsap.fromTo(photo, { y: i % 2 ? 100 : -100, scale: .7 }, { y: 0, scale: 1, ease: 'none', scrollTrigger: { trigger: '.closing', start: 'top bottom', end: 'center 65%', scrub: 1 } });
