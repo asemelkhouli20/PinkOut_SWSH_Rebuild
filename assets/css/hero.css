@@ -3,7 +3,7 @@ body[data-page="home"] .site-header{display:grid;grid-template-columns:auto minm
 body[data-page="home"] .desktop-nav{position:static;transform:none;justify-self:center;min-width:0}
 body[data-page="home"] .header-actions{justify-self:end;min-width:0}
 .has-hero-video{display:grid;grid-template-rows:minmax(210px,1fr) auto auto;row-gap:22px;min-height:100svh;height:auto;max-height:none;margin-top:0;padding:35px clamp(20px,3vw,48px) 22px;background:#ffa4c6}
-.has-hero-video .hero-backdrop{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#ffa4c6 url('../images/hero-pinkout-fun-poster.jpg?v=2') center/cover no-repeat}
+.has-hero-video .hero-backdrop{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#ffa4c6 url('../images/hero-pinkout-hype-poster.jpg?v=3') center/cover no-repeat}
 .hero-background-video{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 50%;opacity:0;transition:opacity .45s ease;pointer-events:none}
 .hero-background-video.is-ready{opacity:1}
 .has-hero-video .hero-shade{background:linear-gradient(180deg,#f572a110 35%,#f572a133 65%,#ffa4c6d9 100%)}
@@ -44,7 +44,7 @@ body[data-page="home"] .desktop-nav{display:none}
 html[dir=ltr] .has-hero-video .hero-core h1{font-size:clamp(36px,6.4vw,52px);line-height:1.04}
 .has-hero-video .hero-actions{margin-top:20px}.hero-footer{gap:14px}
 .has-hero-video .world-signatures>div{gap:7px;font-size:10px}.has-hero-video .world-signatures>div>span:nth-child(n){padding:5px 8px}
-.hero-background-video{object-position:center}.has-hero-video .hero-backdrop{background-image:url('../images/hero-pinkout-fun-mobile-poster.jpg?v=2');background-position:center}
+.hero-background-video{object-position:center}.has-hero-video .hero-backdrop{background-image:url('../images/hero-pinkout-hype-mobile-poster.jpg?v=3');background-position:center}
 .memory-scene{padding:60px 8px 0}.memory-scene .cinema-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(6,minmax(0,1fr));grid-template-areas:"main main" "main main" "cafe live" "market laugh" "scent passage" "move pottery";height:clamp(680px,190vw,1050px);gap:8px}
 .memory-scene .cinema-grid>div,.memory-scene .cinema-grid>figure{border-radius:12px}
 
