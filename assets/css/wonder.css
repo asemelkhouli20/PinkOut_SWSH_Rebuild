@@ -20,12 +20,14 @@ html[dir=rtl] .scroll-progress>b{left:auto;right:calc(var(--p,0) * 100%);transla
 .sticker:nth-child(3n) .sticker-bob{--d:5.2s;animation-delay:-4s}
 .sticker-heart{position:fixed;z-index:96;pointer-events:none;font:18px/1 Arial,sans-serif;color:#df004c}
 
-/* About: the portal into the PinkOut world. */
+/* About: the portal into the PinkOut world, papered with line doodles. */
 /* contain:paint keeps tilted entrances (cards, polaroid) from widening the page on phones. */
 .about{position:relative;isolation:isolate;padding-bottom:40px;contain:paint}
 .product-scene{contain:paint}
 .about>:not(.sticker-field):not(.about-portal){position:relative;z-index:1}
-.about-portal{position:absolute;inset:0;z-index:-1;pointer-events:none;background-color:#ffe6f0;background-image:radial-gradient(#ffcfe1 19%,transparent 21%);background-size:30px 30px;clip-path:circle(var(--portal,62%) at 50% 34%)}
+/* The wallpaper fades behind the heading so the text stays clear; JS drifts it with the scroll via --drift. */
+.about-portal{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background-color:#ffe6f0;clip-path:circle(var(--portal,62%) at 50% 34%);-webkit-mask-image:radial-gradient(ellipse 40% 26% at 50% 30%,#0000002e,#000 100%);mask-image:radial-gradient(ellipse 40% 26% at 50% 30%,#0000002e,#000 100%)}
+.about-portal::before{content:'';position:absolute;inset:0 0 -180px;background:url(../images/patterns/about-icons.svg) 0 0/280px 280px;opacity:.8;transform:translate3d(0,var(--drift,0px),0)}
 .about .st-1{--s:120px;--r:10deg;top:56px;inset-inline-end:9%}
 .about .st-2{--s:84px;--r:-16deg;top:190px;inset-inline-start:13%}
 .about .st-3{--s:140px;--r:8deg;top:350px;inset-inline-start:4%}
@@ -84,7 +86,8 @@ html[dir=rtl] .scroll-progress>b{left:auto;right:calc(var(--p,0) * 100%);transla
   .about .st-2{--s:54px;top:34px;inset-inline-start:7%}
   .about .st-5{--s:50px;top:16px;inset-inline-start:30%}
   .about .st-3,.about .st-4,.about .st-6{display:none}
-  .about-portal{clip-path:circle(var(--portal,80%) at 50% 24%)}
+  .about-portal{clip-path:circle(var(--portal,80%) at 50% 24%);-webkit-mask-image:radial-gradient(ellipse 60% 20% at 50% 26%,#0000002e,#000 100%);mask-image:radial-gradient(ellipse 60% 20% at 50% 26%,#0000002e,#000 100%)}
+  .about-portal::before{background-size:220px 220px}
   .community{padding-top:110px}
   .community .st-1{--s:66px;top:18px;inset-inline-end:6%}
   .community .st-3{--s:48px;top:14px;inset-inline-start:8%}

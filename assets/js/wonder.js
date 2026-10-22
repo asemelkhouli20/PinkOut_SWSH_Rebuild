@@ -135,9 +135,11 @@
       ST?.refresh(); return;
     }
     context = gsap.context(() => {
-      // Portal: a polka-dot world blooms open as the hero hands over to "About".
+      // Portal: a doodle-papered world blooms open as the hero hands over to "About", and its icons drift with the scroll.
       gsap.fromTo('.about-portal', { '--portal': '6%' }, { '--portal': innerWidth <= 800 ? '80%' : '62%', ease: 'none',
         scrollTrigger: { trigger: '.about', start: 'top 95%', end: 'top 15%', scrub: .8 } });
+      gsap.fromTo('.about-portal', { '--drift': '0px' }, { '--drift': '-160px', ease: 'none',
+        scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: 1 } });
 
       titles.forEach(title => {
         const words = title.querySelectorAll('.word-in');

@@ -1,0 +1,31 @@
+/* PinkOut layout system: every colour block shares one gutter, gap and corner radius.
+   Loaded last on the homepage, so these values replace the older per-section margins and radii. */
+:root{--block-gutter:16px;--block-gap:16px;--block-radius:32px;--block-inner:1280px}
+@media(max-width:800px){:root{--block-gutter:12px;--block-gap:12px;--block-radius:24px}}
+
+/* Mood stage follows About directly (with or without the scroll shell). */
+.stage-scroll-shell,.about+.world-stage{margin-top:var(--block-gap)}
+.world-stage.mood-stage{margin-inline:var(--block-gutter);border-radius:var(--block-radius)}
+
+/* Themed-days room spans the same width as the other blocks. */
+.themes.section-shell{padding-inline:var(--block-gutter)}
+.themes-head{padding-inline:4px}
+.theme-room{max-width:none;border-radius:var(--block-radius)}
+
+/* Coming soon → app → partners → FAQ → closing → footer stack with one even gap. */
+.product-scene{margin:var(--block-gap) var(--block-gutter) 0;border-radius:var(--block-radius)}
+.app-teaser,.partners{padding:var(--block-gap) var(--block-gutter) 0}
+.app-card,.partners-card{max-width:none;border-radius:var(--block-radius)}
+.faq.section-shell,.closing.section-shell{margin:var(--block-gap) var(--block-gutter) 0;border-radius:var(--block-radius)}
+.po-footer{margin-top:var(--block-gap)}
+
+/* On wide screens the cards grow but their content keeps a readable width. */
+@media(min-width:801px){
+  .app-card{padding-inline:max(clamp(36px,5vw,76px),calc((100% - var(--block-inner)) / 2))}
+  .partners-card{padding-inline:max(clamp(20px,5vw,72px),calc((100% - var(--block-inner)) / 2))}
+  .theme-room{padding-inline:max(clamp(20px,4vw,56px),calc((100% - var(--block-inner)) / 2))}
+}
+
+/* Eyebrows: one cherry style everywhere, a touch larger for Arabic. */
+.faq .eyebrow{color:var(--accent)}
+html[dir=rtl] .eyebrow{font-size:14px;font-weight:600;letter-spacing:0}

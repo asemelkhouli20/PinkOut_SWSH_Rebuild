@@ -101,7 +101,7 @@ html[dir=rtl] .po-menu-chip{padding:6px 16px 6px 6px}
 
 /* ---------------------------------------------------------------- Footer */
 .po-footer{margin-top:90px;padding:0 16px 16px}
-.po-footer-card{position:relative;isolation:isolate;contain:paint;overflow:hidden;padding:clamp(56px,7vw,100px) clamp(22px,5vw,72px) 26px;border-radius:40px;background:var(--po-berry);color:#ffe0ec}
+.po-footer-card{position:relative;isolation:isolate;contain:paint;overflow:hidden;padding:clamp(56px,7vw,100px) clamp(22px,5vw,72px) 26px;border-radius:32px;background:var(--po-berry);color:#ffe0ec}
 .po-footer-card::before{content:'';position:absolute;inset:0;z-index:-1;background-image:radial-gradient(#ffffff12 18%,transparent 20%);background-size:30px 30px;pointer-events:none}
 .po-footer-cta{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:18px;max-width:1100px;margin:0 auto;text-align:center}
 .po-footer-big{margin:0;color:#fff;font:700 clamp(38px,6.2vw,90px)/1.12 var(--font);letter-spacing:-.02em;white-space:pre-line}
@@ -243,8 +243,8 @@ body:not([data-page=home]) main{padding-top:120px}
   .partners-chips li{padding:10px 16px;font-size:14px}
   .partners .st-1{--s:72px;top:14px;inset-inline-start:4%}
   .partners .st-2{display:none}
-  .po-footer{margin-top:60px;padding:0 8px 8px}
-  .po-footer-card{border-radius:28px}
+  .po-footer{margin-top:60px;padding:0 12px 12px}
+  .po-footer-card{border-radius:24px}
   .po-footer-cta p{font-size:16px}
   .po-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
   .po-footer-col:last-child{grid-column:1/-1}
