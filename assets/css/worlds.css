@@ -21,7 +21,10 @@ html[dir=ltr] .world-stage.mood-stage{--ms-shift:-8px}
 .mood-stage .stage-background,.mood-stage .stage-shade{display:none}
 /* Progress through the seven worlds, drawn as a cherry ribbon along the bottom edge. */
 .world-stage.mood-stage::after{left:32px;right:32px;bottom:16px;height:6px;border-radius:6px;background:#df004c}
-.ms-dots{position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(#fff 21%,transparent 23%);background-size:34px 34px;opacity:.6;-webkit-mask-image:radial-gradient(ellipse at 50% 55%,#000 25%,transparent 78%);mask-image:radial-gradient(ellipse at 50% 55%,#000 25%,transparent 78%)}
+/* White line doodles (matching About) drift upward as the stage moves through the seven worlds. */
+.ms-dots{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;opacity:.9;-webkit-mask-image:radial-gradient(ellipse at 50% 55%,#000 25%,transparent 78%);mask-image:radial-gradient(ellipse at 50% 55%,#000 25%,transparent 78%)}
+.ms-dots::before{content:'';position:absolute;inset:0 0 -160px;background:url(../images/patterns/stage-icons.svg) 0 0/280px 280px;transform:translate3d(0,calc(var(--stage-progress,0) * -140px),0)}
+@media(max-width:800px){.ms-dots::before{background-size:220px 220px}}
 .ms-watermark{position:absolute;z-index:-1;left:50%;bottom:-.16em;margin:0;translate:calc(-50% + (.5 - var(--stage-progress,0)) * 22vw) 0;font:900 clamp(80px,13vw,210px)/1 Arial,Helvetica,sans-serif;letter-spacing:-.04em;text-transform:uppercase;white-space:nowrap;color:#fff;opacity:.5;pointer-events:none}
 
 .ms-copy{grid-area:copy;display:flex;flex-direction:column;align-items:flex-start;gap:18px;min-width:0}
