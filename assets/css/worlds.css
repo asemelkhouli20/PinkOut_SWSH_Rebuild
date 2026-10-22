@@ -161,30 +161,34 @@ html[dir=rtl] .ms-choices button{padding:7px 8px 7px 20px}
   .ms-detail{min-height:0}
   .ms-heading{font-size:18px;margin-block:2px}
   .ms-text{display:none}
-  .ms-choices{flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:center;justify-self:stretch;gap:6px}
-  .ms-choices button,html[dir=rtl] .ms-choices button{min-height:36px;padding:4px 12px 4px 5px;gap:6px;font-size:13px}
-  html[dir=rtl] .ms-choices button{padding:4px 5px 4px 12px}
-  .ms-num{width:26px;height:26px;font-size:10px}
-  .ms-choices button[aria-pressed=true]{transform:scale(1.05)}
+  /* The seven choices become one flip card: only the current world shows, and scrolling turns the deck.
+     Passed worlds flip away upwards, upcoming ones wait folded below, so scrolling back flips the other way. */
+  .ms-choices{display:grid;justify-items:center;justify-self:center;perspective:700px}
+  .ms-choices button,html[dir=rtl] .ms-choices button{grid-area:1/1;min-height:46px;padding:6px 18px 6px 7px;gap:10px;font-size:15px;backface-visibility:hidden}
+  .ms-choices button{transition:transform .5s cubic-bezier(.5,0,.75,0),opacity .25s .2s,visibility 0s .5s,background-color .3s,color .3s}
+  html[dir=rtl] .ms-choices button{padding:6px 7px 6px 18px}
+  .ms-num{width:32px;height:32px;font-size:11px}
+  .ms-choices button[aria-pressed=false]{opacity:0;visibility:hidden;pointer-events:none;transform:rotateX(-90deg);transform-origin:50% 0}
+  .ms-choices button:has(~ [aria-pressed=true]){transform:rotateX(90deg);transform-origin:50% 100%}
+  .ms-choices button[aria-pressed=true]{transform:none;transform-origin:50% 50%;box-shadow:0 12px 24px #df004c40;
+    transition:transform .6s .18s cubic-bezier(.3,1.4,.5,1),opacity .2s .18s,visibility 0s,background-color .3s,color .3s}
   .ms-watermark{font-size:26vw;bottom:-.1em;opacity:.55}
 }
+.motion-paused .ms-choices button{transition:none!important}
+@media(max-width:900px) and (prefers-reduced-motion:reduce){.ms-choices button{transition:none!important}}
 /* Taller phones and tablets have room for the description too. */
 @media(max-width:900px) and (min-height:760px){
   .ms-text{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;max-width:520px;margin-inline:auto;font-size:14px}
 }
 
-/* Short phones: the seven choices become numbered circles; each name stays available to screen readers,
-   and the current world's name already shows under the arch. */
+/* Short phones: tighter type and a slimmer card. */
 @media(max-width:900px) and (max-height:700px){
   .ms-copy .ms-eyebrow{display:none}
   .ms-copy .section-title,html[dir=ltr] .ms-copy .section-title{font-size:24px}
   .ms-window{width:min(50vw,22svh)}
   .ms-heading{font-size:16px}
-  .ms-choices button,html[dir=rtl] .ms-choices button{min-height:0;padding:2px;gap:0}
-  .ms-choices button>[data-copy]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-  .ms-choices button[aria-pressed=true]::after{display:none}
-  .ms-choices{gap:4px}
-  .ms-num{width:30px;height:30px;font-size:11px}
+  .ms-choices button,html[dir=rtl] .ms-choices button{min-height:40px;font-size:14px}
+  .ms-num{width:28px;height:28px}
 }
 
 /* Phones and tablets: the panels stack and open like an accordion. */
