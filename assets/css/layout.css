@@ -28,4 +28,6 @@
 
 /* Eyebrows: one cherry style everywhere, a touch larger for Arabic. */
 .faq .eyebrow{color:var(--accent)}
+/* Slightly deeper cherry on the blush About block keeps 4.5:1 contrast. */
+.about .eyebrow{color:#c80044}
 html[dir=rtl] .eyebrow{font-size:14px;font-weight:600;letter-spacing:0}

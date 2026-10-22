@@ -48,7 +48,7 @@
     document.querySelectorAll('.language-switch').forEach(el => {
       el.textContent = language === 'ar' ? 'EN' : 'العربية';
       el.lang = language === 'ar' ? 'en' : 'ar';
-      el.setAttribute('aria-label', language === 'ar' ? 'Switch to English' : 'التبديل إلى العربية');
+      el.setAttribute('aria-label', language === 'ar' ? 'EN, switch to English' : 'العربية، التبديل إلى العربية');
     });
     document.querySelectorAll('nav').forEach(el => el.setAttribute('aria-label', language === 'ar' ? 'التنقل الرئيسي' : 'Main navigation'));
     document.querySelector('.dialog-close')?.setAttribute('aria-label', t('Close'));

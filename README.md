@@ -6,18 +6,9 @@ An Arabic-first static website for PinkOut’s women-only experiences community.
 
 Serve this folder with any static HTTP server. Upload the package contents directly into the Nginx document root. No installation or build is needed. Use HTTP(S), rather than opening `index.html` as a file, for normal browser behavior.
 
-```nginx
-server {
-    listen 80;
-    server_name pinkoutsa.com www.pinkoutsa.com;
-    root /var/www/pinkoutsa.com;
-    index index.html;
-    location / { try_files $uri $uri/ =404; }
-    error_page 404 /404.html;
-}
-```
+Use `deploy/nginx.conf` as the site config. It turns on gzip compression, browser caching, HTTP/2 and the HTTPS redirect, serves `404.html` for missing pages and keeps the planning `.md` files private. Keep existing server-specific certificate lines if already installed, then run `sudo nginx -t && sudo systemctl reload nginx`. `event.html` is a compatibility redirect into the one-page event section.
 
-Configure HTTPS for the actual server/domain before public launch. Keep existing server-specific TLS configuration if already installed. `event.html` is a compatibility redirect into the one-page event section.
+**Version rule.** Browsers keep any file requested with `?v=N` for a year. Whenever you change a CSS, JS, poster or video file, raise its `?v=` number in every page that loads it (`index.html`, `privacy.html`, `credits.html`, `404.html`, `event.html`), or returning visitors keep the old copy. Files without `?v=` are re-checked daily, and HTML pages are re-checked on every visit.
 
 ## Files
 
@@ -156,3 +147,15 @@ Images: `assets/images/worlds/` (destination and facade renders), `themes/` and 
 **One block system.** `assets/css/layout.css` loads last on the homepage. Every colour block now shares the same gutter, gap and corner radius, set as `--block-gutter`, `--block-gap` and `--block-radius` (16px / 16px / 32px on desktop, 12px / 12px / 24px at ≤800px). The blocks are the mood stage, the themed-days room, coming soon, app, partners, FAQ, closing and the footer. Before this, gutters ranged from 16 to 60px and radii from 18 to 40px, and the gaps between blocks varied from 20 to 140px. The app, partners and themed-days cards span the full width, and on wide screens their content stays within 1280px. FAQ's eyebrow is now cherry like the others, and Arabic eyebrows use 14px semibold so they're easier to read. The footer radius and mobile gutter changed in `site.css`, so every page matches.
 
 **About wallpaper.** At the client's request, the polka dots inside the About portal are replaced with tone-on-tone line doodles (`assets/images/patterns/about-icons.svg`): heart, coffee, lipstick, camera, music, cherry, bag, flower, palette, sunglasses, nail polish, star, bow and sparkles. The circle bloom is unchanged. It still opens from 6% to 62% (80% on phones) as the hero hands over to About. A soft mask fades the doodles behind the heading, and `wonder.js` drifts them slowly with the scroll using a transform. Reduced motion, the motion toggle and data saving show the open portal, still. The mood stage (`.ms-dots`) uses the same doodles in white (`assets/images/patterns/stage-icons.svg`), so they sit on every world colour. They drift upward with `--stage-progress` as the stage moves through the seven worlds, so no extra JavaScript is needed. In the themed-days room, each theme whose background used dots now has its own line doodles in the same colour and strength (`assets/images/patterns/room-<theme>.svg`). K-pop has mics, notes, light sticks and headphones. Henna has paisley, mandalas, leaves, crescents and lanterns. Princess has crowns, gems, wands, castles and bows. Camping has tents, pines, flames, moons and marshmallows, with tiny stars. Horror has ghosts, bats, webs, pumpkins and candles. Movie, Pajama (stripes) and Japan (scallops) are unchanged. The app, partners and footer cards (`::before` layers in `site.css`) swap their dots for white doodles at the same strength. The app card has a phone, bell, calendar, map pin, chat, ticket and bookmark (`app-icons.svg`). The partners card has a megaphone, brush, mic, store, camera, tag and headphones (`partners-icons.svg`). The footer has the PinkOut brand doodles, very faint on berry (`footer-icons.svg`, on every page). The app card keeps its fade mask. The mobile menu dots are unchanged.
+
+### Speed and quality pass — 22 October 2026
+
+Lighthouse on the homepage (served through `deploy/nginx.conf`): mobile performance 64 → 85 (Largest Contentful Paint 7.3s → 3.8s), desktop 95 → 99, mobile accessibility 96 → 100. No console errors, failed requests or horizontal scroll on any page at phone or desktop width.
+
+- Server: `deploy/nginx.conf` adds gzip (about 380KB less on first visit), year-long caching for versioned files, HTTP/2 and private `.md` files.
+- Posters: the hero and the nine video-wall posters are now WebP, about 32% smaller, and the hero poster preloads with high priority.
+- Fonts: the three IBM Plex Sans Arabic weights were reduced to the Arabic, Latin and punctuation ranges the site uses (about 48KB smaller in total, with full Arabic shaping kept).
+- Every page now requests the same `theme.css`, `fonts.css` and `config.js` version, so the browser downloads each only once across the site.
+- `404.html` uses root paths (`/assets/...`) so it stays styled at any missing URL depth.
+- `event.html` redirects before downloading any stylesheet.
+- Accessibility: the theme panels are `div` tab panels, the language button's spoken name includes its visible text, and the About eyebrow uses a deeper cherry (`#c80044`) on blush for 4.5:1 contrast.

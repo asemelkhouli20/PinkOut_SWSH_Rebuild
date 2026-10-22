@@ -9,7 +9,7 @@
     {
       "tile": "moments",
       "file": "assets/video/cinema-po-moments.mp4",
-      "poster": "assets/images/cinema-po-moments-poster.jpg",
+      "poster": "assets/images/cinema-po-moments-poster.webp",
       "dimensions": [
         1280,
         720
@@ -46,7 +46,7 @@
     {
       "tile": "rosehub-matcha",
       "file": "assets/video/cinema-po-rosehub-matcha.mp4",
-      "poster": "assets/images/cinema-po-rosehub-matcha-poster.jpg",
+      "poster": "assets/images/cinema-po-rosehub-matcha-poster.webp",
       "dimensions": [
         960,
         540
@@ -61,7 +61,7 @@
     {
       "tile": "move-pointe",
       "file": "assets/video/cinema-po-move-pointe.mp4",
-      "poster": "assets/images/cinema-po-move-pointe-poster.jpg",
+      "poster": "assets/images/cinema-po-move-pointe-poster.webp",
       "dimensions": [
         960,
         540
@@ -76,7 +76,7 @@
     {
       "tile": "make-clay",
       "file": "assets/video/cinema-po-make-clay.mp4",
-      "poster": "assets/images/cinema-po-make-clay-poster.jpg",
+      "poster": "assets/images/cinema-po-make-clay-poster.webp",
       "dimensions": [
         540,
         960
@@ -91,7 +91,7 @@
     {
       "tile": "beauty-nails",
       "file": "assets/video/cinema-po-beauty-nails.mp4",
-      "poster": "assets/images/cinema-po-beauty-nails-poster.jpg",
+      "poster": "assets/images/cinema-po-beauty-nails-poster.webp",
       "dimensions": [
         640,
         360
@@ -106,7 +106,7 @@
     {
       "tile": "market-macarons",
       "file": "assets/video/cinema-po-market-macarons.mp4",
-      "poster": "assets/images/cinema-po-market-macarons-poster.jpg",
+      "poster": "assets/images/cinema-po-market-macarons-poster.webp",
       "dimensions": [
         640,
         360
@@ -121,7 +121,7 @@
     {
       "tile": "make-jewelry",
       "file": "assets/video/cinema-po-make-jewelry.mp4",
-      "poster": "assets/images/cinema-po-make-jewelry-poster.jpg",
+      "poster": "assets/images/cinema-po-make-jewelry-poster.webp",
       "dimensions": [
         960,
         540
@@ -136,7 +136,7 @@
     {
       "tile": "live-dj",
       "file": "assets/video/cinema-po-live-dj.mp4",
-      "poster": "assets/images/cinema-po-live-dj-poster.jpg",
+      "poster": "assets/images/cinema-po-live-dj-poster.webp",
       "dimensions": [
         640,
         360
@@ -151,7 +151,7 @@
     {
       "tile": "rosehub-tea",
       "file": "assets/video/cinema-po-rosehub-tea.mp4",
-      "poster": "assets/images/cinema-po-rosehub-tea-poster.jpg",
+      "poster": "assets/images/cinema-po-rosehub-tea-poster.webp",
       "dimensions": [
         640,
         360
