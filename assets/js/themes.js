@@ -29,10 +29,10 @@
 
   function layout() {
     const height = room.offsetHeight;
-    // Phones centre the room in the space between the header and a 12px bottom gap.
+    // Centre the room in the space between the header and the bottom gap (12px on phones, 16px on larger screens).
     // Short screens let the top of the room slide under the header rather than hiding the tickets.
-    const spare = innerHeight - 84 - height;
-    top = phone.matches && spare >= 0 ? 72 + Math.round(spare / 2) : Math.min(84, innerHeight - height - 12);
+    const spare = innerHeight - 72 - (phone.matches ? 12 : 16) - height;
+    top = spare >= 0 ? 72 + Math.round(spare / 2) : Math.min(84, innerHeight - height - 12);
     const step = Math.max(240, Math.round(innerHeight * .5));
     const nextTravel = step * (count - 1);
     shell.style.setProperty('--room-top', `${top}px`);
