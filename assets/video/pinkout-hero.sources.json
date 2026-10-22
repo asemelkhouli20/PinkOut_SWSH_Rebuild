@@ -1,0 +1,172 @@
+{
+  "date": "2026-10-22",
+  "note": "Fast hype edit for the hero: neon night energy, DJ, roller skating, beauty, cafe, confetti and friends. Illustrative stock, not PinkOut events; no drinks shown.",
+  "files": {
+    "desktop": "assets/video/hero-pinkout-hype.mp4",
+    "mobile": "assets/video/hero-pinkout-hype-mobile.mp4",
+    "poster": "assets/images/hero-pinkout-hype-poster.jpg",
+    "mobilePoster": "assets/images/hero-pinkout-hype-mobile-poster.jpg"
+  },
+  "dimensions": {
+    "desktop": [
+      1280,
+      720
+    ],
+    "mobile": [
+      540,
+      960
+    ]
+  },
+  "duration": 15.1,
+  "fps": 25,
+  "audio": false,
+  "grade": "contrast 1.07, saturation 1.18, magenta colour balance; 7% punch-in per shot; 0.16s blush flash on beat cuts",
+  "replaces": "hero-pinkout-beach (archived in place)",
+  "clips": [
+    {
+      "title": "Metallic heart-shaped confetti falling in slow motion",
+      "creator": "Mixkit",
+      "source": "https://mixkit.co/free-stock-video/metallic-heart-shaped-confetti-falling-in-slow-motion-over-a-99990/",
+      "license": "https://mixkit.co/license/#videoFree",
+      "sourceStart": 2.0,
+      "duration": 0.8,
+      "speed": 1.0,
+      "mobileCentreX": 0.5
+    },
+    {
+      "title": "Roller skating in a sequin dress",
+      "creator": "cottonbro studio",
+      "source": "https://www.pexels.com/video/teenage-girl-posing-and-roller-skating-in-sequin-dress-5788934/",
+      "license": "https://www.pexels.com/license/",
+      "sourceStart": 7.0,
+      "duration": 1.4,
+      "speed": 1.0,
+      "mobileCentreX": 0.47,
+      "flashIn": true
+    },
+    {
+      "title": "Woman working as DJ",
+      "creator": "Denys Gromov",
+      "source": "https://www.pexels.com/video/woman-working-as-dj-13063136/",
+      "license": "https://www.pexels.com/license/",
+      "sourceStart": 1.0,
+      "duration": 1.1,
+      "speed": 1.0,
+      "mobileCentreX": 0.56
+    },
+    {
+      "title": "Close-up of DJ hands",
+      "creator": "Denys Gromov",
+      "source": "https://www.pexels.com/video/close-up-of-dj-hands-13063139/",
+      "license": "https://www.pexels.com/license/",
+      "sourceStart": 4.0,
+      "duration": 0.7,
+      "speed": 1.0,
+      "mobileCentreX": 0.42
+    },
+    {
+      "title": "Young happy woman spins under confetti",
+      "creator": "Mixkit",
+      "source": "https://mixkit.co/free-stock-video/a-young-happy-woman-wearing-a-denim-jacket-spins-under-100033/",
+      "license": "https://mixkit.co/license/#videoFree",
+      "sourceStart": 0.5,
+      "duration": 1.0,
+      "speed": 1.4,
+      "mobileCentreX": 0.45,
+      "flashIn": true
+    },
+    {
+      "title": "Woman applying pink lipstick",
+      "creator": "Mixkit",
+      "source": "https://mixkit.co/free-stock-video/woman-applying-pink-lipstick-371/",
+      "license": "https://mixkit.co/license/#videoFree",
+      "sourceStart": 1.0,
+      "duration": 0.9,
+      "speed": 1.3,
+      "mobileCentreX": 0.36
+    },
+    {
+      "title": "Roller skating at an indoor rink",
+      "creator": "cottonbro studio",
+      "source": "https://www.pexels.com/video/teenage-girls-roller-skating-at-indoor-rink-5788803/",
+      "license": "https://www.pexels.com/license/",
+      "sourceStart": 0.5,
+      "duration": 1.0,
+      "speed": 1.0,
+      "mobileCentreX": 0.4
+    },
+    {
+      "title": "Women partying with sparklers",
+      "creator": "RDNE Stock project",
+      "source": "https://www.pexels.com/video/women-partying-holding-fireworks-7685044/",
+      "license": "https://www.pexels.com/license/",
+      "sourceStart": 3.0,
+      "duration": 0.9,
+      "speed": 1.0,
+      "mobileCentreX": 0.5,
+      "flashIn": true
+    },
+    {
+      "title": "Women celebrating with confetti poppers",
+      "creator": "Mikhail Nilov",
+      "source": "https://www.pexels.com/video/women-celebrating-together-9756502/",
+      "license": "https://www.pexels.com/license/",
+      "sourceStart": 2.0,
+      "duration": 1.4,
+      "speed": 1.0,
+      "mobileCentreX": 0.44,
+      "flashIn": true
+    },
+    {
+      "title": "Roller skating in a sequin dress",
+      "creator": "cottonbro studio",
+      "source": "https://www.pexels.com/video/teenage-girl-posing-and-roller-skating-in-sequin-dress-5788934/",
+      "license": "https://www.pexels.com/license/",
+      "sourceStart": 19.0,
+      "duration": 1.2,
+      "speed": 1.3,
+      "mobileCentreX": 0.55
+    },
+    {
+      "title": "Pink and yellow powder jumping",
+      "creator": "Mixkit",
+      "source": "https://mixkit.co/free-stock-video/pink-and-yellow-powder-jumping-677/",
+      "license": "https://mixkit.co/license/#videoFree",
+      "sourceStart": 4.0,
+      "duration": 0.6,
+      "speed": 1.5,
+      "mobileCentreX": 0.5
+    },
+    {
+      "title": "Happy model poses in confetti over a pink background",
+      "creator": "Mixkit",
+      "source": "https://mixkit.co/free-stock-video/a-young-beautiful-happy-model-strikes-poses-over-a-pink-100019/",
+      "license": "https://mixkit.co/license/#videoFree",
+      "sourceStart": 20.0,
+      "duration": 1.3,
+      "speed": 1.3,
+      "mobileCentreX": 0.55,
+      "flashIn": true
+    },
+    {
+      "title": "Friends blowing confetti from their hands",
+      "creator": "Antoni Shkraba",
+      "source": "https://www.pexels.com/video/friends-blowing-confetti-from-their-hands-7509467/",
+      "license": "https://www.pexels.com/license/",
+      "sourceStart": 2.0,
+      "duration": 1.2,
+      "speed": 1.0,
+      "mobileCentreX": 0.5
+    },
+    {
+      "title": "Smiling woman in colorful confetti rain",
+      "creator": "Mixkit",
+      "source": "https://mixkit.co/free-stock-video/a-young-smiling-woman-enjoys-the-colorful-confetti-rain-over-100005/",
+      "license": "https://mixkit.co/license/#videoFree",
+      "sourceStart": 0.0,
+      "duration": 1.6,
+      "speed": 1.3,
+      "mobileCentreX": 0.5
+    }
+  ]
+}

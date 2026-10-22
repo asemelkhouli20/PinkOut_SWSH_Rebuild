@@ -17,7 +17,7 @@ The PinkOut wordmark/favicon are existing project brand assets. No SWSH logos, v
 
 ## Hero background film
 
-User-supplied Mixkit clip: `mixkit-pair-of-female-friends-having-fun-on-a-night-out-42299-hd-ready.mp4`. Bundled as `assets/video/hero-night-out.mp4` with a matching still poster. Illustrative footage, not a past PinkOut event. Muted looping inline playback, a bilingual play/pause control, offscreen/hidden-tab pausing, and poster fallback for reduced motion, data saving or blocked autoplay. No third-party player or external video request.
+`assets/video/hero-pinkout-hype.mp4` (1280×720) and `hero-pinkout-hype-mobile.mp4` (540×960): a 15.1-second fast-cut montage of 14 shots from Pexels (Pexels License) and Mixkit (Mixkit Free License). The montage moves through confetti, a roller skater under neon, a woman DJ, pink lipstick, a neon rink, sparklers, confetti poppers, a pink powder burst and a pajama-night confetti blow. Creators, source pages, in-points, speeds and mobile crops are in `assets/video/pinkout-hero.sources.json`. Illustrative footage, not a past PinkOut event; no drinks are shown. Earlier hero files (`hero-night-out`, `hero-sa-moments`, `hero-pinkout-beach`) remain in the folder as archived revisions and are no longer referenced. Muted looping inline playback, a bilingual play/pause control, offscreen/hidden-tab pausing, and poster fallback for reduced motion, data saving or blocked autoplay. No third-party player or external video request.
 
 ## Stickers (`assets/images/stickers/`)
 
