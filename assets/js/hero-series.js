@@ -74,7 +74,7 @@
     // Measure only the inserted word; the two brand words never change.
     measuredWidth = middle.getBoundingClientRect().width;
     const width = `${measuredWidth}px`;
-    const timing = { duration: 5200, fill: 'both', easing: 'linear' };
+    const timing = { duration: 3000, fill: 'both', easing: 'linear' };
     if (conceptPattern) conceptPattern.style.backgroundImage = `url("assets/images/${conceptPatterns[words[index]]}")`;
     const panelRect = hero ? title.closest('.brand-typography').getBoundingClientRect() : null;
     const heroRect = hero?.getBoundingClientRect();
